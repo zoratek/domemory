@@ -336,7 +336,6 @@
     <string name="leaderboard_title">Classificação</string>
     <string name="leaderboard_tab_stars">Estrelas</string>
     <string name="leaderboard_tab_streak">Sequência</string>
-    <string name="leaderboard_you_format">Você: %1$s</string>
     <string name="leaderboard_points_to_top_stars_format">Faltam %1$d estrelas para entrar no top 50</string>
     <string name="leaderboard_points_to_top_streak_format">Faltam %1$d dias para entrar no top 50</string>
     <string name="leaderboard_empty">Ainda não há pontuações. Termine uma partida para ser o primeiro.</string>
@@ -352,4 +351,12 @@
     <string name="leaderboard_notice_title">Você está na classificação</string>
     <string name="leaderboard_notice_body_format">Você aparecerá como %1$s. Todos os jogadores podem ver suas estrelas e sua maior sequência. Se reinstalar o app ou trocar de celular, talvez precise começar de novo.</string>
     <string name="leaderboard_notice_accept">Entendi</string>
+    <string name="leaderboard_you">Você</string>
+    <string name="leaderboard_rank_format">Você está em %1$dº</string>
+    <string name="leaderboard_caption_stars">Total de estrelas dos níveis</string>
+    <string name="leaderboard_caption_streak">Maior sequência do desafio diário</string>
+    <string name="leaderboard_zero_stars">Conclua um nível para ganhar sua primeira estrela.</string>
+    <string name="leaderboard_zero_streak">Vença um desafio diário para começar sua sequência.</string>
+    <string name="leaderboard_pending">Sua pontuação aparecerá em breve na classificação.</string>
+    <string name="leaderboard_top_50">Top 50</string>
 </resources>

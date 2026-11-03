@@ -228,6 +228,20 @@ class LeaderboardServiceTest {
         assertEquals(2, backend.topReads)
     }
 
+    @Test fun `the ticket shows the right status`() {
+        fun snapshot(rows: List<LeaderboardRow>, ownScore: Int) =
+            LeaderboardSnapshot(LeaderboardBoard.STARS, rows, "me", ownScore, LeaderboardNameWords(0, 0))
+        val others = (0 until 50).map { LeaderboardRow("p$it", 100 - it, 1L) }
+        val onBoard = listOf(LeaderboardRow("a", 9, 1L), LeaderboardRow("me", 5, 1L))
+
+        assertEquals(LeaderboardTicketStatus.Ranked(2), snapshot(onBoard, 5).ticketStatus)
+        assertEquals(LeaderboardTicketStatus.PointsToTopBoard(12), snapshot(others, 40).ticketStatus)
+        assertEquals(LeaderboardTicketStatus.NoScore, snapshot(others, 0).ticketStatus)
+        assertEquals(LeaderboardTicketStatus.NoScore, snapshot(emptyList(), 0).ticketStatus)
+        assertEquals(LeaderboardTicketStatus.Pending, snapshot(emptyList(), 5).ticketStatus)
+        assertEquals(LeaderboardTicketStatus.Pending, snapshot(others, 90).ticketStatus)
+    }
+
     @Test fun `a snapshot reports the distance to the board`() = runTest {
         backend.rows[LeaderboardBoard.STARS] = (0 until 50).associate { "player$it" to mapOf("s" to 100L + it, "t" to 1L) }
         val snapshot = service().load(LeaderboardBoard.STARS)

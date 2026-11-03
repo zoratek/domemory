@@ -327,7 +327,6 @@
 "leaderboard_title" = "Classifica";
 "leaderboard_tab_stars" = "Stelle";
 "leaderboard_tab_streak" = "Serie";
-"leaderboard_you_format" = "Tu: %@";
 "leaderboard_points_to_top_stars_format" = "Ancora %d stelle per entrare nella top 50";
 "leaderboard_points_to_top_streak_format" = "Ancora %d giorni per entrare nella top 50";
 "leaderboard_empty" = "Ancora nessun punteggio. Termina una partita per essere il primo.";
@@ -343,3 +342,11 @@
 "leaderboard_notice_title" = "Sei in classifica";
 "leaderboard_notice_body_format" = "Apparirai come %@. Tutti i giocatori possono vedere le tue stelle e la tua serie più lunga. Se reinstalli l'app o cambi telefono, potresti ricominciare da zero.";
 "leaderboard_notice_accept" = "Ho capito";
+"leaderboard_you" = "Tu";
+"leaderboard_rank_format" = "Sei al %d° posto";
+"leaderboard_caption_stars" = "Stelle totali dei livelli";
+"leaderboard_caption_streak" = "Serie più lunga della sfida giornaliera";
+"leaderboard_zero_stars" = "Completa un livello per ottenere la tua prima stella.";
+"leaderboard_zero_streak" = "Vinci una sfida giornaliera per iniziare la tua serie.";
+"leaderboard_pending" = "Il tuo punteggio apparirà presto in classifica.";
+"leaderboard_top_50" = "Top 50";

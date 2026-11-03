@@ -522,6 +522,10 @@ extension Color {
     static var secundaryColor: Color  { dynamicColor(light: (255, 99, 64), dark: (255, 134, 109)) }
     static var easyGreen: Color       { dynamicColor(light: (40, 182, 126), dark: (73, 214, 151)) }
     static var hardAmber: Color       { dynamicColor(light: (245, 166, 35), dark: (255, 193, 87)) }
+    static var medalGold: Color       { dynamicColor(light: (245, 196, 68), dark: (255, 209, 92)) }
+    static var medalSilver: Color     { dynamicColor(light: (200, 206, 216), dark: (208, 214, 224)) }
+    static var medalBronze: Color     { dynamicColor(light: (217, 155, 104), dark: (226, 168, 120)) }
+    static var onMedal: Color         { dynamicColor(light: (43, 32, 12), dark: (43, 32, 12)) }
     static var freezeBlue: Color      { dynamicColor(light: (0, 145, 199), dark: (94, 200, 245)) }
 
     static var appBackground: Color   { dynamicColor(light: (247, 243, 237), dark: (17, 19, 31)) }

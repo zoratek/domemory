@@ -1,22 +1,27 @@
 package com.ezequielbrrt.domemory.feature.leaderboard
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
@@ -29,7 +34,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -45,9 +50,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
@@ -65,6 +73,7 @@ import com.ezequielbrrt.domemory.services.leaderboard.LeaderboardNameFormatter
 import com.ezequielbrrt.domemory.services.leaderboard.LeaderboardNameWords
 import com.ezequielbrrt.domemory.services.leaderboard.LeaderboardNames
 import com.ezequielbrrt.domemory.services.leaderboard.LeaderboardSnapshot
+import com.ezequielbrrt.domemory.services.leaderboard.LeaderboardTicketStatus
 import com.ezequielbrrt.domemory.ui.theme.LocalPalette
 import kotlinx.coroutines.launch
 
@@ -91,46 +100,60 @@ fun LeaderboardScreen(
             .background(palette.appBackground),
     ) {
         val loaded = (state.content as? LeaderboardViewModel.Content.Loaded)?.snapshot
-        LazyColumn(
-            Modifier.fillMaxSize().padding(horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
+        LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
             item {
-                Column(verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.padding(top = 8.dp)) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    modifier = Modifier.padding(top = 8.dp, bottom = 12.dp),
+                ) {
                     if (state.hasAcknowledgedNotice == false) {
                         LeaderboardNoticeCard(
                             name = state.ownName,
                             onDismiss = { scope.launch { viewModel.dismissNotice() } },
                         )
                     }
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        BoardTabs(
-                            selected = state.board,
-                            onSelect = { board ->
-                                HapticsService.fire(HapticIntent.SELECT)
-                                scope.launch { viewModel.select(board) }
-                            },
-                            modifier = Modifier.weight(1f),
-                        )
-                        val changeNameLabel = stringResource(R.string.leaderboard_change_name)
-                        IconButton(
-                            onClick = {
-                                HapticsService.fire(HapticIntent.TAP)
-                                showNamePicker = true
-                            },
-                            enabled = !state.isWorking && state.isLoaded,
-                            modifier = Modifier.semantics { contentDescription = changeNameLabel },
-                        ) {
-                            Icon(Icons.Filled.Edit, contentDescription = null, tint = palette.primary)
-                        }
-                    }
+                    BoardTabs(
+                        selected = state.board,
+                        onSelect = { board ->
+                            HapticsService.fire(HapticIntent.SELECT)
+                            scope.launch { viewModel.select(board) }
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                    )
                     if (loaded == null) {
                         NotLoadedContent(state.content, onRetry = { scope.launch { viewModel.load() } })
                     } else {
-                        OwnSummary(loaded, state.ownName)
-                    }
-                    if (loaded != null && loaded.rows.isEmpty()) {
-                        Message(stringResource(R.string.leaderboard_empty))
+                        Text(
+                            stringResource(
+                                if (loaded.board == LeaderboardBoard.STARS) {
+                                    R.string.leaderboard_caption_stars
+                                } else {
+                                    R.string.leaderboard_caption_streak
+                                },
+                            ),
+                            fontSize = 13.sp,
+                            color = palette.textSecondary,
+                        )
+                        LeaderboardTicket(
+                            snapshot = loaded,
+                            name = state.ownName,
+                            canChangeName = !state.isWorking,
+                            onChangeName = {
+                                HapticsService.fire(HapticIntent.TAP)
+                                showNamePicker = true
+                            },
+                        )
+                        if (loaded.rows.isEmpty()) {
+                            Message(stringResource(R.string.leaderboard_empty))
+                        } else {
+                            Text(
+                                stringResource(R.string.leaderboard_top_50),
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = palette.textPrimary,
+                                modifier = Modifier.semantics { heading() },
+                            )
+                        }
                     }
                 }
             }
@@ -142,6 +165,8 @@ fun LeaderboardScreen(
                         score = row.score,
                         board = loaded.board,
                         isOwn = row.uid == loaded.uid,
+                        isFirst = index == 0,
+                        isLast = index == loaded.rows.lastIndex,
                     )
                 }
             }
@@ -232,72 +257,165 @@ private fun BoardTabs(selected: LeaderboardBoard, onSelect: (LeaderboardBoard) -
     }
 }
 
+/** The player's own score, the most personal thing on the screen. */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun OwnSummary(snapshot: LeaderboardSnapshot, ownName: String) {
+private fun LeaderboardTicket(
+    snapshot: LeaderboardSnapshot,
+    name: String,
+    canChangeName: Boolean,
+    onChangeName: () -> Unit,
+) {
     val palette = LocalPalette.current
+    val isStars = snapshot.board == LeaderboardBoard.STARS
+    val status = when (val current = snapshot.ticketStatus) {
+        is LeaderboardTicketStatus.Ranked -> stringResource(R.string.leaderboard_rank_format, current.rank)
+        is LeaderboardTicketStatus.PointsToTopBoard -> stringResource(
+            if (isStars) R.string.leaderboard_points_to_top_stars_format else R.string.leaderboard_points_to_top_streak_format,
+            current.points,
+        )
+        LeaderboardTicketStatus.NoScore -> stringResource(
+            if (isStars) R.string.leaderboard_zero_stars else R.string.leaderboard_zero_streak,
+        )
+        LeaderboardTicketStatus.Pending -> stringResource(R.string.leaderboard_pending)
+    }
     Column(
         Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
-            .background(palette.hardAmber.copy(alpha = 0.15f))
-            .padding(14.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp),
+            .clip(RoundedCornerShape(20.dp))
+            .background(palette.surfacePrimary)
+            .border(BorderStroke(2.dp, palette.primary), RoundedCornerShape(20.dp))
+            .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 4.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                stringResource(R.string.leaderboard_you_format, ownName),
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold,
-                color = palette.textPrimary,
-                modifier = Modifier.weight(1f),
-            )
-            BoardScore(snapshot.ownScore, snapshot.board)
+        // Wraps the score below the name at large text sizes instead of squeezing either.
+        FlowRow(
+            Modifier.fillMaxWidth().semantics(mergeDescendants = true) {},
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalArrangement = Arrangement.spacedBy(6.dp),
+            itemVerticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column {
+                Text(
+                    stringResource(R.string.leaderboard_you).uppercase(),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    letterSpacing = 0.8.sp,
+                    color = palette.primary,
+                )
+                Text(name, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = palette.textPrimary)
+            }
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                Icon(
+                    if (isStars) Icons.Filled.Star else Icons.Filled.LocalFireDepartment,
+                    contentDescription = stringResource(if (isStars) R.string.leaderboard_tab_stars else R.string.leaderboard_tab_streak),
+                    tint = palette.hardAmber,
+                    modifier = Modifier.size(26.dp),
+                )
+                Text(
+                    "${snapshot.ownScore}",
+                    fontSize = 34.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = palette.textPrimary,
+                    maxLines = 1,
+                )
+            }
         }
-        if (snapshot.pointsToTopBoard > 0) {
+        val dashColor = palette.surfaceBorder
+        Canvas(Modifier.fillMaxWidth().height(1.dp)) {
+            drawLine(
+                color = dashColor,
+                start = Offset(0f, size.height / 2),
+                end = Offset(size.width, size.height / 2),
+                strokeWidth = 1.dp.toPx(),
+                pathEffect = PathEffect.dashPathEffect(floatArrayOf(5.dp.toPx(), 4.dp.toPx())),
+            )
+        }
+        Text(status, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = palette.textPrimary)
+        TextButton(onClick = onChangeName, enabled = canChangeName, contentPadding = PaddingValues(horizontal = 0.dp)) {
+            Icon(Icons.Filled.Edit, contentDescription = null, tint = palette.primary, modifier = Modifier.size(16.dp))
+            Spacer(Modifier.size(6.dp))
             Text(
-                stringResource(
-                    if (snapshot.board == LeaderboardBoard.STARS) {
-                        R.string.leaderboard_points_to_top_stars_format
-                    } else {
-                        R.string.leaderboard_points_to_top_streak_format
-                    },
-                    snapshot.pointsToTopBoard,
-                ),
-                fontSize = 13.sp,
-                color = palette.textSecondary,
+                stringResource(R.string.leaderboard_change_name),
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                color = palette.primary,
             )
         }
     }
 }
 
 @Composable
-private fun BoardRow(rank: Int, name: String, score: Int, board: LeaderboardBoard, isOwn: Boolean) {
+private fun BoardRow(
+    rank: Int,
+    name: String,
+    score: Int,
+    board: LeaderboardBoard,
+    isOwn: Boolean,
+    isFirst: Boolean,
+    isLast: Boolean,
+) {
     val palette = LocalPalette.current
-    Row(
+    val medal = when (rank) {
+        1 -> palette.medalGold
+        2 -> palette.medalSilver
+        3 -> palette.medalBronze
+        else -> null
+    }
+    val shape = RoundedCornerShape(
+        topStart = if (isFirst) 16.dp else 0.dp,
+        topEnd = if (isFirst) 16.dp else 0.dp,
+        bottomStart = if (isLast) 16.dp else 0.dp,
+        bottomEnd = if (isLast) 16.dp else 0.dp,
+    )
+    Column(
         Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(10.dp))
-            .background(if (isOwn) palette.hardAmber.copy(alpha = 0.15f) else palette.surfacePrimary)
-            .padding(horizontal = 14.dp, vertical = 11.dp)
+            .clip(shape)
+            .background(palette.surfacePrimary)
             .semantics(mergeDescendants = true) {},
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Text(
-            "$rank",
-            fontSize = 15.sp,
-            fontWeight = FontWeight.ExtraBold,
-            color = if (rank <= 3) palette.hardAmber else palette.textSecondary,
-            modifier = Modifier.widthIn(min = 28.dp),
-        )
-        Text(
-            name,
-            fontSize = 15.sp,
-            fontWeight = if (isOwn) FontWeight.Bold else FontWeight.Medium,
-            color = palette.textPrimary,
-            modifier = Modifier.weight(1f),
-        )
-        BoardScore(score, board)
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .background(if (isOwn) palette.primary.copy(alpha = 0.1f) else Color.Transparent)
+                .padding(horizontal = 14.dp, vertical = 11.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Box(
+                Modifier
+                    .size(30.dp)
+                    .then(if (medal != null) Modifier.background(medal, CircleShape) else Modifier),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    "$rank",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = if (medal != null) palette.onMedal else palette.textSecondary,
+                    maxLines = 1,
+                )
+            }
+            Column(Modifier.weight(1f)) {
+                Text(
+                    name,
+                    fontSize = 15.sp,
+                    fontWeight = if (isOwn) FontWeight.Bold else FontWeight.Medium,
+                    color = palette.textPrimary,
+                )
+                if (isOwn) {
+                    Text(
+                        stringResource(R.string.leaderboard_you),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = palette.primary,
+                    )
+                }
+            }
+            BoardScore(score, board)
+        }
+        if (!isLast) HorizontalDivider(color = palette.surfaceBorder)
     }
 }
 

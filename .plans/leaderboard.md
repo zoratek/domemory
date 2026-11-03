@@ -33,6 +33,11 @@ The contract is in `android/DOMEMORY_ANDROID_SPEC.md` §22.
 L2 and L4 add the fixture tests, because `LeaderboardNames` doesn't exist in either app
 until then. L4 also rounds Android's remaining time up before awarding stars (§22.6).
 
+## Screen design
+
+The owner chose the score ticket on 2026-11-03, from
+`assets/proposals/2026-11-leaderboard-screen/`, with medal colours for the top 3.
+
 ## Firebase deploys
 
 The owner runs these from `firebase/` with `--project domemory-c9211`.

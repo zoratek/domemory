@@ -336,7 +336,6 @@
     <string name="leaderboard_title">Leaderboard</string>
     <string name="leaderboard_tab_stars">Stars</string>
     <string name="leaderboard_tab_streak">Streak</string>
-    <string name="leaderboard_you_format">You: %1$s</string>
     <string name="leaderboard_points_to_top_stars_format">%1$d more stars to reach the top 50</string>
     <string name="leaderboard_points_to_top_streak_format">%1$d more days to reach the top 50</string>
     <string name="leaderboard_empty">No scores yet. Finish a game to be the first.</string>
@@ -352,4 +351,12 @@
     <string name="leaderboard_notice_title">You\'re on the leaderboard</string>
     <string name="leaderboard_notice_body_format">You\'ll appear as %1$s. All players can see your stars and longest streak. If you reinstall or change phones, you may start over.</string>
     <string name="leaderboard_notice_accept">Got It</string>
+    <string name="leaderboard_you">You</string>
+    <string name="leaderboard_rank_format">You\'re #%1$d</string>
+    <string name="leaderboard_caption_stars">Lifetime stars from Levels</string>
+    <string name="leaderboard_caption_streak">Longest Daily Challenge streak</string>
+    <string name="leaderboard_zero_stars">Clear a level to earn your first star.</string>
+    <string name="leaderboard_zero_streak">Win a Daily Challenge to start your streak.</string>
+    <string name="leaderboard_pending">Your score will appear on the board soon.</string>
+    <string name="leaderboard_top_50">Top 50</string>
 </resources>

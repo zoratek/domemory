@@ -327,7 +327,6 @@
 "leaderboard_title" = "Bestenliste";
 "leaderboard_tab_stars" = "Sterne";
 "leaderboard_tab_streak" = "Serie";
-"leaderboard_you_format" = "Du: %@";
 "leaderboard_points_to_top_stars_format" = "Noch %d Sterne bis zu den Top 50";
 "leaderboard_points_to_top_streak_format" = "Noch %d Tage bis zu den Top 50";
 "leaderboard_empty" = "Noch keine Ergebnisse. Beende ein Spiel, um der Erste zu sein.";
@@ -343,3 +342,11 @@
 "leaderboard_notice_title" = "Du bist auf der Bestenliste";
 "leaderboard_notice_body_format" = "Du erscheinst als %@. Alle Spieler sehen deine Sterne und deine längste Serie. Wenn du die App neu installierst oder dein Handy wechselst, fängst du eventuell von vorn an.";
 "leaderboard_notice_accept" = "Verstanden";
+"leaderboard_you" = "Du";
+"leaderboard_rank_format" = "Du bist auf Platz %d";
+"leaderboard_caption_stars" = "Alle Sterne aus den Levels";
+"leaderboard_caption_streak" = "Längste Serie der Tages-Challenge";
+"leaderboard_zero_stars" = "Schaffe ein Level, um deinen ersten Stern zu verdienen.";
+"leaderboard_zero_streak" = "Gewinne eine Tages-Challenge, um deine Serie zu starten.";
+"leaderboard_pending" = "Dein Ergebnis erscheint bald auf der Bestenliste.";
+"leaderboard_top_50" = "Top 50";

@@ -327,7 +327,6 @@
 "leaderboard_title" = "ランキング";
 "leaderboard_tab_stars" = "スター";
 "leaderboard_tab_streak" = "連続記録";
-"leaderboard_you_format" = "あなた: %@";
 "leaderboard_points_to_top_stars_format" = "トップ50まであとスター%d個";
 "leaderboard_points_to_top_streak_format" = "トップ50まであと%d日";
 "leaderboard_empty" = "まだスコアがありません。ゲームをクリアして最初のプレイヤーになりましょう。";
@@ -343,3 +342,11 @@
 "leaderboard_notice_title" = "ランキングに参加しています";
 "leaderboard_notice_body_format" = "%@として表示されます。スターと最長連続記録はすべてのプレイヤーに公開されます。再インストールやスマートフォンの変更を行うと、最初からになる場合があります。";
 "leaderboard_notice_accept" = "OK";
+"leaderboard_you" = "あなた";
+"leaderboard_rank_format" = "現在 %d 位です";
+"leaderboard_caption_stars" = "レベルで獲得した累計スター";
+"leaderboard_caption_streak" = "デイリーチャレンジの最長連続記録";
+"leaderboard_zero_stars" = "レベルをクリアして最初のスターを獲得しましょう。";
+"leaderboard_zero_streak" = "デイリーチャレンジに勝って連続記録を始めましょう。";
+"leaderboard_pending" = "スコアはまもなくランキングに表示されます。";
+"leaderboard_top_50" = "トップ50";

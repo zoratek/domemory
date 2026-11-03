@@ -327,7 +327,6 @@
 "leaderboard_title" = "Leaderboard";
 "leaderboard_tab_stars" = "Stars";
 "leaderboard_tab_streak" = "Streak";
-"leaderboard_you_format" = "You: %@";
 "leaderboard_points_to_top_stars_format" = "%d more stars to reach the top 50";
 "leaderboard_points_to_top_streak_format" = "%d more days to reach the top 50";
 "leaderboard_empty" = "No scores yet. Finish a game to be the first.";
@@ -343,3 +342,11 @@
 "leaderboard_notice_title" = "You're on the leaderboard";
 "leaderboard_notice_body_format" = "You'll appear as %@. All players can see your stars and longest streak. If you reinstall or change phones, you may start over.";
 "leaderboard_notice_accept" = "Got It";
+"leaderboard_you" = "You";
+"leaderboard_rank_format" = "You're #%d";
+"leaderboard_caption_stars" = "Lifetime stars from Levels";
+"leaderboard_caption_streak" = "Longest Daily Challenge streak";
+"leaderboard_zero_stars" = "Clear a level to earn your first star.";
+"leaderboard_zero_streak" = "Win a Daily Challenge to start your streak.";
+"leaderboard_pending" = "Your score will appear on the board soon.";
+"leaderboard_top_50" = "Top 50";

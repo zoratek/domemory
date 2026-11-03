@@ -336,7 +336,6 @@
     <string name="leaderboard_title">Classifica</string>
     <string name="leaderboard_tab_stars">Stelle</string>
     <string name="leaderboard_tab_streak">Serie</string>
-    <string name="leaderboard_you_format">Tu: %1$s</string>
     <string name="leaderboard_points_to_top_stars_format">Ancora %1$d stelle per entrare nella top 50</string>
     <string name="leaderboard_points_to_top_streak_format">Ancora %1$d giorni per entrare nella top 50</string>
     <string name="leaderboard_empty">Ancora nessun punteggio. Termina una partita per essere il primo.</string>
@@ -352,4 +351,12 @@
     <string name="leaderboard_notice_title">Sei in classifica</string>
     <string name="leaderboard_notice_body_format">Apparirai come %1$s. Tutti i giocatori possono vedere le tue stelle e la tua serie più lunga. Se reinstalli l\'app o cambi telefono, potresti ricominciare da zero.</string>
     <string name="leaderboard_notice_accept">Ho capito</string>
+    <string name="leaderboard_you">Tu</string>
+    <string name="leaderboard_rank_format">Sei al %1$d° posto</string>
+    <string name="leaderboard_caption_stars">Stelle totali dei livelli</string>
+    <string name="leaderboard_caption_streak">Serie più lunga della sfida giornaliera</string>
+    <string name="leaderboard_zero_stars">Completa un livello per ottenere la tua prima stella.</string>
+    <string name="leaderboard_zero_streak">Vinci una sfida giornaliera per iniziare la tua serie.</string>
+    <string name="leaderboard_pending">Il tuo punteggio apparirà presto in classifica.</string>
+    <string name="leaderboard_top_50">Top 50</string>
 </resources>

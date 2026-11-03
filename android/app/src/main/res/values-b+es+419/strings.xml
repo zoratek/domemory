@@ -336,7 +336,6 @@
     <string name="leaderboard_title">Clasificación</string>
     <string name="leaderboard_tab_stars">Estrellas</string>
     <string name="leaderboard_tab_streak">Racha</string>
-    <string name="leaderboard_you_format">Tú: %1$s</string>
     <string name="leaderboard_points_to_top_stars_format">Te faltan %1$d estrellas para entrar al top 50</string>
     <string name="leaderboard_points_to_top_streak_format">Te faltan %1$d días para entrar al top 50</string>
     <string name="leaderboard_empty">Aún no hay puntuaciones. Termina una partida para ser el primero.</string>
@@ -352,4 +351,12 @@
     <string name="leaderboard_notice_title">Estás en la clasificación</string>
     <string name="leaderboard_notice_body_format">Aparecerás como %1$s. Todos los jugadores pueden ver tus estrellas y tu racha más larga. Si reinstalas la app o cambias de teléfono, es posible que empieces de nuevo.</string>
     <string name="leaderboard_notice_accept">Entendido</string>
+    <string name="leaderboard_you">Tú</string>
+    <string name="leaderboard_rank_format">Estás en el puesto %1$d</string>
+    <string name="leaderboard_caption_stars">Estrellas totales de Niveles</string>
+    <string name="leaderboard_caption_streak">Racha más larga del Desafío diario</string>
+    <string name="leaderboard_zero_stars">Supera un nivel para ganar tu primera estrella.</string>
+    <string name="leaderboard_zero_streak">Gana un Desafío diario para empezar tu racha.</string>
+    <string name="leaderboard_pending">Tu puntuación aparecerá pronto en la clasificación.</string>
+    <string name="leaderboard_top_50">Top 50</string>
 </resources>

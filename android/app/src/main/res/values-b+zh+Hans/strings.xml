@@ -336,7 +336,6 @@
     <string name="leaderboard_title">排行榜</string>
     <string name="leaderboard_tab_stars">星星</string>
     <string name="leaderboard_tab_streak">连胜</string>
-    <string name="leaderboard_you_format">你：%1$s</string>
     <string name="leaderboard_points_to_top_stars_format">还差 %1$d 颗星星进入前 50 名</string>
     <string name="leaderboard_points_to_top_streak_format">还差 %1$d 天进入前 50 名</string>
     <string name="leaderboard_empty">还没有分数。完成一局游戏，成为第一名。</string>
@@ -352,4 +351,12 @@
     <string name="leaderboard_notice_title">你已在排行榜上</string>
     <string name="leaderboard_notice_body_format">你将显示为 %1$s。所有玩家都能看到你的星星和最长连胜。如果重新安装应用或更换手机，可能需要从头开始。</string>
     <string name="leaderboard_notice_accept">知道了</string>
+    <string name="leaderboard_you">你</string>
+    <string name="leaderboard_rank_format">你排名第 %1$d</string>
+    <string name="leaderboard_caption_stars">关卡累计获得的星星</string>
+    <string name="leaderboard_caption_streak">每日挑战最长连胜</string>
+    <string name="leaderboard_zero_stars">完成一个关卡，赢得你的第一颗星星。</string>
+    <string name="leaderboard_zero_streak">赢得一次每日挑战，开始你的连胜。</string>
+    <string name="leaderboard_pending">你的分数很快会显示在排行榜上。</string>
+    <string name="leaderboard_top_50">前 50 名</string>
 </resources>
