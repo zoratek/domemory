@@ -122,9 +122,9 @@ class MultiplayerService(
             room.copy(
                 status = MultiplayerRoomStatus.PLAYING,
                 currentPlayerId = room.hostId,
-                // Card ids and order are serialized across iOS and Android. A local shuffle
-                // would give each client a different board, so multiplayer uses the canonical
-                // order iOS's `makeCards` writes rather than Board.buildCards().
+                // The host deals once and writes the order into the room, so both players see
+                // the same shuffled board. Board.buildCards() isn't used because its ids differ
+                // from the ones iOS's `makeCards` writes.
                 cards = MultiplayerCards.from(board),
                 selectedCardIds = emptyList(),
                 winnerId = null,
@@ -140,7 +140,7 @@ class MultiplayerService(
             room.copy(
                 status = MultiplayerRoomStatus.PLAYING,
                 currentPlayerId = room.hostId,
-                cards = room.cards.map { it.copy(isFaceUp = false, isMatched = false) },
+                cards = MultiplayerCards.redeal(room.cards),
                 selectedCardIds = emptyList(),
                 winnerId = null,
                 players = room.players.mapValues { it.value.copy(score = 0) },
