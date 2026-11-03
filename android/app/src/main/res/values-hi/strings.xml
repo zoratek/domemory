@@ -336,7 +336,6 @@
     <string name="leaderboard_title">लीडरबोर्ड</string>
     <string name="leaderboard_tab_stars">सितारे</string>
     <string name="leaderboard_tab_streak">स्ट्रीक</string>
-    <string name="leaderboard_you_format">आप: %1$s</string>
     <string name="leaderboard_points_to_top_stars_format">टॉप 50 में आने के लिए %1$d और सितारे चाहिए</string>
     <string name="leaderboard_points_to_top_streak_format">टॉप 50 में आने के लिए %1$d और दिन चाहिए</string>
     <string name="leaderboard_empty">अभी कोई स्कोर नहीं है। पहला बनने के लिए एक गेम पूरा करें।</string>
@@ -352,4 +351,12 @@
     <string name="leaderboard_notice_title">आप लीडरबोर्ड पर हैं</string>
     <string name="leaderboard_notice_body_format">आप %1$s के रूप में दिखेंगे। सभी खिलाड़ी आपके सितारे और सबसे लंबी स्ट्रीक देख सकते हैं। ऐप दोबारा इंस्टॉल करने या फ़ोन बदलने पर आपको शायद फिर से शुरू करना पड़े।</string>
     <string name="leaderboard_notice_accept">समझ गया</string>
+    <string name="leaderboard_you">आप</string>
+    <string name="leaderboard_rank_format">आप #%1$d पर हैं</string>
+    <string name="leaderboard_caption_stars">लेवल से मिले कुल सितारे</string>
+    <string name="leaderboard_caption_streak">डेली चैलेंज की सबसे लंबी स्ट्रीक</string>
+    <string name="leaderboard_zero_stars">अपना पहला सितारा पाने के लिए एक लेवल पूरा करें।</string>
+    <string name="leaderboard_zero_streak">अपनी स्ट्रीक शुरू करने के लिए एक डेली चैलेंज जीतें।</string>
+    <string name="leaderboard_pending">आपका स्कोर जल्द ही लीडरबोर्ड पर दिखेगा।</string>
+    <string name="leaderboard_top_50">टॉप 50</string>
 </resources>

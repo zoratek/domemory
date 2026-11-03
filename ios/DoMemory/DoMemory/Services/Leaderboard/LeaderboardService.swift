@@ -9,6 +9,15 @@
 
 import Foundation
 
+/// What the score ticket says under the player's score.
+enum LeaderboardTicketStatus: Equatable {
+    case ranked(Int)
+    case pointsToTopBoard(Int)
+    case noScore
+    /// The player has a score, but it isn't on this copy of the board yet.
+    case pending
+}
+
 struct LeaderboardSnapshot: Equatable {
     let board: LeaderboardBoard
     let rows: [LeaderboardRow]
@@ -17,6 +26,12 @@ struct LeaderboardSnapshot: Equatable {
     let ownWords: LeaderboardNameWords
 
     var isOwnRowOnBoard: Bool { rows.contains { $0.uid == uid } }
+    var ticketStatus: LeaderboardTicketStatus {
+        if let index = rows.firstIndex(where: { $0.uid == uid }) { return .ranked(index + 1) }
+        if ownScore == 0 { return .noScore }
+        let points = pointsToTopBoard
+        return points > 0 ? .pointsToTopBoard(points) : .pending
+    }
     var pointsToTopBoard: Int {
         guard !isOwnRowOnBoard, let last = rows.last else { return 0 }
         return LeaderboardRow.pointsToTopBoard(

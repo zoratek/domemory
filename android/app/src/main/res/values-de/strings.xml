@@ -336,7 +336,6 @@
     <string name="leaderboard_title">Bestenliste</string>
     <string name="leaderboard_tab_stars">Sterne</string>
     <string name="leaderboard_tab_streak">Serie</string>
-    <string name="leaderboard_you_format">Du: %1$s</string>
     <string name="leaderboard_points_to_top_stars_format">Noch %1$d Sterne bis zu den Top 50</string>
     <string name="leaderboard_points_to_top_streak_format">Noch %1$d Tage bis zu den Top 50</string>
     <string name="leaderboard_empty">Noch keine Ergebnisse. Beende ein Spiel, um der Erste zu sein.</string>
@@ -352,4 +351,12 @@
     <string name="leaderboard_notice_title">Du bist auf der Bestenliste</string>
     <string name="leaderboard_notice_body_format">Du erscheinst als %1$s. Alle Spieler sehen deine Sterne und deine längste Serie. Wenn du die App neu installierst oder dein Handy wechselst, fängst du eventuell von vorn an.</string>
     <string name="leaderboard_notice_accept">Verstanden</string>
+    <string name="leaderboard_you">Du</string>
+    <string name="leaderboard_rank_format">Du bist auf Platz %1$d</string>
+    <string name="leaderboard_caption_stars">Alle Sterne aus den Levels</string>
+    <string name="leaderboard_caption_streak">Längste Serie der Tages-Challenge</string>
+    <string name="leaderboard_zero_stars">Schaffe ein Level, um deinen ersten Stern zu verdienen.</string>
+    <string name="leaderboard_zero_streak">Gewinne eine Tages-Challenge, um deine Serie zu starten.</string>
+    <string name="leaderboard_pending">Dein Ergebnis erscheint bald auf der Bestenliste.</string>
+    <string name="leaderboard_top_50">Top 50</string>
 </resources>

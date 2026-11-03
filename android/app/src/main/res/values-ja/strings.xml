@@ -336,7 +336,6 @@
     <string name="leaderboard_title">ランキング</string>
     <string name="leaderboard_tab_stars">スター</string>
     <string name="leaderboard_tab_streak">連続記録</string>
-    <string name="leaderboard_you_format">あなた: %1$s</string>
     <string name="leaderboard_points_to_top_stars_format">トップ50まであとスター%1$d個</string>
     <string name="leaderboard_points_to_top_streak_format">トップ50まであと%1$d日</string>
     <string name="leaderboard_empty">まだスコアがありません。ゲームをクリアして最初のプレイヤーになりましょう。</string>
@@ -352,4 +351,12 @@
     <string name="leaderboard_notice_title">ランキングに参加しています</string>
     <string name="leaderboard_notice_body_format">%1$sとして表示されます。スターと最長連続記録はすべてのプレイヤーに公開されます。再インストールやスマートフォンの変更を行うと、最初からになる場合があります。</string>
     <string name="leaderboard_notice_accept">OK</string>
+    <string name="leaderboard_you">あなた</string>
+    <string name="leaderboard_rank_format">現在 %1$d 位です</string>
+    <string name="leaderboard_caption_stars">レベルで獲得した累計スター</string>
+    <string name="leaderboard_caption_streak">デイリーチャレンジの最長連続記録</string>
+    <string name="leaderboard_zero_stars">レベルをクリアして最初のスターを獲得しましょう。</string>
+    <string name="leaderboard_zero_streak">デイリーチャレンジに勝って連続記録を始めましょう。</string>
+    <string name="leaderboard_pending">スコアはまもなくランキングに表示されます。</string>
+    <string name="leaderboard_top_50">トップ50</string>
 </resources>

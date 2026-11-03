@@ -327,7 +327,6 @@
 "leaderboard_title" = "Classificação";
 "leaderboard_tab_stars" = "Estrelas";
 "leaderboard_tab_streak" = "Sequência";
-"leaderboard_you_format" = "Você: %@";
 "leaderboard_points_to_top_stars_format" = "Faltam %d estrelas para entrar no top 50";
 "leaderboard_points_to_top_streak_format" = "Faltam %d dias para entrar no top 50";
 "leaderboard_empty" = "Ainda não há pontuações. Termine uma partida para ser o primeiro.";
@@ -343,3 +342,11 @@
 "leaderboard_notice_title" = "Você está na classificação";
 "leaderboard_notice_body_format" = "Você aparecerá como %@. Todos os jogadores podem ver suas estrelas e sua maior sequência. Se reinstalar o app ou trocar de celular, talvez precise começar de novo.";
 "leaderboard_notice_accept" = "Entendi";
+"leaderboard_you" = "Você";
+"leaderboard_rank_format" = "Você está em %dº";
+"leaderboard_caption_stars" = "Total de estrelas dos níveis";
+"leaderboard_caption_streak" = "Maior sequência do desafio diário";
+"leaderboard_zero_stars" = "Conclua um nível para ganhar sua primeira estrela.";
+"leaderboard_zero_streak" = "Vença um desafio diário para começar sua sequência.";
+"leaderboard_pending" = "Sua pontuação aparecerá em breve na classificação.";
+"leaderboard_top_50" = "Top 50";

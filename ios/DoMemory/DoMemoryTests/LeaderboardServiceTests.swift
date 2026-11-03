@@ -348,6 +348,27 @@ final class LeaderboardServiceTests: XCTestCase {
         XCTAssertEqual(backend.topReads, 2)
     }
 
+    func testTheTicketShowsTheRightStatus() {
+        func snapshot(rows: [LeaderboardRow], ownScore: Int) -> LeaderboardSnapshot {
+            LeaderboardSnapshot(
+                board: .stars,
+                rows: rows,
+                uid: "me",
+                ownScore: ownScore,
+                ownWords: LeaderboardNameWords(adjective: 0, animal: 0)
+            )
+        }
+        let others = (0..<50).map { LeaderboardRow(uid: "p\($0)", score: 100 - $0, updatedAt: 1) }
+
+        let onBoard = [LeaderboardRow(uid: "a", score: 9, updatedAt: 1), LeaderboardRow(uid: "me", score: 5, updatedAt: 1)]
+        XCTAssertEqual(snapshot(rows: onBoard, ownScore: 5).ticketStatus, .ranked(2))
+        XCTAssertEqual(snapshot(rows: others, ownScore: 40).ticketStatus, .pointsToTopBoard(12))
+        XCTAssertEqual(snapshot(rows: others, ownScore: 0).ticketStatus, .noScore)
+        XCTAssertEqual(snapshot(rows: [], ownScore: 0).ticketStatus, .noScore)
+        XCTAssertEqual(snapshot(rows: [], ownScore: 5).ticketStatus, .pending)
+        XCTAssertEqual(snapshot(rows: others, ownScore: 90).ticketStatus, .pending)
+    }
+
     func testSnapshotReportsDistanceToTheBoard() async throws {
         var payload: [String: Any] = [:]
         for index in 0..<50 {

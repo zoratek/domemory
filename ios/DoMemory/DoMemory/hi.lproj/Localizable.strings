@@ -327,7 +327,6 @@
 "leaderboard_title" = "लीडरबोर्ड";
 "leaderboard_tab_stars" = "सितारे";
 "leaderboard_tab_streak" = "स्ट्रीक";
-"leaderboard_you_format" = "आप: %@";
 "leaderboard_points_to_top_stars_format" = "टॉप 50 में आने के लिए %d और सितारे चाहिए";
 "leaderboard_points_to_top_streak_format" = "टॉप 50 में आने के लिए %d और दिन चाहिए";
 "leaderboard_empty" = "अभी कोई स्कोर नहीं है। पहला बनने के लिए एक गेम पूरा करें।";
@@ -343,3 +342,11 @@
 "leaderboard_notice_title" = "आप लीडरबोर्ड पर हैं";
 "leaderboard_notice_body_format" = "आप %@ के रूप में दिखेंगे। सभी खिलाड़ी आपके सितारे और सबसे लंबी स्ट्रीक देख सकते हैं। ऐप दोबारा इंस्टॉल करने या फ़ोन बदलने पर आपको शायद फिर से शुरू करना पड़े।";
 "leaderboard_notice_accept" = "समझ गया";
+"leaderboard_you" = "आप";
+"leaderboard_rank_format" = "आप #%d पर हैं";
+"leaderboard_caption_stars" = "लेवल से मिले कुल सितारे";
+"leaderboard_caption_streak" = "डेली चैलेंज की सबसे लंबी स्ट्रीक";
+"leaderboard_zero_stars" = "अपना पहला सितारा पाने के लिए एक लेवल पूरा करें।";
+"leaderboard_zero_streak" = "अपनी स्ट्रीक शुरू करने के लिए एक डेली चैलेंज जीतें।";
+"leaderboard_pending" = "आपका स्कोर जल्द ही लीडरबोर्ड पर दिखेगा।";
+"leaderboard_top_50" = "टॉप 50";

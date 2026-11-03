@@ -327,7 +327,6 @@
 "leaderboard_title" = "Clasificación";
 "leaderboard_tab_stars" = "Estrellas";
 "leaderboard_tab_streak" = "Racha";
-"leaderboard_you_format" = "Tú: %@";
 "leaderboard_points_to_top_stars_format" = "Te faltan %d estrellas para entrar al top 50";
 "leaderboard_points_to_top_streak_format" = "Te faltan %d días para entrar al top 50";
 "leaderboard_empty" = "Aún no hay puntuaciones. Termina una partida para ser el primero.";
@@ -343,3 +342,11 @@
 "leaderboard_notice_title" = "Estás en la clasificación";
 "leaderboard_notice_body_format" = "Aparecerás como %@. Todos los jugadores pueden ver tus estrellas y tu racha más larga. Si reinstalas la app o cambias de teléfono, es posible que empieces de nuevo.";
 "leaderboard_notice_accept" = "Entendido";
+"leaderboard_you" = "Tú";
+"leaderboard_rank_format" = "Estás en el puesto %d";
+"leaderboard_caption_stars" = "Estrellas totales de Niveles";
+"leaderboard_caption_streak" = "Racha más larga del Desafío diario";
+"leaderboard_zero_stars" = "Supera un nivel para ganar tu primera estrella.";
+"leaderboard_zero_streak" = "Gana un Desafío diario para empezar tu racha.";
+"leaderboard_pending" = "Tu puntuación aparecerá pronto en la clasificación.";
+"leaderboard_top_50" = "Top 50";

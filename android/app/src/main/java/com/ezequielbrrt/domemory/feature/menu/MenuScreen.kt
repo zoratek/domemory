@@ -36,6 +36,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -43,7 +44,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ezequielbrrt.domemory.R
@@ -226,8 +226,16 @@ private fun MenuTabRow(selected: MenuTab, showLeaderboard: Boolean, onSelectTab:
             Tab(
                 selected = tab == selected,
                 onClick = { onSelectTab(tab) },
-                // Four labels can be tight in longer languages, so they may wrap instead of clip.
-                text = { Text(stringResource(labelRes), maxLines = 2, softWrap = true, textAlign = TextAlign.Center) },
+                // Four labels can be tight in longer languages, so they shrink instead of breaking mid-word.
+                text = {
+                    Text(
+                        stringResource(labelRes),
+                        modifier = Modifier.padding(horizontal = 0.dp),
+                        maxLines = 1,
+                        softWrap = false,
+                        autoSize = TextAutoSize.StepBased(minFontSize = 9.sp, maxFontSize = 14.sp, stepSize = 0.5.sp),
+                    )
+                },
             )
         }
     }

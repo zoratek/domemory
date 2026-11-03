@@ -22,6 +22,16 @@ interface LeaderboardBackend {
     suspend fun write(writes: List<LeaderboardWrite>, uid: String)
 }
 
+/** What the score ticket says under the player's score. */
+sealed interface LeaderboardTicketStatus {
+    data class Ranked(val rank: Int) : LeaderboardTicketStatus
+    data class PointsToTopBoard(val points: Int) : LeaderboardTicketStatus
+    data object NoScore : LeaderboardTicketStatus
+
+    /** The player has a score, but it isn't on this copy of the board yet. */
+    data object Pending : LeaderboardTicketStatus
+}
+
 data class LeaderboardSnapshot(
     val board: LeaderboardBoard,
     val rows: List<LeaderboardRow>,
@@ -30,6 +40,16 @@ data class LeaderboardSnapshot(
     val ownWords: LeaderboardNameWords,
 ) {
     val isOwnRowOnBoard: Boolean get() = rows.any { it.uid == uid }
+    val ticketStatus: LeaderboardTicketStatus
+        get() {
+            val index = rows.indexOfFirst { it.uid == uid }
+            return when {
+                index >= 0 -> LeaderboardTicketStatus.Ranked(index + 1)
+                ownScore == 0 -> LeaderboardTicketStatus.NoScore
+                pointsToTopBoard > 0 -> LeaderboardTicketStatus.PointsToTopBoard(pointsToTopBoard)
+                else -> LeaderboardTicketStatus.Pending
+            }
+        }
     val pointsToTopBoard: Int
         get() {
             val last = rows.lastOrNull()

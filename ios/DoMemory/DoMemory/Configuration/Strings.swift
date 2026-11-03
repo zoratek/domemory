@@ -11,9 +11,16 @@ enum Strings {
     static let leaderboardTitle = NSLocalizedString("leaderboard_title", comment: "Leaderboard screen title")
     static let leaderboardTabStars = NSLocalizedString("leaderboard_tab_stars", comment: "Leaderboard tab for lifetime stars")
     static let leaderboardTabStreak = NSLocalizedString("leaderboard_tab_streak", comment: "Leaderboard tab for the longest Daily Challenge streak")
-    static func leaderboardYou(_ name: String) -> String {
-        String(format: NSLocalizedString("leaderboard_you_format", comment: "The player's own row, %@ = their leaderboard name"), name)
+    static let leaderboardYou = NSLocalizedString("leaderboard_you", comment: "Marks the player's own row and score card")
+    static func leaderboardRank(_ rank: Int) -> String {
+        String(format: NSLocalizedString("leaderboard_rank_format", comment: "The player's rank on the board, %d = rank"), rank)
     }
+    static let leaderboardCaptionStars = NSLocalizedString("leaderboard_caption_stars", comment: "Explains what the Stars board ranks")
+    static let leaderboardCaptionStreak = NSLocalizedString("leaderboard_caption_streak", comment: "Explains what the Streak board ranks")
+    static let leaderboardZeroStars = NSLocalizedString("leaderboard_zero_stars", comment: "Score card for a player with no stars")
+    static let leaderboardZeroStreak = NSLocalizedString("leaderboard_zero_streak", comment: "Score card for a player with no streak")
+    static let leaderboardPending = NSLocalizedString("leaderboard_pending", comment: "Score card while the player's score hasn't reached the board")
+    static let leaderboardTop50 = NSLocalizedString("leaderboard_top_50", comment: "Heading above the ranked list")
     static func leaderboardPointsToTopStars(_ points: Int) -> String {
         String(format: NSLocalizedString("leaderboard_points_to_top_stars_format", comment: "Stars needed to enter the top 50, %d = count"), points)
     }
