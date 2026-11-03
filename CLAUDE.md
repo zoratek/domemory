@@ -21,14 +21,18 @@ apps against one backend. Both build `com.ezequielbrrt.domemory` and read the
 same Firebase project.
 
 ```
-ios/        SwiftUI app (shipping, 4.2.0), its changelog and plans
-android/    Jetpack Compose port (in progress, not yet released)
-firebase/   config, database rules, hosted season art, seed scripts — shared
+ios/        SwiftUI app (live on the App Store), its changelog and plans
+android/    Jetpack Compose port (live on Google Play)
+firebase/   config, database rules, hosted season art, seed scripts, test fixtures — shared
+.plans/     cross-platform plans
 metadata/   App Store release copy, by version and locale
 assets/     shared media: brand/ (icon source Domemory.xcf), images/ (store screenshots,
             ads, campaigns), videos/, animations/ (Lottie), proposals/, archive/
-scripts/    tooling that builds media: animations/, playable/, store-art/
+scripts/    tooling: animations/, playable/, store-art/, leaderboard/ (test fixture)
 ```
+
+Both apps have live players, so a Firebase rules change must keep the versions
+on both stores working.
 
 iOS is the behavioural source of truth. `android/DOMEMORY_ANDROID_SPEC.md`
 describes what the app does in enough detail to build Android without reading
@@ -47,6 +51,18 @@ a player sees:
 | `EmojiPool`, `SeededGenerator` | same | `android/…/core/rng/` |
 | `MemoryGame`, `Difficulty` | `…/Modules/Memorize/Model/`, `…/SharedModules/Models/` | `android/…/core/model/` |
 | `CardView` | `…/MemorizeView/Views/` | `android/…/feature/game/` |
+
+**`SeededGenerator` does not produce the same numbers on both platforms.** The
+iOS FNV offset basis is `1_469_598_103_934_665_603`, one digit short of the
+standard `14695981039346656037` that Android uses, so the same seed gives a
+different stream. Live iOS boards depend on the existing value, so do not
+"correct" either side without a deliberate decision, and don't use this generator
+for anything both platforms must compute identically.
+
+**The leaderboard contract is planned and must also agree** once it ships:
+`android/DOMEMORY_ANDROID_SPEC.md` §22 defines the row format, ordering, default
+names and frozen word lists, and `firebase/fixtures/leaderboard-v1.json` holds
+the expected values for both test suites. See `.plans/leaderboard.md`.
 
 `LevelCurve` sets pairs, seconds and `maxFailures` per level; if the two
 implementations drift, level 40 is a different game on each platform and nothing
@@ -69,6 +85,15 @@ Committing a rules or config change does **not** publish it. Deploy explicitly:
 firebase deploy --only database   # firebase-database.rules.json
 firebase deploy --only hosting    # season art + Cache-Control headers
 ```
+
+Test rules changes with `npm run test:rules` from `firebase/`, after `npm install`.
+It runs the database emulator under a `demo-` project id, so it can't reach
+production, and needs Java 21 or later. If the default Java is older, point
+`JAVA_HOME` and `PATH` at Android Studio's `Contents/jbr/Contents/Home` for that
+command. The tests also pin the paths live apps use.
+
+`firebase/scripts/leaderboard_admin.py` removes fake leaderboard scores and controls
+the leaderboard kill switch. It only previews changes unless passed `--apply`.
 
 Season art under `/seasons/**` is served `immutable` with a one-year max-age, so
 a published URL is a permanent contract. Replacing a season's artwork means a

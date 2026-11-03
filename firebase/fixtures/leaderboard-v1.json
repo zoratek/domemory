@@ -1,0 +1,203 @@
+{
+  "version": 1,
+  "adjectives": [
+    "Swift",
+    "Calm",
+    "Brave",
+    "Quiet",
+    "Bright",
+    "Clever",
+    "Gentle",
+    "Happy",
+    "Kind",
+    "Lucky",
+    "Merry",
+    "Mighty",
+    "Noble",
+    "Playful",
+    "Proud",
+    "Sunny",
+    "Bold",
+    "Cheerful",
+    "Curious",
+    "Daring",
+    "Eager",
+    "Friendly",
+    "Golden",
+    "Jolly",
+    "Keen",
+    "Lively",
+    "Patient",
+    "Silver",
+    "Steady",
+    "Tiny",
+    "Wise",
+    "Witty"
+  ],
+  "animals": [
+    "Otter",
+    "Panda",
+    "Heron",
+    "Fox",
+    "Owl",
+    "Koala",
+    "Dolphin",
+    "Tiger",
+    "Rabbit",
+    "Turtle",
+    "Penguin",
+    "Falcon",
+    "Badger",
+    "Beaver",
+    "Deer",
+    "Eagle",
+    "Giraffe",
+    "Hedgehog",
+    "Kangaroo",
+    "Lemur",
+    "Lion",
+    "Llama",
+    "Moose",
+    "Narwhal",
+    "Parrot",
+    "Puffin",
+    "Raccoon",
+    "Seal",
+    "Sloth",
+    "Swan",
+    "Whale",
+    "Zebra"
+  ],
+  "defaultNames": [
+    {
+      "uid": "AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "a": 27,
+      "b": 17,
+      "englishName": "Silver Hedgehog"
+    },
+    {
+      "uid": "zzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+      "a": 15,
+      "b": 31,
+      "englishName": "Sunny Zebra"
+    },
+    {
+      "uid": "k3Vq9XbT2mYcL8sRw1ZpN5dHf7Ga",
+      "a": 23,
+      "b": 4,
+      "englishName": "Jolly Owl"
+    },
+    {
+      "uid": "Qm7tE2uJx0Bn4KvP9aSgC6yWiR3l",
+      "a": 0,
+      "b": 26,
+      "englishName": "Swift Raccoon"
+    },
+    {
+      "uid": "9fHs1LdO5rUe8TzXc3MjV7qAbN2k",
+      "a": 21,
+      "b": 31,
+      "englishName": "Friendly Zebra"
+    },
+    {
+      "uid": "uG4pY6wKiD0hS2oF8nZtQ1xCeB9m",
+      "a": 29,
+      "b": 27,
+      "englishName": "Tiny Seal"
+    }
+  ],
+  "ordering": {
+    "rows": [
+      {
+        "uid": "playerB",
+        "s": 120,
+        "t": 2000
+      },
+      {
+        "uid": "playerD",
+        "s": 90,
+        "t": 1000
+      },
+      {
+        "uid": "playerA",
+        "s": 120,
+        "t": 1000
+      },
+      {
+        "uid": "playerC",
+        "s": 120,
+        "t": 1000
+      }
+    ],
+    "expectedOrder": [
+      "playerA",
+      "playerC",
+      "playerB",
+      "playerD"
+    ]
+  },
+  "starsToTopBoard": [
+    {
+      "boardSize": 50,
+      "lastRowScore": 475,
+      "ownScore": 412,
+      "expected": 64
+    },
+    {
+      "boardSize": 50,
+      "lastRowScore": 475,
+      "ownScore": 475,
+      "expected": 1
+    },
+    {
+      "boardSize": 50,
+      "lastRowScore": 475,
+      "ownScore": 500,
+      "expected": 0
+    },
+    {
+      "boardSize": 49,
+      "lastRowScore": 475,
+      "ownScore": 0,
+      "expected": 0
+    }
+  ],
+  "starAwards": [
+    {
+      "totalSeconds": 90,
+      "elapsedSeconds": 45.0,
+      "failedTries": 1,
+      "stars": 3
+    },
+    {
+      "totalSeconds": 90,
+      "elapsedSeconds": 45.5,
+      "failedTries": 1,
+      "stars": 3
+    },
+    {
+      "totalSeconds": 90,
+      "elapsedSeconds": 45.5,
+      "failedTries": 2,
+      "stars": 2
+    },
+    {
+      "totalSeconds": 90,
+      "elapsedSeconds": 46.0,
+      "failedTries": 1,
+      "stars": 2
+    },
+    {
+      "totalSeconds": 60,
+      "elapsedSeconds": 45.5,
+      "failedTries": 0,
+      "stars": 2
+    },
+    {
+      "totalSeconds": 60,
+      "elapsedSeconds": 46.0,
+      "failedTries": 0,
+      "stars": 1
+    }
+  ]
+}

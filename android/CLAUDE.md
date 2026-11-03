@@ -117,8 +117,10 @@ accident rather than by phase.
 ### Locked decisions worth knowing before changing behavior
 
 - **Daily Challenge boards will not equal iOS's**, by decision (D1). Same seed
-  string, same SplitMix64/FNV-1a RNG, same 48-emoji pool — but the shuffle is
-  Kotlin's own Fisher–Yates, not a port of Swift's. Boards are deterministic per
+  string, same SplitMix64/FNV-1a algorithm, same 48-emoji pool — but iOS's FNV
+  basis is one digit short of the standard value Android uses (spec §6.1), so the
+  streams differ, and the shuffle is Kotlin's own Fisher–Yates, not a port of
+  Swift's. Boards are deterministic per
   day and identical across all Android devices, just not equal to iOS's. This
   is a live product-copy risk: "the same board for everyone" stops being true
   across platforms. `SeededGenerator` isolates the RNG, so reversing this later
