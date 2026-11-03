@@ -543,6 +543,7 @@ class MemorizeViewModel {
             }
         }
         NotificationService.shared.scheduleInactivityReminder()
+        LeaderboardService.shared.syncAfterGame()
         AnalyticsService.log(
             .gameFinished(
                 result: result,
