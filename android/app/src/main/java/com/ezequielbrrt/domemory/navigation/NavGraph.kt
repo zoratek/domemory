@@ -42,6 +42,8 @@ import com.ezequielbrrt.domemory.feature.notifications.NotificationPrimerHost
 import com.ezequielbrrt.domemory.feature.notifications.isNotificationAuthorized
 import com.ezequielbrrt.domemory.feature.onboarding.OnboardingScreen
 import com.ezequielbrrt.domemory.feature.onboarding.OnboardingViewModel
+import com.ezequielbrrt.domemory.feature.leaderboard.LeaderboardScreen
+import com.ezequielbrrt.domemory.feature.leaderboard.LeaderboardViewModel
 import com.ezequielbrrt.domemory.feature.seasons.SeasonLevelsScreen
 import com.ezequielbrrt.domemory.feature.seasons.SeasonLevelsViewModel
 import com.ezequielbrrt.domemory.feature.settings.AchievementsScreen
@@ -180,6 +182,8 @@ fun NavGraph(
                             introGate = container.levelsIntroGate,
                             onHaptic = HapticsService::fire,
                             onAnalytics = AnalyticsService::log,
+                            leaderboard = container.leaderboard,
+                            leaderboardName = { container.leaderboardNames().name(it) },
                         )
                     }
                 },
@@ -236,6 +240,22 @@ fun NavGraph(
                     onSettings = { ifResumed { navController.navigate(Routes.SETTINGS) } },
                     levelsViewModel = levelsViewModel,
                     onLevelSelected = { ifResumed { navController.navigate(Routes.level(it)) } },
+                    leaderboardAvailable = levelsUiState.leaderboardAvailable,
+                    leaderboardContent = {
+                        val formatter = remember { container.leaderboardNames() }
+                        val leaderboardViewModel: LeaderboardViewModel = viewModel(
+                            factory = viewModelFactory {
+                                initializer {
+                                    LeaderboardViewModel(
+                                        service = container.leaderboard,
+                                        formatter = formatter,
+                                        onAnalytics = AnalyticsService::log,
+                                    )
+                                }
+                            },
+                        )
+                        LeaderboardScreen(viewModel = leaderboardViewModel, formatter = formatter)
+                    },
                     activeSeason = activeSeason,
                     activeSeasonStore = activeSeason?.let { container.seasonProgressStore(it) },
                     onSeasonSelected = { season -> ifResumed { navController.navigate(Routes.seasonLevels(season.id)) } },
@@ -666,6 +686,8 @@ fun NavGraph(
                             introGate = container.levelsIntroGate,
                             onHaptic = HapticsService::fire,
                             onAnalytics = AnalyticsService::log,
+                            leaderboard = container.leaderboard,
+                            leaderboardName = { container.leaderboardNames().name(it) },
                         )
                     }
                 },

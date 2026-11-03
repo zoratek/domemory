@@ -331,4 +331,33 @@
     <string name="ad_free_day_active_format">广告已关闭，直到 %1$s</string>
     <string name="ad_free_day_back">返回游戏</string>
     <string name="ad_free_day_not_now">暂不</string>
+
+    <!-- Leaderboard -->
+    <string name="leaderboard_title">排行榜</string>
+    <string name="leaderboard_tab_stars">星星</string>
+    <string name="leaderboard_tab_streak">连胜</string>
+    <string name="leaderboard_you_format">你：%1$s</string>
+    <string name="leaderboard_points_to_top_stars_format">还差 %1$d 颗星星进入前 50 名</string>
+    <string name="leaderboard_points_to_top_streak_format">还差 %1$d 天进入前 50 名</string>
+    <string name="leaderboard_empty">还没有分数。完成一局游戏，成为第一名。</string>
+    <string name="leaderboard_unavailable">排行榜暂时不可用。</string>
+    <string name="leaderboard_failed">无法加载排行榜。请检查网络连接后重试。</string>
+    <string name="leaderboard_retry">重试</string>
+    <string name="leaderboard_options_accessibility">排行榜选项</string>
+    <string name="leaderboard_change_name">更改名字</string>
+    <string name="leaderboard_name_title">选择你的名字</string>
+    <string name="leaderboard_name_adjective">描述</string>
+    <string name="leaderboard_name_animal">动物</string>
+    <string name="leaderboard_name_save">保存</string>
+    <string name="leaderboard_name_failed">无法保存名字。请稍等片刻后重试。</string>
+    <string name="leaderboard_leave">退出排行榜</string>
+    <string name="leaderboard_leave_confirm_title">要退出排行榜吗？</string>
+    <string name="leaderboard_leave_confirm_message">你的分数将被移除。你可以随时重新加入。</string>
+    <string name="leaderboard_leave_failed">无法退出排行榜。请检查网络连接后重试。</string>
+    <string name="leaderboard_left_message">你不在排行榜上。</string>
+    <string name="leaderboard_join_again">重新加入</string>
+    <string name="leaderboard_notice_title">你已在排行榜上</string>
+    <string name="leaderboard_notice_body_format">你将显示为 %1$s。所有玩家都能看到你的星星和最长连胜。如果重新安装应用或更换手机，可能需要从头开始。</string>
+    <string name="leaderboard_notice_accept">知道了</string>
+    <string name="leaderboard_notice_decline">不要包含我</string>
 </resources>

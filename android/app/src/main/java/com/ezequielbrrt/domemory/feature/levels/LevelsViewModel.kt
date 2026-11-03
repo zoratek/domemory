@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ezequielbrrt.domemory.services.analytics.AnalyticsEvent
 import com.ezequielbrrt.domemory.services.haptics.HapticIntent
+import com.ezequielbrrt.domemory.services.leaderboard.LeaderboardNameWords
+import com.ezequielbrrt.domemory.services.leaderboard.LeaderboardService
 import com.ezequielbrrt.domemory.services.levels.LevelLivesService
 import com.ezequielbrrt.domemory.services.levels.LevelPowerUp
 import com.ezequielbrrt.domemory.services.levels.LevelProgressService
@@ -37,6 +39,8 @@ class LevelsViewModel(
     /** Same bare-callback shape as [onHaptic], for the same reason — see
      * [com.ezequielbrrt.domemory.feature.game.GameViewModel]'s `onAnalytics` doc. */
     private val onAnalytics: ((AnalyticsEvent) -> Unit)? = null,
+    private val leaderboard: LeaderboardService? = null,
+    private val leaderboardName: ((LeaderboardNameWords) -> String)? = null,
 ) : ViewModel() {
 
     data class UiState(
@@ -54,6 +58,10 @@ class LevelsViewModel(
         val livesEffect: LivesEffect? = null,
         /** Sparkle over the star chip for a credit that just landed; never for a spend. */
         val starsCredited: Boolean = false,
+        /** False until the kill switch says the leaderboard is on for this version. */
+        val leaderboardAvailable: Boolean = false,
+        /** The player's name while the one-time notice is owed, otherwise null. */
+        val leaderboardNoticeName: String? = null,
     )
 
     /**
@@ -62,6 +70,36 @@ class LevelsViewModel(
      * on the very first screen entry of a day with 2 lives left.
      */
     private var hasLoadedCounters = false
+
+    fun refreshLeaderboard() {
+        val service = leaderboard ?: return
+        workScope.launch {
+            val available = service.checkAvailability()
+            val noticeName = if (available && !service.hasAcknowledgedNotice()) {
+                service.ownNameWords()?.let { words -> leaderboardName?.invoke(words) }
+            } else {
+                null
+            }
+            _uiState.update { it.copy(leaderboardAvailable = available, leaderboardNoticeName = noticeName) }
+        }
+    }
+
+    fun acceptLeaderboardNotice() {
+        val service = leaderboard ?: return
+        _uiState.update { it.copy(leaderboardNoticeName = null) }
+        onAnalytics?.invoke(AnalyticsEvent.LeaderboardNoticeAnswered(accepted = true))
+        workScope.launch {
+            service.acknowledgeNotice()
+            service.sync()
+        }
+    }
+
+    fun declineLeaderboardNotice() {
+        val service = leaderboard ?: return
+        _uiState.update { it.copy(leaderboardNoticeName = null) }
+        onAnalytics?.invoke(AnalyticsEvent.LeaderboardNoticeAnswered(accepted = false))
+        workScope.launch { service.declineNotice() }
+    }
 
     /** Clears a played heart effect so it does not replay on the next recomposition. */
     fun consumeLivesEffect() {
@@ -104,6 +142,7 @@ class LevelsViewModel(
     /** Call after returning from a game so newly-earned stars/unlocks and the lives
      * count show up (mirrors iOS's `LevelsView.onDisappear { viewModel.refresh() }`). */
     fun refresh() {
+        refreshLeaderboard()
         workScope.launch {
             // wallet.refresh(), not wallet.balance.value: a level win credits the wallet
             // directly through UserPreferences (LevelProgressService.recordCompletion),

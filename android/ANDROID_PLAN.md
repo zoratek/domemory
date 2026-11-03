@@ -1706,6 +1706,17 @@ rematch, as iOS's `makeCards` does, and both players keep rendering the list in 
 clients need no change. `MultiplayerCardsTest` previously pinned the bug as "iOS wire order" and now
 guards against it. Verified with unit tests only; a live match hosted on Android is still to do.
 
+**Leaderboard, 2026-11-03 (L4 of `.plans/leaderboard.md`).** Adds the board shared with iOS (spec 22)
+as a fourth menu tab, the one-time notice on the Levels screen and the tab, the name picker, leaving
+and rejoining, and six `leaderboard_*` analytics events. All of it stays hidden until
+`/config/leaderboard` enables Android. `Stars.award` now rounds remaining time up to match iOS's
+whole-second clock, so a win within a second of a threshold can rate one star higher than before.
+Verification: `assembleDebug testDebugUnitTest` 529/0, including `LeaderboardContractTest`, which
+reads the same fixture as iOS. **Not run on any device or emulator:** on the machine used, both
+Android 33 system images are incomplete (no `system.img`) and no phone was connected. So the screen,
+the tab row with four labels, the Firebase adapter and the dropdown name picker are compiled and
+logic-tested only.
+
 ## 8. Immediate next steps
 
 1. Decide **O1**: register `domemory.app`, deploy Android App Links and iOS Universal Links

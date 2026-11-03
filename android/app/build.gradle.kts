@@ -52,6 +52,8 @@ android {
             // extra assets root. A single file per animation means the two platforms
             // cannot drift on frame count, colour or timing.
             assets.srcDir("../../assets/animations/game")
+            // Leaderboard name translations, shared with iOS for the same reason.
+            assets.srcDir("../../localization")
         }
     }
 }

@@ -227,6 +227,24 @@ sealed class AnalyticsEvent(val name: String, val parameters: Map<String, Any>) 
         mapOf("source" to source),
     )
 
+    data object LeaderboardOpened : AnalyticsEvent("leaderboard_opened", emptyMap())
+
+    data class LeaderboardBoardSelected(val board: String) : AnalyticsEvent(
+        "leaderboard_board_selected",
+        mapOf("board" to board),
+    )
+
+    data class LeaderboardNoticeAnswered(val accepted: Boolean) : AnalyticsEvent(
+        "leaderboard_notice_answered",
+        mapOf("accepted" to if (accepted) 1 else 0),
+    )
+
+    data object LeaderboardNameChanged : AnalyticsEvent("leaderboard_name_changed", emptyMap())
+
+    data object LeaderboardLeft : AnalyticsEvent("leaderboard_left", emptyMap())
+
+    data object LeaderboardRejoined : AnalyticsEvent("leaderboard_rejoined", emptyMap())
+
     /** Only logged when the pick differs from the current theme: `system`, `light`, `dark`. */
     data class ThemeChanged(val theme: String, val previousTheme: String) : AnalyticsEvent(
         "theme_changed",

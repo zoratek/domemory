@@ -584,6 +584,61 @@ class UserPreferences(private val dataStore: DataStore<Preferences>) {
         dataStore.edit { prefs -> prefs[Keys.ADS_INTERSTITIAL_COMPLETION_COUNT] = 0 }
     }
 
+    // -- Leaderboard (spec 22) ------------------------------------------------------------
+
+    val leaderboardNoticeAcknowledged: Flow<Boolean> = booleanFlow(Keys.LEADERBOARD_NOTICE_ACKNOWLEDGED, default = false)
+
+    suspend fun setLeaderboardNoticeAcknowledged(value: Boolean) = setBoolean(Keys.LEADERBOARD_NOTICE_ACKNOWLEDGED, value)
+
+    val leaderboardHasLeft: Flow<Boolean> = booleanFlow(Keys.LEADERBOARD_HAS_LEFT, default = false)
+
+    suspend fun setLeaderboardHasLeft(value: Boolean) = setBoolean(Keys.LEADERBOARD_HAS_LEFT, value)
+
+    /** The player's picked adjective and animal numbers, or null while they use the default name. */
+    val leaderboardPickedWords: Flow<Pair<Int, Int>?> = dataStore.data.map { prefs ->
+        val adjective = prefs[Keys.LEADERBOARD_ADJECTIVE]
+        val animal = prefs[Keys.LEADERBOARD_ANIMAL]
+        if (adjective != null && animal != null) adjective to animal else null
+    }.distinctUntilChanged()
+
+    suspend fun setLeaderboardPickedWords(adjective: Int, animal: Int) {
+        dataStore.edit { prefs ->
+            prefs[Keys.LEADERBOARD_ADJECTIVE] = adjective
+            prefs[Keys.LEADERBOARD_ANIMAL] = animal
+        }
+    }
+
+    fun leaderboardLastSent(board: String): Flow<Int> = intFlow(leaderboardLastSentKey(board), default = 0)
+
+    suspend fun setLeaderboardLastSent(board: String, score: Int) {
+        dataStore.edit { prefs -> prefs[leaderboardLastSentKey(board)] = score }
+    }
+
+    fun leaderboardLastAttempt(board: String): Flow<Long> =
+        dataStore.data.map { it[leaderboardLastAttemptKey(board)] ?: 0L }.distinctUntilChanged()
+
+    suspend fun setLeaderboardLastAttempt(board: String, millis: Long) {
+        dataStore.edit { prefs -> prefs[leaderboardLastAttemptKey(board)] = millis }
+    }
+
+    fun leaderboardReconciled(board: String): Flow<Boolean> = booleanFlow(leaderboardReconciledKey(board), default = false)
+
+    suspend fun setLeaderboardReconciled(board: String, value: Boolean) = setBoolean(leaderboardReconciledKey(board), value)
+
+    suspend fun clearLeaderboardBoard(board: String) {
+        dataStore.edit { prefs ->
+            prefs.remove(leaderboardLastSentKey(board))
+            prefs.remove(leaderboardLastAttemptKey(board))
+            prefs.remove(leaderboardReconciledKey(board))
+        }
+    }
+
+    private fun leaderboardLastSentKey(board: String) = intPreferencesKey("leaderboard.$board.lastSent")
+
+    private fun leaderboardLastAttemptKey(board: String) = longPreferencesKey("leaderboard.$board.lastAttempt")
+
+    private fun leaderboardReconciledKey(board: String) = booleanPreferencesKey("leaderboard.$board.reconciled")
+
     // -- Shared helpers ------------------------------------------------------------------
 
     private fun booleanFlow(key: Preferences.Key<Boolean>, default: Boolean): Flow<Boolean> =
@@ -658,6 +713,10 @@ class UserPreferences(private val dataStore: DataStore<Preferences>) {
 
 /** All Preferences keys, static and dynamic, live here so no call site builds one by hand. */
 private object Keys {
+    val LEADERBOARD_NOTICE_ACKNOWLEDGED = booleanPreferencesKey("leaderboard.noticeAcknowledged")
+    val LEADERBOARD_HAS_LEFT = booleanPreferencesKey("leaderboard.hasLeft")
+    val LEADERBOARD_ADJECTIVE = intPreferencesKey("leaderboard.adjective")
+    val LEADERBOARD_ANIMAL = intPreferencesKey("leaderboard.animal")
     val HAS_ONBOARDED = booleanPreferencesKey("hasOnboarded")
     val PLAYER_DIFFICULTY = stringPreferencesKey("playerDifficulty")
     val FAVORITE_IDS = stringSetPreferencesKey("favoriteIDs")
