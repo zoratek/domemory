@@ -63,6 +63,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.platform.LocalContext
 import com.ezequielbrrt.domemory.R
+import com.ezequielbrrt.domemory.feature.leaderboard.LeaderboardNoticeCard
 import com.ezequielbrrt.domemory.services.ads.AdPlacement
 import com.ezequielbrrt.domemory.services.ads.AdsService
 import com.ezequielbrrt.domemory.services.ads.findActivity
@@ -91,6 +92,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun LevelsScreen(viewModel: LevelsViewModel, onLevelSelected: (Int) -> Unit) {
     LaunchedEffect(Unit) {
+        // The notice may have been answered on the leaderboard tab.
+        viewModel.refreshLeaderboard()
         AnalyticsService.log(AnalyticsEvent.ScreenView(screenName = "levels", screenClass = "LevelsScreen"))
     }
     // Recomposes the tile grid whenever cached progress changes (spec 2's fix: stars
@@ -117,6 +120,14 @@ fun LevelsScreen(viewModel: LevelsViewModel, onLevelSelected: (Int) -> Unit) {
                 onStarsCreditedFinished = viewModel::consumeStarsCredited,
                 onInfoClick = { HapticsService.fire(HapticIntent.TAP); viewModel.presentIntro() },
             )
+            uiState.leaderboardNoticeName?.let { name ->
+                LeaderboardNoticeCard(
+                    name = name,
+                    onAccept = viewModel::acceptLeaderboardNotice,
+                    onDecline = viewModel::declineLeaderboardNotice,
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                )
+            }
             LazyVerticalGrid(
                 columns = GridCells.Fixed(4),
                 contentPadding = PaddingValues(20.dp),

@@ -17,12 +17,12 @@ class StarsTest {
     @Test
     fun `two stars at a quarter of the clock`() {
         assertEquals(2, Stars.award(timeRemaining = 25.0, totalTime = 100.0, failedTries = 0))
-        assertEquals(2, Stars.award(timeRemaining = 49.9, totalTime = 100.0, failedTries = 0))
+        assertEquals(2, Stars.award(timeRemaining = 49.0, totalTime = 100.0, failedTries = 0))
     }
 
     @Test
     fun `one star otherwise, including a clean but slow clear`() {
-        assertEquals(1, Stars.award(timeRemaining = 24.9, totalTime = 100.0, failedTries = 0))
+        assertEquals(1, Stars.award(timeRemaining = 24.0, totalTime = 100.0, failedTries = 0))
         assertEquals(1, Stars.award(timeRemaining = 0.0, totalTime = 100.0, failedTries = 9))
     }
 

@@ -43,6 +43,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ezequielbrrt.domemory.R
@@ -83,6 +84,9 @@ fun MenuScreen(
     onSettings: () -> Unit,
     levelsViewModel: LevelsViewModel,
     onLevelSelected: (Int) -> Unit,
+    /** False until the kill switch says the leaderboard is on for this version. */
+    leaderboardAvailable: Boolean = false,
+    leaderboardContent: @Composable () -> Unit = {},
     activeSeason: Season? = null,
     activeSeasonStore: SeasonLevelProgressStore? = null,
     onSeasonSelected: (Season) -> Unit = {},
@@ -124,8 +128,11 @@ fun MenuScreen(
                 )
             }
         }
-        AdMobBanner(AdPlacement.HOME_BANNER, Modifier.fillMaxWidth())
-        MenuTabRow(selected = state.selectedTab, onSelectTab = onSelectTab)
+        // The leaderboard is ad-free by decision.
+        if (state.selectedTab != MenuTab.LEADERBOARD) {
+            AdMobBanner(AdPlacement.HOME_BANNER, Modifier.fillMaxWidth())
+        }
+        MenuTabRow(selected = state.selectedTab, showLeaderboard = leaderboardAvailable, onSelectTab = onSelectTab)
         // The ad-free day pill floats bottom-end over whichever tab is showing, as on iOS.
         Box(Modifier.weight(1f).fillMaxWidth()) {
             when (state.selectedTab) {
@@ -144,15 +151,17 @@ fun MenuScreen(
                     onBoardSelected = onBoardSelected,
                     onRandomGame = onRandomGame,
                 )
+                MenuTab.LEADERBOARD -> leaderboardContent()
             }
-            AdFreeDayEntryPoint(
-                source = when (state.selectedTab) {
-                    MenuTab.LEVELS -> "menu_levels"
-                    MenuTab.MINE -> "menu_mine"
-                    MenuTab.ALL -> "menu_all"
-                },
-                modifier = Modifier.align(Alignment.BottomEnd),
-            )
+            val adFreeSource = when (state.selectedTab) {
+                MenuTab.LEVELS -> "menu_levels"
+                MenuTab.MINE -> "menu_mine"
+                MenuTab.ALL -> "menu_all"
+                MenuTab.LEADERBOARD -> null
+            }
+            if (adFreeSource != null) {
+                AdFreeDayEntryPoint(source = adFreeSource, modifier = Modifier.align(Alignment.BottomEnd))
+            }
         }
     }
 }
@@ -200,13 +209,14 @@ private fun MenuHeader(onCreateMemorama: () -> Unit, onMultiplayer: () -> Unit, 
 }
 
 @Composable
-private fun MenuTabRow(selected: MenuTab, onSelectTab: (MenuTab) -> Unit) {
+private fun MenuTabRow(selected: MenuTab, showLeaderboard: Boolean, onSelectTab: (MenuTab) -> Unit) {
     val palette = LocalPalette.current
-    val tabs = listOf(
-        MenuTab.LEVELS to R.string.menu_tab_levels,
-        MenuTab.MINE to R.string.menu_tab_mine,
-        MenuTab.ALL to R.string.menu_tab_all,
-    )
+    val tabs = buildList {
+        add(MenuTab.LEVELS to R.string.menu_tab_levels)
+        add(MenuTab.MINE to R.string.menu_tab_mine)
+        add(MenuTab.ALL to R.string.menu_tab_all)
+        if (showLeaderboard) add(MenuTab.LEADERBOARD to R.string.leaderboard_title)
+    }
     TabRow(
         selectedTabIndex = tabs.indexOfFirst { it.first == selected }.coerceAtLeast(0),
         containerColor = palette.appBackground,
@@ -216,7 +226,8 @@ private fun MenuTabRow(selected: MenuTab, onSelectTab: (MenuTab) -> Unit) {
             Tab(
                 selected = tab == selected,
                 onClick = { onSelectTab(tab) },
-                text = { Text(stringResource(labelRes)) },
+                // Four labels can be tight in longer languages, so they may wrap instead of clip.
+                text = { Text(stringResource(labelRes), maxLines = 2, softWrap = true, textAlign = TextAlign.Center) },
             )
         }
     }

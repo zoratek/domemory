@@ -331,4 +331,33 @@
     <string name="ad_free_day_active_format">Anúncios desligados até %1$s</string>
     <string name="ad_free_day_back">Voltar ao jogo</string>
     <string name="ad_free_day_not_now">Agora não</string>
+
+    <!-- Leaderboard -->
+    <string name="leaderboard_title">Classificação</string>
+    <string name="leaderboard_tab_stars">Estrelas</string>
+    <string name="leaderboard_tab_streak">Sequência</string>
+    <string name="leaderboard_you_format">Você: %1$s</string>
+    <string name="leaderboard_points_to_top_stars_format">Faltam %1$d estrelas para entrar no top 50</string>
+    <string name="leaderboard_points_to_top_streak_format">Faltam %1$d dias para entrar no top 50</string>
+    <string name="leaderboard_empty">Ainda não há pontuações. Termine uma partida para ser o primeiro.</string>
+    <string name="leaderboard_unavailable">A classificação não está disponível no momento.</string>
+    <string name="leaderboard_failed">Não foi possível carregar a classificação. Verifique sua conexão e tente novamente.</string>
+    <string name="leaderboard_retry">Tentar novamente</string>
+    <string name="leaderboard_options_accessibility">Opções da classificação</string>
+    <string name="leaderboard_change_name">Mudar nome</string>
+    <string name="leaderboard_name_title">Escolha seu nome</string>
+    <string name="leaderboard_name_adjective">Descrição</string>
+    <string name="leaderboard_name_animal">Animal</string>
+    <string name="leaderboard_name_save">Salvar</string>
+    <string name="leaderboard_name_failed">Não foi possível salvar seu nome. Aguarde um momento e tente novamente.</string>
+    <string name="leaderboard_leave">Sair da classificação</string>
+    <string name="leaderboard_leave_confirm_title">Sair da classificação?</string>
+    <string name="leaderboard_leave_confirm_message">Suas pontuações serão removidas. Você pode voltar a qualquer momento.</string>
+    <string name="leaderboard_leave_failed">Não foi possível sair da classificação. Verifique sua conexão e tente novamente.</string>
+    <string name="leaderboard_left_message">Você não está na classificação.</string>
+    <string name="leaderboard_join_again">Voltar</string>
+    <string name="leaderboard_notice_title">Você está na classificação</string>
+    <string name="leaderboard_notice_body_format">Você aparecerá como %1$s. Todos os jogadores podem ver suas estrelas e sua maior sequência. Se reinstalar o app ou trocar de celular, talvez precise começar de novo.</string>
+    <string name="leaderboard_notice_accept">Entendi</string>
+    <string name="leaderboard_notice_decline">Não me incluir</string>
 </resources>

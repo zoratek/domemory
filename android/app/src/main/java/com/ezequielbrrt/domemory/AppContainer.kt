@@ -9,11 +9,16 @@ import com.ezequielbrrt.domemory.core.time.SystemDayProvider
 import com.ezequielbrrt.domemory.data.prefs.UserPreferences
 import com.ezequielbrrt.domemory.data.prefs.createUserPreferences
 import com.ezequielbrrt.domemory.data.remote.FirebaseBoardCatalogSource
+import com.ezequielbrrt.domemory.data.remote.FirebaseLeaderboardBackend
 import com.ezequielbrrt.domemory.data.remote.FirebaseSeasonCatalogSource
 import com.ezequielbrrt.domemory.data.repository.BoardCatalogRepository
 import com.ezequielbrrt.domemory.data.repository.BoardCatalogSource
 import com.ezequielbrrt.domemory.services.daily.DailyChallengeService
 import com.ezequielbrrt.domemory.services.notifications.NotificationService
+import com.ezequielbrrt.domemory.services.leaderboard.LeaderboardBackend
+import com.ezequielbrrt.domemory.services.leaderboard.LeaderboardBoard
+import com.ezequielbrrt.domemory.services.leaderboard.LeaderboardNameFormatter
+import com.ezequielbrrt.domemory.services.leaderboard.LeaderboardService
 import com.ezequielbrrt.domemory.services.multiplayer.MultiplayerService
 import com.ezequielbrrt.domemory.services.whatsnew.WhatsNewManager
 import com.ezequielbrrt.domemory.widget.DailyChallengeGlanceWidget
@@ -33,6 +38,9 @@ import com.ezequielbrrt.domemory.services.launch.LaunchSequence
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -52,6 +60,7 @@ class AppContainer(
     val dayProvider: DayProvider = SystemDayProvider,
     catalogSource: BoardCatalogSource = FirebaseBoardCatalogSource(),
     seasonCatalogSource: SeasonCatalogSource = FirebaseSeasonCatalogSource(),
+    leaderboardBackend: LeaderboardBackend = FirebaseLeaderboardBackend(),
 ) {
     private val appContext = context.applicationContext
 
@@ -89,6 +98,44 @@ class AppContainer(
     val deepLinkRouter = DeepLinkRouter()
     val multiplayer = MultiplayerService()
     val whatsNew = WhatsNewManager(prefs, BuildConfig.VERSION_NAME)
+
+    /** The board shared with iOS (spec 22). Stays inactive until the player answers its notice. */
+    val leaderboard = LeaderboardService(
+        prefs = prefs,
+        backend = leaderboardBackend,
+        appVersion = BuildConfig.VERSION_NAME,
+        localScore = { board ->
+            when (board) {
+                LeaderboardBoard.STARS -> prefs.levelsLifetimeStars.first()
+                LeaderboardBoard.STREAK -> prefs.dailyStreakLongest.first()
+            }
+        },
+    )
+
+    private val leaderboardLanguages by lazy {
+        val json = runCatching {
+            appContext.assets.open("leaderboard-names.json").bufferedReader().use { it.readText() }
+        }.getOrDefault("{}")
+        LeaderboardNameFormatter.parse(json)
+    }
+
+    /** Names in the reader's current language. A function, because the device language can change. */
+    fun leaderboardNames(): LeaderboardNameFormatter {
+        val tag = appContext.resources.configuration.locales[0].toLanguageTag()
+        return LeaderboardNameFormatter(leaderboardLanguages[LeaderboardNameFormatter.languageKey(tag)])
+    }
+
+    init {
+        // A game's scores are saved after onGameFinished fires, so a score rising is what
+        // reliably triggers a send. drop(1) skips the value already stored at launch, because
+        // launching the app must never send anything (spec 22.5).
+        applicationScope.launch {
+            combine(prefs.levelsLifetimeStars, prefs.dailyStreakLongest) { stars, streak -> stars to streak }
+                .distinctUntilChanged()
+                .drop(1)
+                .collect { leaderboard.sync() }
+        }
+    }
 
     /** Spec 11.4's consent → ads → primer ordering, run once per process from the menu. */
     val launchSequence = LaunchSequence()
@@ -128,6 +175,8 @@ class AppContainer(
      */
     val onGameFinished: () -> Unit = {
         applicationScope.launch { notifications.scheduleInactivityReminders() }
+        // Retries a score that was skipped or failed earlier. New scores arrive through init above.
+        applicationScope.launch { leaderboard.sync() }
     }
 
     /**

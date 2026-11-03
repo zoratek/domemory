@@ -12,7 +12,7 @@ import com.ezequielbrrt.domemory.data.repository.CatalogStatus
  * [analyticsKey] is the `tab` value of `menu_tab_selected`, spelled like iOS's `GameTab`
  * raw values — explicit so renaming a constant cannot change the reported value.
  */
-enum class MenuTab(val analyticsKey: String) { LEVELS("levels"), MINE("mine"), ALL("all") }
+enum class MenuTab(val analyticsKey: String) { LEVELS("levels"), MINE("mine"), ALL("all"), LEADERBOARD("leaderboard") }
 
 /** Per-board counters displayed on the catalog cards, matching iOS's stat badges. */
 data class BoardStats(
