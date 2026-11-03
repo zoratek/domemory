@@ -49,6 +49,7 @@ final class LeaderboardService {
 
     private var cache: [LeaderboardBoard: (date: Date, rows: [LeaderboardRow])] = [:]
     private var isSyncing = false
+    private var cachedAvailability: Bool?
 
     init(
         defaults: UserDefaults = .standard,
@@ -77,6 +78,29 @@ final class LeaderboardService {
 
     func acknowledgeNotice() {
         defaults.set(true, forKey: Key.noticeAcknowledged)
+    }
+
+    /// The player said no at the notice, so nothing has been sent and there are no
+    /// rows to delete.
+    func declineNotice() {
+        defaults.set(true, forKey: Key.noticeAcknowledged)
+        defaults.set(true, forKey: Key.hasLeft)
+    }
+
+    /// Whether the leaderboard is switched on for this version. Checked once per
+    /// launch to decide whether to show its entry point. Any failure means no.
+    func checkAvailability() async -> Bool {
+        if let cachedAvailability { return cachedAvailability }
+        let available = (try? await isAvailable()) ?? false
+        cachedAvailability = available
+        return available
+    }
+
+    /// The name the player appears under, once their uid is known.
+    func ownNameWords() async -> LeaderboardNameWords? {
+        if let pickedWords { return pickedWords }
+        guard let uid = try? await backend.currentUID() else { return nil }
+        return LeaderboardNames.defaultWords(uid: uid)
     }
 
     /// Deletes the player's rows and stops further writes until `rejoin()`.
@@ -126,6 +150,7 @@ final class LeaderboardService {
                     uid: uid
                 )
                 defaults.set(score, forKey: Key.lastSent(board))
+                cache[board] = nil
             }
         } catch {
             return

@@ -18,6 +18,7 @@ let appTarget = Target.target(
         "DoMemory/SupportingFiles/Assets.xcassets",
         "DoMemory/SupportingFiles/Fonts/*.ttf",
         "DoMemory/SupportingFiles/Lottie/*.json",
+        "../../localization/leaderboard-names.json",
         "DoMemory/Preview Content/Preview Assets.xcassets",
     ],
     entitlements: .file(path: "DoMemory/DoMemory.entitlements"),

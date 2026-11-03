@@ -1,0 +1,2464 @@
+{
+ "en": {
+  "format": "{adjective} {animal}",
+  "adjectives": [
+   [
+    "Swift"
+   ],
+   [
+    "Calm"
+   ],
+   [
+    "Brave"
+   ],
+   [
+    "Quiet"
+   ],
+   [
+    "Bright"
+   ],
+   [
+    "Clever"
+   ],
+   [
+    "Gentle"
+   ],
+   [
+    "Happy"
+   ],
+   [
+    "Kind"
+   ],
+   [
+    "Lucky"
+   ],
+   [
+    "Merry"
+   ],
+   [
+    "Mighty"
+   ],
+   [
+    "Noble"
+   ],
+   [
+    "Playful"
+   ],
+   [
+    "Proud"
+   ],
+   [
+    "Sunny"
+   ],
+   [
+    "Bold"
+   ],
+   [
+    "Cheerful"
+   ],
+   [
+    "Curious"
+   ],
+   [
+    "Daring"
+   ],
+   [
+    "Eager"
+   ],
+   [
+    "Friendly"
+   ],
+   [
+    "Golden"
+   ],
+   [
+    "Jolly"
+   ],
+   [
+    "Keen"
+   ],
+   [
+    "Lively"
+   ],
+   [
+    "Patient"
+   ],
+   [
+    "Silver"
+   ],
+   [
+    "Steady"
+   ],
+   [
+    "Tiny"
+   ],
+   [
+    "Wise"
+   ],
+   [
+    "Witty"
+   ]
+  ],
+  "animals": [
+   {
+    "word": "Otter",
+    "gender": "m"
+   },
+   {
+    "word": "Panda",
+    "gender": "m"
+   },
+   {
+    "word": "Heron",
+    "gender": "m"
+   },
+   {
+    "word": "Fox",
+    "gender": "m"
+   },
+   {
+    "word": "Owl",
+    "gender": "m"
+   },
+   {
+    "word": "Koala",
+    "gender": "m"
+   },
+   {
+    "word": "Dolphin",
+    "gender": "m"
+   },
+   {
+    "word": "Tiger",
+    "gender": "m"
+   },
+   {
+    "word": "Rabbit",
+    "gender": "m"
+   },
+   {
+    "word": "Turtle",
+    "gender": "m"
+   },
+   {
+    "word": "Penguin",
+    "gender": "m"
+   },
+   {
+    "word": "Falcon",
+    "gender": "m"
+   },
+   {
+    "word": "Badger",
+    "gender": "m"
+   },
+   {
+    "word": "Beaver",
+    "gender": "m"
+   },
+   {
+    "word": "Deer",
+    "gender": "m"
+   },
+   {
+    "word": "Eagle",
+    "gender": "m"
+   },
+   {
+    "word": "Giraffe",
+    "gender": "m"
+   },
+   {
+    "word": "Hedgehog",
+    "gender": "m"
+   },
+   {
+    "word": "Kangaroo",
+    "gender": "m"
+   },
+   {
+    "word": "Lemur",
+    "gender": "m"
+   },
+   {
+    "word": "Lion",
+    "gender": "m"
+   },
+   {
+    "word": "Llama",
+    "gender": "m"
+   },
+   {
+    "word": "Moose",
+    "gender": "m"
+   },
+   {
+    "word": "Narwhal",
+    "gender": "m"
+   },
+   {
+    "word": "Parrot",
+    "gender": "m"
+   },
+   {
+    "word": "Puffin",
+    "gender": "m"
+   },
+   {
+    "word": "Raccoon",
+    "gender": "m"
+   },
+   {
+    "word": "Seal",
+    "gender": "m"
+   },
+   {
+    "word": "Sloth",
+    "gender": "m"
+   },
+   {
+    "word": "Swan",
+    "gender": "m"
+   },
+   {
+    "word": "Whale",
+    "gender": "m"
+   },
+   {
+    "word": "Zebra",
+    "gender": "m"
+   }
+  ]
+ },
+ "es-419": {
+  "format": "{animal} {adjective}",
+  "adjectives": [
+   [
+    "Veloz"
+   ],
+   [
+    "Tranquilo",
+    "Tranquila"
+   ],
+   [
+    "Valiente"
+   ],
+   [
+    "Silencioso",
+    "Silenciosa"
+   ],
+   [
+    "Brillante"
+   ],
+   [
+    "Listo",
+    "Lista"
+   ],
+   [
+    "Gentil"
+   ],
+   [
+    "Feliz"
+   ],
+   [
+    "Amable"
+   ],
+   [
+    "Afortunado",
+    "Afortunada"
+   ],
+   [
+    "Alegre"
+   ],
+   [
+    "Poderoso",
+    "Poderosa"
+   ],
+   [
+    "Noble"
+   ],
+   [
+    "Juguetón",
+    "Juguetona"
+   ],
+   [
+    "Orgulloso",
+    "Orgullosa"
+   ],
+   [
+    "Soleado",
+    "Soleada"
+   ],
+   [
+    "Audaz"
+   ],
+   [
+    "Contento",
+    "Contenta"
+   ],
+   [
+    "Curioso",
+    "Curiosa"
+   ],
+   [
+    "Atrevido",
+    "Atrevida"
+   ],
+   [
+    "Entusiasta"
+   ],
+   [
+    "Amigable"
+   ],
+   [
+    "Dorado",
+    "Dorada"
+   ],
+   [
+    "Risueño",
+    "Risueña"
+   ],
+   [
+    "Agudo",
+    "Aguda"
+   ],
+   [
+    "Vivaz"
+   ],
+   [
+    "Paciente"
+   ],
+   [
+    "Plateado",
+    "Plateada"
+   ],
+   [
+    "Firme"
+   ],
+   [
+    "Diminuto",
+    "Diminuta"
+   ],
+   [
+    "Sabio",
+    "Sabia"
+   ],
+   [
+    "Ingenioso",
+    "Ingeniosa"
+   ]
+  ],
+  "animals": [
+   {
+    "word": "Nutria",
+    "gender": "f"
+   },
+   {
+    "word": "Panda",
+    "gender": "m"
+   },
+   {
+    "word": "Garza",
+    "gender": "f"
+   },
+   {
+    "word": "Zorro",
+    "gender": "m"
+   },
+   {
+    "word": "Búho",
+    "gender": "m"
+   },
+   {
+    "word": "Koala",
+    "gender": "m"
+   },
+   {
+    "word": "Delfín",
+    "gender": "m"
+   },
+   {
+    "word": "Tigre",
+    "gender": "m"
+   },
+   {
+    "word": "Conejo",
+    "gender": "m"
+   },
+   {
+    "word": "Tortuga",
+    "gender": "f"
+   },
+   {
+    "word": "Pingüino",
+    "gender": "m"
+   },
+   {
+    "word": "Halcón",
+    "gender": "m"
+   },
+   {
+    "word": "Tejón",
+    "gender": "m"
+   },
+   {
+    "word": "Castor",
+    "gender": "m"
+   },
+   {
+    "word": "Venado",
+    "gender": "m"
+   },
+   {
+    "word": "Águila",
+    "gender": "f"
+   },
+   {
+    "word": "Jirafa",
+    "gender": "f"
+   },
+   {
+    "word": "Erizo",
+    "gender": "m"
+   },
+   {
+    "word": "Canguro",
+    "gender": "m"
+   },
+   {
+    "word": "Lémur",
+    "gender": "m"
+   },
+   {
+    "word": "León",
+    "gender": "m"
+   },
+   {
+    "word": "Llama",
+    "gender": "f"
+   },
+   {
+    "word": "Alce",
+    "gender": "m"
+   },
+   {
+    "word": "Narval",
+    "gender": "m"
+   },
+   {
+    "word": "Loro",
+    "gender": "m"
+   },
+   {
+    "word": "Frailecillo",
+    "gender": "m"
+   },
+   {
+    "word": "Mapache",
+    "gender": "m"
+   },
+   {
+    "word": "Foca",
+    "gender": "f"
+   },
+   {
+    "word": "Perezoso",
+    "gender": "m"
+   },
+   {
+    "word": "Cisne",
+    "gender": "m"
+   },
+   {
+    "word": "Ballena",
+    "gender": "f"
+   },
+   {
+    "word": "Cebra",
+    "gender": "f"
+   }
+  ]
+ },
+ "de": {
+  "format": "{adjective} {animal}",
+  "adjectives": [
+   [
+    "Flinker",
+    "Flinke",
+    "Flinkes"
+   ],
+   [
+    "Ruhiger",
+    "Ruhige",
+    "Ruhiges"
+   ],
+   [
+    "Mutiger",
+    "Mutige",
+    "Mutiges"
+   ],
+   [
+    "Leiser",
+    "Leise",
+    "Leises"
+   ],
+   [
+    "Heller",
+    "Helle",
+    "Helles"
+   ],
+   [
+    "Kluger",
+    "Kluge",
+    "Kluges"
+   ],
+   [
+    "Sanfter",
+    "Sanfte",
+    "Sanftes"
+   ],
+   [
+    "Fröhlicher",
+    "Fröhliche",
+    "Fröhliches"
+   ],
+   [
+    "Lieber",
+    "Liebe",
+    "Liebes"
+   ],
+   [
+    "Glücklicher",
+    "Glückliche",
+    "Glückliches"
+   ],
+   [
+    "Heiterer",
+    "Heitere",
+    "Heiteres"
+   ],
+   [
+    "Mächtiger",
+    "Mächtige",
+    "Mächtiges"
+   ],
+   [
+    "Edler",
+    "Edle",
+    "Edles"
+   ],
+   [
+    "Verspielter",
+    "Verspielte",
+    "Verspieltes"
+   ],
+   [
+    "Stolzer",
+    "Stolze",
+    "Stolzes"
+   ],
+   [
+    "Sonniger",
+    "Sonnige",
+    "Sonniges"
+   ],
+   [
+    "Kühner",
+    "Kühne",
+    "Kühnes"
+   ],
+   [
+    "Munterer",
+    "Muntere",
+    "Munteres"
+   ],
+   [
+    "Neugieriger",
+    "Neugierige",
+    "Neugieriges"
+   ],
+   [
+    "Wagemutiger",
+    "Wagemutige",
+    "Wagemutiges"
+   ],
+   [
+    "Eifriger",
+    "Eifrige",
+    "Eifriges"
+   ],
+   [
+    "Freundlicher",
+    "Freundliche",
+    "Freundliches"
+   ],
+   [
+    "Goldener",
+    "Goldene",
+    "Goldenes"
+   ],
+   [
+    "Lustiger",
+    "Lustige",
+    "Lustiges"
+   ],
+   [
+    "Scharfsinniger",
+    "Scharfsinnige",
+    "Scharfsinniges"
+   ],
+   [
+    "Lebhafter",
+    "Lebhafte",
+    "Lebhaftes"
+   ],
+   [
+    "Geduldiger",
+    "Geduldige",
+    "Geduldiges"
+   ],
+   [
+    "Silberner",
+    "Silberne",
+    "Silbernes"
+   ],
+   [
+    "Standhafter",
+    "Standhafte",
+    "Standhaftes"
+   ],
+   [
+    "Winziger",
+    "Winzige",
+    "Winziges"
+   ],
+   [
+    "Weiser",
+    "Weise",
+    "Weises"
+   ],
+   [
+    "Witziger",
+    "Witzige",
+    "Witziges"
+   ]
+  ],
+  "animals": [
+   {
+    "word": "Otter",
+    "gender": "m"
+   },
+   {
+    "word": "Panda",
+    "gender": "m"
+   },
+   {
+    "word": "Reiher",
+    "gender": "m"
+   },
+   {
+    "word": "Fuchs",
+    "gender": "m"
+   },
+   {
+    "word": "Eule",
+    "gender": "f"
+   },
+   {
+    "word": "Koala",
+    "gender": "m"
+   },
+   {
+    "word": "Delfin",
+    "gender": "m"
+   },
+   {
+    "word": "Tiger",
+    "gender": "m"
+   },
+   {
+    "word": "Hase",
+    "gender": "m"
+   },
+   {
+    "word": "Schildkröte",
+    "gender": "f"
+   },
+   {
+    "word": "Pinguin",
+    "gender": "m"
+   },
+   {
+    "word": "Falke",
+    "gender": "m"
+   },
+   {
+    "word": "Dachs",
+    "gender": "m"
+   },
+   {
+    "word": "Biber",
+    "gender": "m"
+   },
+   {
+    "word": "Hirsch",
+    "gender": "m"
+   },
+   {
+    "word": "Adler",
+    "gender": "m"
+   },
+   {
+    "word": "Giraffe",
+    "gender": "f"
+   },
+   {
+    "word": "Igel",
+    "gender": "m"
+   },
+   {
+    "word": "Känguru",
+    "gender": "n"
+   },
+   {
+    "word": "Lemur",
+    "gender": "m"
+   },
+   {
+    "word": "Löwe",
+    "gender": "m"
+   },
+   {
+    "word": "Lama",
+    "gender": "n"
+   },
+   {
+    "word": "Elch",
+    "gender": "m"
+   },
+   {
+    "word": "Narwal",
+    "gender": "m"
+   },
+   {
+    "word": "Papagei",
+    "gender": "m"
+   },
+   {
+    "word": "Papageitaucher",
+    "gender": "m"
+   },
+   {
+    "word": "Waschbär",
+    "gender": "m"
+   },
+   {
+    "word": "Seehund",
+    "gender": "m"
+   },
+   {
+    "word": "Faultier",
+    "gender": "n"
+   },
+   {
+    "word": "Schwan",
+    "gender": "m"
+   },
+   {
+    "word": "Wal",
+    "gender": "m"
+   },
+   {
+    "word": "Zebra",
+    "gender": "n"
+   }
+  ]
+ },
+ "fr": {
+  "format": "{animal} {adjective}",
+  "adjectives": [
+   [
+    "Rapide"
+   ],
+   [
+    "Calme"
+   ],
+   [
+    "Courageux",
+    "Courageuse"
+   ],
+   [
+    "Discret",
+    "Discrète"
+   ],
+   [
+    "Brillant",
+    "Brillante"
+   ],
+   [
+    "Malin",
+    "Maligne"
+   ],
+   [
+    "Doux",
+    "Douce"
+   ],
+   [
+    "Heureux",
+    "Heureuse"
+   ],
+   [
+    "Gentil",
+    "Gentille"
+   ],
+   [
+    "Chanceux",
+    "Chanceuse"
+   ],
+   [
+    "Joyeux",
+    "Joyeuse"
+   ],
+   [
+    "Puissant",
+    "Puissante"
+   ],
+   [
+    "Noble"
+   ],
+   [
+    "Joueur",
+    "Joueuse"
+   ],
+   [
+    "Fier",
+    "Fière"
+   ],
+   [
+    "Radieux",
+    "Radieuse"
+   ],
+   [
+    "Audacieux",
+    "Audacieuse"
+   ],
+   [
+    "Enjoué",
+    "Enjouée"
+   ],
+   [
+    "Curieux",
+    "Curieuse"
+   ],
+   [
+    "Hardi",
+    "Hardie"
+   ],
+   [
+    "Enthousiaste"
+   ],
+   [
+    "Amical",
+    "Amicale"
+   ],
+   [
+    "Doré",
+    "Dorée"
+   ],
+   [
+    "Jovial",
+    "Joviale"
+   ],
+   [
+    "Vif",
+    "Vive"
+   ],
+   [
+    "Énergique"
+   ],
+   [
+    "Patient",
+    "Patiente"
+   ],
+   [
+    "Argenté",
+    "Argentée"
+   ],
+   [
+    "Stable"
+   ],
+   [
+    "Minuscule"
+   ],
+   [
+    "Sage"
+   ],
+   [
+    "Spirituel",
+    "Spirituelle"
+   ]
+  ],
+  "animals": [
+   {
+    "word": "Loutre",
+    "gender": "f"
+   },
+   {
+    "word": "Panda",
+    "gender": "m"
+   },
+   {
+    "word": "Héron",
+    "gender": "m"
+   },
+   {
+    "word": "Renard",
+    "gender": "m"
+   },
+   {
+    "word": "Chouette",
+    "gender": "f"
+   },
+   {
+    "word": "Koala",
+    "gender": "m"
+   },
+   {
+    "word": "Dauphin",
+    "gender": "m"
+   },
+   {
+    "word": "Tigre",
+    "gender": "m"
+   },
+   {
+    "word": "Lapin",
+    "gender": "m"
+   },
+   {
+    "word": "Tortue",
+    "gender": "f"
+   },
+   {
+    "word": "Manchot",
+    "gender": "m"
+   },
+   {
+    "word": "Faucon",
+    "gender": "m"
+   },
+   {
+    "word": "Blaireau",
+    "gender": "m"
+   },
+   {
+    "word": "Castor",
+    "gender": "m"
+   },
+   {
+    "word": "Cerf",
+    "gender": "m"
+   },
+   {
+    "word": "Aigle",
+    "gender": "m"
+   },
+   {
+    "word": "Girafe",
+    "gender": "f"
+   },
+   {
+    "word": "Hérisson",
+    "gender": "m"
+   },
+   {
+    "word": "Kangourou",
+    "gender": "m"
+   },
+   {
+    "word": "Lémurien",
+    "gender": "m"
+   },
+   {
+    "word": "Lion",
+    "gender": "m"
+   },
+   {
+    "word": "Lama",
+    "gender": "m"
+   },
+   {
+    "word": "Élan",
+    "gender": "m"
+   },
+   {
+    "word": "Narval",
+    "gender": "m"
+   },
+   {
+    "word": "Perroquet",
+    "gender": "m"
+   },
+   {
+    "word": "Macareux",
+    "gender": "m"
+   },
+   {
+    "word": "Raton laveur",
+    "gender": "m"
+   },
+   {
+    "word": "Phoque",
+    "gender": "m"
+   },
+   {
+    "word": "Paresseux",
+    "gender": "m"
+   },
+   {
+    "word": "Cygne",
+    "gender": "m"
+   },
+   {
+    "word": "Baleine",
+    "gender": "f"
+   },
+   {
+    "word": "Zèbre",
+    "gender": "m"
+   }
+  ]
+ },
+ "hi": {
+  "format": "{adjective} {animal}",
+  "adjectives": [
+   [
+    "फुर्तीला",
+    "फुर्तीली"
+   ],
+   [
+    "शांत"
+   ],
+   [
+    "बहादुर"
+   ],
+   [
+    "ख़ामोश"
+   ],
+   [
+    "चमकीला",
+    "चमकीली"
+   ],
+   [
+    "चतुर"
+   ],
+   [
+    "कोमल"
+   ],
+   [
+    "खुश"
+   ],
+   [
+    "दयालु"
+   ],
+   [
+    "भाग्यशाली"
+   ],
+   [
+    "मस्त"
+   ],
+   [
+    "शक्तिशाली"
+   ],
+   [
+    "नेक"
+   ],
+   [
+    "चंचल"
+   ],
+   [
+    "गर्वीला",
+    "गर्वीली"
+   ],
+   [
+    "उजला",
+    "उजली"
+   ],
+   [
+    "निडर"
+   ],
+   [
+    "प्रसन्न"
+   ],
+   [
+    "जिज्ञासु"
+   ],
+   [
+    "साहसी"
+   ],
+   [
+    "उत्साही"
+   ],
+   [
+    "मिलनसार"
+   ],
+   [
+    "सुनहरा",
+    "सुनहरी"
+   ],
+   [
+    "हँसमुख"
+   ],
+   [
+    "तेज़"
+   ],
+   [
+    "जीवंत"
+   ],
+   [
+    "धैर्यवान"
+   ],
+   [
+    "रुपहला",
+    "रुपहली"
+   ],
+   [
+    "अडिग"
+   ],
+   [
+    "नन्हा",
+    "नन्ही"
+   ],
+   [
+    "बुद्धिमान"
+   ],
+   [
+    "हाज़िरजवाब"
+   ]
+  ],
+  "animals": [
+   {
+    "word": "ऊदबिलाव",
+    "gender": "m"
+   },
+   {
+    "word": "पांडा",
+    "gender": "m"
+   },
+   {
+    "word": "बगुला",
+    "gender": "m"
+   },
+   {
+    "word": "लोमड़ी",
+    "gender": "f"
+   },
+   {
+    "word": "उल्लू",
+    "gender": "m"
+   },
+   {
+    "word": "कोआला",
+    "gender": "m"
+   },
+   {
+    "word": "डॉल्फ़िन",
+    "gender": "f"
+   },
+   {
+    "word": "बाघ",
+    "gender": "m"
+   },
+   {
+    "word": "खरगोश",
+    "gender": "m"
+   },
+   {
+    "word": "कछुआ",
+    "gender": "m"
+   },
+   {
+    "word": "पेंगुइन",
+    "gender": "m"
+   },
+   {
+    "word": "बाज़",
+    "gender": "m"
+   },
+   {
+    "word": "बिज्जू",
+    "gender": "m"
+   },
+   {
+    "word": "बीवर",
+    "gender": "m"
+   },
+   {
+    "word": "हिरण",
+    "gender": "m"
+   },
+   {
+    "word": "चील",
+    "gender": "f"
+   },
+   {
+    "word": "जिराफ़",
+    "gender": "m"
+   },
+   {
+    "word": "साही",
+    "gender": "f"
+   },
+   {
+    "word": "कंगारू",
+    "gender": "m"
+   },
+   {
+    "word": "लीमर",
+    "gender": "m"
+   },
+   {
+    "word": "शेर",
+    "gender": "m"
+   },
+   {
+    "word": "लामा",
+    "gender": "m"
+   },
+   {
+    "word": "मूस",
+    "gender": "m"
+   },
+   {
+    "word": "नरव्हेल",
+    "gender": "m"
+   },
+   {
+    "word": "तोता",
+    "gender": "m"
+   },
+   {
+    "word": "पफ़िन",
+    "gender": "m"
+   },
+   {
+    "word": "रैकून",
+    "gender": "m"
+   },
+   {
+    "word": "सील",
+    "gender": "f"
+   },
+   {
+    "word": "स्लॉथ",
+    "gender": "m"
+   },
+   {
+    "word": "हंस",
+    "gender": "m"
+   },
+   {
+    "word": "व्हेल",
+    "gender": "f"
+   },
+   {
+    "word": "ज़ेबरा",
+    "gender": "m"
+   }
+  ]
+ },
+ "it": {
+  "format": "{animal} {adjective}",
+  "adjectives": [
+   [
+    "Veloce"
+   ],
+   [
+    "Calmo",
+    "Calma"
+   ],
+   [
+    "Coraggioso",
+    "Coraggiosa"
+   ],
+   [
+    "Silenzioso",
+    "Silenziosa"
+   ],
+   [
+    "Brillante"
+   ],
+   [
+    "Astuto",
+    "Astuta"
+   ],
+   [
+    "Gentile"
+   ],
+   [
+    "Felice"
+   ],
+   [
+    "Buono",
+    "Buona"
+   ],
+   [
+    "Fortunato",
+    "Fortunata"
+   ],
+   [
+    "Allegro",
+    "Allegra"
+   ],
+   [
+    "Potente"
+   ],
+   [
+    "Nobile"
+   ],
+   [
+    "Giocoso",
+    "Giocosa"
+   ],
+   [
+    "Fiero",
+    "Fiera"
+   ],
+   [
+    "Solare"
+   ],
+   [
+    "Audace"
+   ],
+   [
+    "Gioioso",
+    "Gioiosa"
+   ],
+   [
+    "Curioso",
+    "Curiosa"
+   ],
+   [
+    "Temerario",
+    "Temeraria"
+   ],
+   [
+    "Entusiasta"
+   ],
+   [
+    "Amichevole"
+   ],
+   [
+    "Dorato",
+    "Dorata"
+   ],
+   [
+    "Gioviale"
+   ],
+   [
+    "Acuto",
+    "Acuta"
+   ],
+   [
+    "Vivace"
+   ],
+   [
+    "Paziente"
+   ],
+   [
+    "Argentato",
+    "Argentata"
+   ],
+   [
+    "Costante"
+   ],
+   [
+    "Minuscolo",
+    "Minuscola"
+   ],
+   [
+    "Saggio",
+    "Saggia"
+   ],
+   [
+    "Arguto",
+    "Arguta"
+   ]
+  ],
+  "animals": [
+   {
+    "word": "Lontra",
+    "gender": "f"
+   },
+   {
+    "word": "Panda",
+    "gender": "m"
+   },
+   {
+    "word": "Airone",
+    "gender": "m"
+   },
+   {
+    "word": "Volpe",
+    "gender": "f"
+   },
+   {
+    "word": "Gufo",
+    "gender": "m"
+   },
+   {
+    "word": "Koala",
+    "gender": "m"
+   },
+   {
+    "word": "Delfino",
+    "gender": "m"
+   },
+   {
+    "word": "Tigre",
+    "gender": "f"
+   },
+   {
+    "word": "Coniglio",
+    "gender": "m"
+   },
+   {
+    "word": "Tartaruga",
+    "gender": "f"
+   },
+   {
+    "word": "Pinguino",
+    "gender": "m"
+   },
+   {
+    "word": "Falco",
+    "gender": "m"
+   },
+   {
+    "word": "Tasso",
+    "gender": "m"
+   },
+   {
+    "word": "Castoro",
+    "gender": "m"
+   },
+   {
+    "word": "Cervo",
+    "gender": "m"
+   },
+   {
+    "word": "Aquila",
+    "gender": "f"
+   },
+   {
+    "word": "Giraffa",
+    "gender": "f"
+   },
+   {
+    "word": "Riccio",
+    "gender": "m"
+   },
+   {
+    "word": "Canguro",
+    "gender": "m"
+   },
+   {
+    "word": "Lemure",
+    "gender": "m"
+   },
+   {
+    "word": "Leone",
+    "gender": "m"
+   },
+   {
+    "word": "Lama",
+    "gender": "m"
+   },
+   {
+    "word": "Alce",
+    "gender": "m"
+   },
+   {
+    "word": "Narvalo",
+    "gender": "m"
+   },
+   {
+    "word": "Pappagallo",
+    "gender": "m"
+   },
+   {
+    "word": "Pulcinella di mare",
+    "gender": "f"
+   },
+   {
+    "word": "Procione",
+    "gender": "m"
+   },
+   {
+    "word": "Foca",
+    "gender": "f"
+   },
+   {
+    "word": "Bradipo",
+    "gender": "m"
+   },
+   {
+    "word": "Cigno",
+    "gender": "m"
+   },
+   {
+    "word": "Balena",
+    "gender": "f"
+   },
+   {
+    "word": "Zebra",
+    "gender": "f"
+   }
+  ]
+ },
+ "ja": {
+  "format": "{adjective}{animal}",
+  "adjectives": [
+   [
+    "素早い"
+   ],
+   [
+    "穏やかな"
+   ],
+   [
+    "勇敢な"
+   ],
+   [
+    "静かな"
+   ],
+   [
+    "輝く"
+   ],
+   [
+    "賢い"
+   ],
+   [
+    "優しい"
+   ],
+   [
+    "幸せな"
+   ],
+   [
+    "親切な"
+   ],
+   [
+    "幸運な"
+   ],
+   [
+    "陽気な"
+   ],
+   [
+    "力強い"
+   ],
+   [
+    "気高い"
+   ],
+   [
+    "遊び好きな"
+   ],
+   [
+    "誇り高い"
+   ],
+   [
+    "晴れやかな"
+   ],
+   [
+    "大胆な"
+   ],
+   [
+    "朗らかな"
+   ],
+   [
+    "好奇心旺盛な"
+   ],
+   [
+    "恐れ知らずの"
+   ],
+   [
+    "熱心な"
+   ],
+   [
+    "人懐っこい"
+   ],
+   [
+    "黄金の"
+   ],
+   [
+    "愉快な"
+   ],
+   [
+    "鋭い"
+   ],
+   [
+    "元気な"
+   ],
+   [
+    "我慢強い"
+   ],
+   [
+    "銀色の"
+   ],
+   [
+    "堅実な"
+   ],
+   [
+    "小さな"
+   ],
+   [
+    "賢明な"
+   ],
+   [
+    "機知に富む"
+   ]
+  ],
+  "animals": [
+   {
+    "word": "カワウソ",
+    "gender": "m"
+   },
+   {
+    "word": "パンダ",
+    "gender": "m"
+   },
+   {
+    "word": "サギ",
+    "gender": "m"
+   },
+   {
+    "word": "キツネ",
+    "gender": "m"
+   },
+   {
+    "word": "フクロウ",
+    "gender": "m"
+   },
+   {
+    "word": "コアラ",
+    "gender": "m"
+   },
+   {
+    "word": "イルカ",
+    "gender": "m"
+   },
+   {
+    "word": "トラ",
+    "gender": "m"
+   },
+   {
+    "word": "ウサギ",
+    "gender": "m"
+   },
+   {
+    "word": "カメ",
+    "gender": "m"
+   },
+   {
+    "word": "ペンギン",
+    "gender": "m"
+   },
+   {
+    "word": "ハヤブサ",
+    "gender": "m"
+   },
+   {
+    "word": "アナグマ",
+    "gender": "m"
+   },
+   {
+    "word": "ビーバー",
+    "gender": "m"
+   },
+   {
+    "word": "シカ",
+    "gender": "m"
+   },
+   {
+    "word": "ワシ",
+    "gender": "m"
+   },
+   {
+    "word": "キリン",
+    "gender": "m"
+   },
+   {
+    "word": "ハリネズミ",
+    "gender": "m"
+   },
+   {
+    "word": "カンガルー",
+    "gender": "m"
+   },
+   {
+    "word": "キツネザル",
+    "gender": "m"
+   },
+   {
+    "word": "ライオン",
+    "gender": "m"
+   },
+   {
+    "word": "ラマ",
+    "gender": "m"
+   },
+   {
+    "word": "ヘラジカ",
+    "gender": "m"
+   },
+   {
+    "word": "イッカク",
+    "gender": "m"
+   },
+   {
+    "word": "オウム",
+    "gender": "m"
+   },
+   {
+    "word": "ツノメドリ",
+    "gender": "m"
+   },
+   {
+    "word": "アライグマ",
+    "gender": "m"
+   },
+   {
+    "word": "アザラシ",
+    "gender": "m"
+   },
+   {
+    "word": "ナマケモノ",
+    "gender": "m"
+   },
+   {
+    "word": "ハクチョウ",
+    "gender": "m"
+   },
+   {
+    "word": "クジラ",
+    "gender": "m"
+   },
+   {
+    "word": "シマウマ",
+    "gender": "m"
+   }
+  ]
+ },
+ "ko": {
+  "format": "{adjective} {animal}",
+  "adjectives": [
+   [
+    "날쌘"
+   ],
+   [
+    "차분한"
+   ],
+   [
+    "용감한"
+   ],
+   [
+    "조용한"
+   ],
+   [
+    "빛나는"
+   ],
+   [
+    "영리한"
+   ],
+   [
+    "온화한"
+   ],
+   [
+    "행복한"
+   ],
+   [
+    "친절한"
+   ],
+   [
+    "운 좋은"
+   ],
+   [
+    "유쾌한"
+   ],
+   [
+    "강력한"
+   ],
+   [
+    "고귀한"
+   ],
+   [
+    "장난기 많은"
+   ],
+   [
+    "당당한"
+   ],
+   [
+    "화창한"
+   ],
+   [
+    "대담한"
+   ],
+   [
+    "명랑한"
+   ],
+   [
+    "호기심 많은"
+   ],
+   [
+    "겁 없는"
+   ],
+   [
+    "열정적인"
+   ],
+   [
+    "다정한"
+   ],
+   [
+    "황금빛"
+   ],
+   [
+    "익살스러운"
+   ],
+   [
+    "예리한"
+   ],
+   [
+    "활기찬"
+   ],
+   [
+    "참을성 있는"
+   ],
+   [
+    "은빛"
+   ],
+   [
+    "꾸준한"
+   ],
+   [
+    "아주 작은"
+   ],
+   [
+    "지혜로운"
+   ],
+   [
+    "재치 있는"
+   ]
+  ],
+  "animals": [
+   {
+    "word": "수달",
+    "gender": "m"
+   },
+   {
+    "word": "판다",
+    "gender": "m"
+   },
+   {
+    "word": "왜가리",
+    "gender": "m"
+   },
+   {
+    "word": "여우",
+    "gender": "m"
+   },
+   {
+    "word": "올빼미",
+    "gender": "m"
+   },
+   {
+    "word": "코알라",
+    "gender": "m"
+   },
+   {
+    "word": "돌고래",
+    "gender": "m"
+   },
+   {
+    "word": "호랑이",
+    "gender": "m"
+   },
+   {
+    "word": "토끼",
+    "gender": "m"
+   },
+   {
+    "word": "거북이",
+    "gender": "m"
+   },
+   {
+    "word": "펭귄",
+    "gender": "m"
+   },
+   {
+    "word": "매",
+    "gender": "m"
+   },
+   {
+    "word": "오소리",
+    "gender": "m"
+   },
+   {
+    "word": "비버",
+    "gender": "m"
+   },
+   {
+    "word": "사슴",
+    "gender": "m"
+   },
+   {
+    "word": "독수리",
+    "gender": "m"
+   },
+   {
+    "word": "기린",
+    "gender": "m"
+   },
+   {
+    "word": "고슴도치",
+    "gender": "m"
+   },
+   {
+    "word": "캥거루",
+    "gender": "m"
+   },
+   {
+    "word": "여우원숭이",
+    "gender": "m"
+   },
+   {
+    "word": "사자",
+    "gender": "m"
+   },
+   {
+    "word": "라마",
+    "gender": "m"
+   },
+   {
+    "word": "말코손바닥사슴",
+    "gender": "m"
+   },
+   {
+    "word": "일각고래",
+    "gender": "m"
+   },
+   {
+    "word": "앵무새",
+    "gender": "m"
+   },
+   {
+    "word": "퍼핀",
+    "gender": "m"
+   },
+   {
+    "word": "너구리",
+    "gender": "m"
+   },
+   {
+    "word": "물범",
+    "gender": "m"
+   },
+   {
+    "word": "나무늘보",
+    "gender": "m"
+   },
+   {
+    "word": "백조",
+    "gender": "m"
+   },
+   {
+    "word": "고래",
+    "gender": "m"
+   },
+   {
+    "word": "얼룩말",
+    "gender": "m"
+   }
+  ]
+ },
+ "pt-BR": {
+  "format": "{animal} {adjective}",
+  "adjectives": [
+   [
+    "Veloz"
+   ],
+   [
+    "Calmo",
+    "Calma"
+   ],
+   [
+    "Corajoso",
+    "Corajosa"
+   ],
+   [
+    "Silencioso",
+    "Silenciosa"
+   ],
+   [
+    "Brilhante"
+   ],
+   [
+    "Esperto",
+    "Esperta"
+   ],
+   [
+    "Gentil"
+   ],
+   [
+    "Feliz"
+   ],
+   [
+    "Bondoso",
+    "Bondosa"
+   ],
+   [
+    "Sortudo",
+    "Sortuda"
+   ],
+   [
+    "Alegre"
+   ],
+   [
+    "Poderoso",
+    "Poderosa"
+   ],
+   [
+    "Nobre"
+   ],
+   [
+    "Brincalhão",
+    "Brincalhona"
+   ],
+   [
+    "Orgulhoso",
+    "Orgulhosa"
+   ],
+   [
+    "Ensolarado",
+    "Ensolarada"
+   ],
+   [
+    "Ousado",
+    "Ousada"
+   ],
+   [
+    "Contente"
+   ],
+   [
+    "Curioso",
+    "Curiosa"
+   ],
+   [
+    "Destemido",
+    "Destemida"
+   ],
+   [
+    "Animado",
+    "Animada"
+   ],
+   [
+    "Amigável"
+   ],
+   [
+    "Dourado",
+    "Dourada"
+   ],
+   [
+    "Divertido",
+    "Divertida"
+   ],
+   [
+    "Atento",
+    "Atenta"
+   ],
+   [
+    "Vivaz"
+   ],
+   [
+    "Paciente"
+   ],
+   [
+    "Prateado",
+    "Prateada"
+   ],
+   [
+    "Firme"
+   ],
+   [
+    "Pequenino",
+    "Pequenina"
+   ],
+   [
+    "Sábio",
+    "Sábia"
+   ],
+   [
+    "Espirituoso",
+    "Espirituosa"
+   ]
+  ],
+  "animals": [
+   {
+    "word": "Lontra",
+    "gender": "f"
+   },
+   {
+    "word": "Panda",
+    "gender": "m"
+   },
+   {
+    "word": "Garça",
+    "gender": "f"
+   },
+   {
+    "word": "Raposa",
+    "gender": "f"
+   },
+   {
+    "word": "Coruja",
+    "gender": "f"
+   },
+   {
+    "word": "Coala",
+    "gender": "m"
+   },
+   {
+    "word": "Golfinho",
+    "gender": "m"
+   },
+   {
+    "word": "Tigre",
+    "gender": "m"
+   },
+   {
+    "word": "Coelho",
+    "gender": "m"
+   },
+   {
+    "word": "Tartaruga",
+    "gender": "f"
+   },
+   {
+    "word": "Pinguim",
+    "gender": "m"
+   },
+   {
+    "word": "Falcão",
+    "gender": "m"
+   },
+   {
+    "word": "Texugo",
+    "gender": "m"
+   },
+   {
+    "word": "Castor",
+    "gender": "m"
+   },
+   {
+    "word": "Cervo",
+    "gender": "m"
+   },
+   {
+    "word": "Águia",
+    "gender": "f"
+   },
+   {
+    "word": "Girafa",
+    "gender": "f"
+   },
+   {
+    "word": "Ouriço",
+    "gender": "m"
+   },
+   {
+    "word": "Canguru",
+    "gender": "m"
+   },
+   {
+    "word": "Lêmure",
+    "gender": "m"
+   },
+   {
+    "word": "Leão",
+    "gender": "m"
+   },
+   {
+    "word": "Lhama",
+    "gender": "f"
+   },
+   {
+    "word": "Alce",
+    "gender": "m"
+   },
+   {
+    "word": "Narval",
+    "gender": "m"
+   },
+   {
+    "word": "Papagaio",
+    "gender": "m"
+   },
+   {
+    "word": "Papagaio-do-mar",
+    "gender": "m"
+   },
+   {
+    "word": "Guaxinim",
+    "gender": "m"
+   },
+   {
+    "word": "Foca",
+    "gender": "f"
+   },
+   {
+    "word": "Preguiça",
+    "gender": "f"
+   },
+   {
+    "word": "Cisne",
+    "gender": "m"
+   },
+   {
+    "word": "Baleia",
+    "gender": "f"
+   },
+   {
+    "word": "Zebra",
+    "gender": "f"
+   }
+  ]
+ },
+ "zh-Hans": {
+  "format": "{adjective}{animal}",
+  "adjectives": [
+   [
+    "敏捷的"
+   ],
+   [
+    "沉着的"
+   ],
+   [
+    "勇敢的"
+   ],
+   [
+    "安静的"
+   ],
+   [
+    "明亮的"
+   ],
+   [
+    "聪明的"
+   ],
+   [
+    "温柔的"
+   ],
+   [
+    "快乐的"
+   ],
+   [
+    "善良的"
+   ],
+   [
+    "幸运的"
+   ],
+   [
+    "欢乐的"
+   ],
+   [
+    "强大的"
+   ],
+   [
+    "高贵的"
+   ],
+   [
+    "爱玩的"
+   ],
+   [
+    "自豪的"
+   ],
+   [
+    "阳光的"
+   ],
+   [
+    "大胆的"
+   ],
+   [
+    "开朗的"
+   ],
+   [
+    "好奇的"
+   ],
+   [
+    "无畏的"
+   ],
+   [
+    "热情的"
+   ],
+   [
+    "友好的"
+   ],
+   [
+    "金色的"
+   ],
+   [
+    "愉快的"
+   ],
+   [
+    "敏锐的"
+   ],
+   [
+    "活泼的"
+   ],
+   [
+    "耐心的"
+   ],
+   [
+    "银色的"
+   ],
+   [
+    "稳重的"
+   ],
+   [
+    "小小的"
+   ],
+   [
+    "睿智的"
+   ],
+   [
+    "机智的"
+   ]
+  ],
+  "animals": [
+   {
+    "word": "水獭",
+    "gender": "m"
+   },
+   {
+    "word": "熊猫",
+    "gender": "m"
+   },
+   {
+    "word": "苍鹭",
+    "gender": "m"
+   },
+   {
+    "word": "狐狸",
+    "gender": "m"
+   },
+   {
+    "word": "猫头鹰",
+    "gender": "m"
+   },
+   {
+    "word": "考拉",
+    "gender": "m"
+   },
+   {
+    "word": "海豚",
+    "gender": "m"
+   },
+   {
+    "word": "老虎",
+    "gender": "m"
+   },
+   {
+    "word": "兔子",
+    "gender": "m"
+   },
+   {
+    "word": "海龟",
+    "gender": "m"
+   },
+   {
+    "word": "企鹅",
+    "gender": "m"
+   },
+   {
+    "word": "猎鹰",
+    "gender": "m"
+   },
+   {
+    "word": "獾",
+    "gender": "m"
+   },
+   {
+    "word": "河狸",
+    "gender": "m"
+   },
+   {
+    "word": "鹿",
+    "gender": "m"
+   },
+   {
+    "word": "雄鹰",
+    "gender": "m"
+   },
+   {
+    "word": "长颈鹿",
+    "gender": "m"
+   },
+   {
+    "word": "刺猬",
+    "gender": "m"
+   },
+   {
+    "word": "袋鼠",
+    "gender": "m"
+   },
+   {
+    "word": "狐猴",
+    "gender": "m"
+   },
+   {
+    "word": "狮子",
+    "gender": "m"
+   },
+   {
+    "word": "羊驼",
+    "gender": "m"
+   },
+   {
+    "word": "驼鹿",
+    "gender": "m"
+   },
+   {
+    "word": "独角鲸",
+    "gender": "m"
+   },
+   {
+    "word": "鹦鹉",
+    "gender": "m"
+   },
+   {
+    "word": "海鹦",
+    "gender": "m"
+   },
+   {
+    "word": "浣熊",
+    "gender": "m"
+   },
+   {
+    "word": "海豹",
+    "gender": "m"
+   },
+   {
+    "word": "树懒",
+    "gender": "m"
+   },
+   {
+    "word": "天鹅",
+    "gender": "m"
+   },
+   {
+    "word": "鲸鱼",
+    "gender": "m"
+   },
+   {
+    "word": "斑马",
+    "gender": "m"
+   }
+  ]
+ }
+}

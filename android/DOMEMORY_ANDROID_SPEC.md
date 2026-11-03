@@ -2141,9 +2141,11 @@ Animals:    Otter Panda Heron Fox Owl Koala Dolphin Tiger
             Parrot Puffin Raccoon Seal Sloth Swan Whale Zebra
 ```
 
-Each app shows names in the reader's language. Word order and adjective gender vary
-by locale, so the translation work in L3 and L4 needs a per-locale name format and
-adjective forms where a language requires them, reviewed by locale.
+Each app shows names in the reader's language, from
+`localization/leaderboard-names.json`. Each locale has a `format`, an adjective list and
+an animal list in this same order. An adjective's forms are masculine, feminine, then
+neuter, and a locale may list fewer. An animal's `gender` is `m`, `f` or `n`, and picks
+the form, falling back to the first. Fall back to English for any other locale.
 
 ### 22.4 Reading
 
@@ -2157,7 +2159,11 @@ adjective forms where a language requires them, reviewed by locale.
 
 ### 22.5 Writing
 
-- Show a one-time notice before a player's first score is sent.
+- Show a one-time notice before a player's first score is sent, on the Levels screen
+  and on the leaderboard itself, so players who never open the board still see it.
+  Nothing is sent until the player accepts, so a player who ignores the notice isn't
+  included. Declining sends nothing and works like leaving. Hide the notice and the entry point
+  until `/config/leaderboard` allows them, checking once per launch.
 - Add an existing player on their first finished game or first board open after
   updating, never at launch.
 - Before the first write on an install, read the player's own rows once. A reinstall

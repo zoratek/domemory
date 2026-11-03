@@ -18,6 +18,11 @@ struct LevelsView: View {
     @State private var livesEffect: LivesRowEffect?
     /// Sparkle over the star chip while a credit that just landed counts up.
     @State private var starsCredited = false
+    /// Stays false until the kill switch says the leaderboard is on for this version.
+    @State private var isLeaderboardAvailable = false
+    @State private var showLeaderboard = false
+    /// Nil once the player has answered the one-time notice.
+    @State private var leaderboardNoticeName: String?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
@@ -48,8 +53,20 @@ struct LevelsView: View {
                     viewModel.refresh()
                 }
             }
+            .navigationDestination(isPresented: $showLeaderboard) {
+                LeaderboardView()
+                    .onDisappear { refreshLeaderboardNotice() }
+            }
             .fullScreenCover(isPresented: $showIntro) {
                 LevelsIntroView(source: "info_button") { showIntro = false }
+            }
+            .task {
+                let service = LeaderboardService.shared
+                isLeaderboardAvailable = await service.checkAvailability()
+                if isLeaderboardAvailable, !service.hasAcknowledgedNotice,
+                   let words = await service.ownNameWords() {
+                    leaderboardNoticeName = LeaderboardNameFormatter.current.name(words)
+                }
             }
             .onAppear {
                 viewModel.refresh()
@@ -76,7 +93,37 @@ struct LevelsView: View {
         }
     }
 
+    private func refreshLeaderboardNotice() {
+        if LeaderboardService.shared.hasAcknowledgedNotice {
+            leaderboardNoticeName = nil
+        }
+    }
+
     private var header: some View {
+        VStack(spacing: 12) {
+            statsHeader
+
+            if let leaderboardNoticeName {
+                LeaderboardNoticeCard(
+                    name: leaderboardNoticeName,
+                    onAccept: {
+                        AnalyticsService.log(.leaderboardNoticeAnswered(accepted: true))
+                        LeaderboardService.shared.acknowledgeNotice()
+                        self.leaderboardNoticeName = nil
+                        Task { await LeaderboardService.shared.sync() }
+                    },
+                    onDecline: {
+                        AnalyticsService.log(.leaderboardNoticeAnswered(accepted: false))
+                        LeaderboardService.shared.declineNotice()
+                        self.leaderboardNoticeName = nil
+                    }
+                )
+                .padding(.horizontal, 16)
+            }
+        }
+    }
+
+    private var statsHeader: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: 6) {
@@ -94,6 +141,22 @@ struct LevelsView: View {
                     }
                     .buttonStyle(.plain)
                     .accessibilityLabel(Strings.levelsIntroInfoAccessibility)
+
+                    if isLeaderboardAvailable {
+                        Button {
+                            HapticsService.shared.fire(.tap)
+                            showLeaderboard = true
+                        } label: {
+                            Image(systemName: "trophy.fill")
+                                .font(.system(size: 15, weight: .semibold))
+                                .foregroundStyle(Color.hardAmber)
+                                .frame(minWidth: 44, minHeight: 44)
+                                .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.vertical, -12)
+                        .accessibilityLabel(Strings.leaderboardOpenAccessibility)
+                    }
                 }
                 Text(Strings.levelsCurrentLevelFormat(viewModel.currentLevel))
                     .font(.system(size: 13, weight: .semibold, design: .rounded))

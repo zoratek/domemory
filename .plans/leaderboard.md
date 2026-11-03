@@ -9,7 +9,7 @@ The contract is in `android/DOMEMORY_ANDROID_SPEC.md` §22.
 
 | Question | Decision |
 |---|---|
-| Joining | Automatic after a one-time notice, with an option to leave |
+| Joining | Offered to everyone through a one-time notice. A player is included when they tap Got It, and can leave at any time. A player who ignores the notice isn't included |
 | Names | Generated, and changeable only by picking from the word lists |
 | Scores | Lifetime stars and longest Daily Challenge streak |
 | Board size | Top 50, cached for 15 minutes |
@@ -24,7 +24,7 @@ The contract is in `android/DOMEMORY_ANDROID_SPEC.md` §22.
 | L0 | Contract, fixtures and docs | None | Merged (#122) |
 | L1 | Rules, emulator harness, config and admin script | L0 | Merged (#122), not deployed |
 | L2 | iOS service | L1 deployed | Built and unit tested, not yet run against Firebase |
-| L3 | iOS screen, switched off by config | L2 | Not started |
+| L3 | iOS screen, switched off by config | L2 | Built and tested with demo data, translations need review |
 | L4 | Android service and screen | L1 deployed | Not started |
 | L5 | Cross-platform test. The v1 format is frozen when it passes | L3, L4 | Not started |
 | L6 | Release iOS 4.6.0 and Android 1.3.0 | L5 | Not started |

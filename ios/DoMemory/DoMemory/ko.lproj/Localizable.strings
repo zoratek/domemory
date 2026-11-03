@@ -322,3 +322,33 @@
 "lose_offer_watch_ad" = "광고 보기";
 "lose_pay_stars_format" = "별 %d개 사용";
 "lose_life_at_stake" = "이 게임을 이어서 하면 생명을 잃지 않습니다.";
+
+/* Leaderboard */
+"leaderboard_title" = "리더보드";
+"leaderboard_open_accessibility" = "리더보드 열기";
+"leaderboard_tab_stars" = "별";
+"leaderboard_tab_streak" = "연속 기록";
+"leaderboard_you_format" = "나: %@";
+"leaderboard_points_to_top_stars_format" = "상위 50위까지 별 %d개 남음";
+"leaderboard_points_to_top_streak_format" = "상위 50위까지 %d일 남음";
+"leaderboard_empty" = "아직 점수가 없습니다. 게임을 완료하고 첫 번째 플레이어가 되어 보세요.";
+"leaderboard_unavailable" = "지금은 리더보드를 사용할 수 없습니다.";
+"leaderboard_failed" = "리더보드를 불러오지 못했습니다. 연결을 확인하고 다시 시도하세요.";
+"leaderboard_retry" = "다시 시도";
+"leaderboard_options_accessibility" = "리더보드 옵션";
+"leaderboard_change_name" = "이름 변경";
+"leaderboard_name_title" = "이름 선택";
+"leaderboard_name_adjective" = "설명";
+"leaderboard_name_animal" = "동물";
+"leaderboard_name_save" = "저장";
+"leaderboard_name_failed" = "이름을 저장하지 못했습니다. 잠시 후 다시 시도하세요.";
+"leaderboard_leave" = "리더보드 나가기";
+"leaderboard_leave_confirm_title" = "리더보드에서 나갈까요?";
+"leaderboard_leave_confirm_message" = "점수가 삭제됩니다. 언제든지 다시 참여할 수 있습니다.";
+"leaderboard_leave_failed" = "리더보드에서 나가지 못했습니다. 연결을 확인하고 다시 시도하세요.";
+"leaderboard_left_message" = "리더보드에 참여하고 있지 않습니다.";
+"leaderboard_join_again" = "다시 참여";
+"leaderboard_notice_title" = "리더보드에 참여 중입니다";
+"leaderboard_notice_body_format" = "%@(으)로 표시됩니다. 모든 플레이어가 내 별과 최장 연속 기록을 볼 수 있습니다. 앱을 다시 설치하거나 휴대폰을 바꾸면 처음부터 시작할 수 있습니다.";
+"leaderboard_notice_accept" = "확인";
+"leaderboard_notice_decline" = "포함하지 않기";

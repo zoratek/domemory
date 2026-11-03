@@ -8,6 +8,42 @@
 import Foundation
 
 enum Strings {
+    static let leaderboardTitle = NSLocalizedString("leaderboard_title", comment: "Leaderboard screen title")
+    static let leaderboardOpenAccessibility = NSLocalizedString("leaderboard_open_accessibility", comment: "Accessibility label for the Levels header leaderboard button")
+    static let leaderboardTabStars = NSLocalizedString("leaderboard_tab_stars", comment: "Leaderboard tab for lifetime stars")
+    static let leaderboardTabStreak = NSLocalizedString("leaderboard_tab_streak", comment: "Leaderboard tab for the longest Daily Challenge streak")
+    static func leaderboardYou(_ name: String) -> String {
+        String(format: NSLocalizedString("leaderboard_you_format", comment: "The player's own row, %@ = their leaderboard name"), name)
+    }
+    static func leaderboardPointsToTopStars(_ points: Int) -> String {
+        String(format: NSLocalizedString("leaderboard_points_to_top_stars_format", comment: "Stars needed to enter the top 50, %d = count"), points)
+    }
+    static func leaderboardPointsToTopStreak(_ points: Int) -> String {
+        String(format: NSLocalizedString("leaderboard_points_to_top_streak_format", comment: "Streak days needed to enter the top 50, %d = count"), points)
+    }
+    static let leaderboardEmpty = NSLocalizedString("leaderboard_empty", comment: "Leaderboard with no scores")
+    static let leaderboardUnavailable = NSLocalizedString("leaderboard_unavailable", comment: "Leaderboard switched off")
+    static let leaderboardFailed = NSLocalizedString("leaderboard_failed", comment: "Leaderboard failed to load")
+    static let leaderboardRetry = NSLocalizedString("leaderboard_retry", comment: "Retry loading the leaderboard")
+    static let leaderboardOptionsAccessibility = NSLocalizedString("leaderboard_options_accessibility", comment: "Accessibility label for the leaderboard options menu")
+    static let leaderboardChangeName = NSLocalizedString("leaderboard_change_name", comment: "Button that opens the name picker")
+    static let leaderboardNameTitle = NSLocalizedString("leaderboard_name_title", comment: "Name picker title")
+    static let leaderboardNameAdjective = NSLocalizedString("leaderboard_name_adjective", comment: "Name picker label for the descriptive word")
+    static let leaderboardNameAnimal = NSLocalizedString("leaderboard_name_animal", comment: "Name picker label for the animal")
+    static let leaderboardNameSave = NSLocalizedString("leaderboard_name_save", comment: "Save the picked name")
+    static let leaderboardNameFailed = NSLocalizedString("leaderboard_name_failed", comment: "Saving the picked name failed")
+    static let leaderboardLeave = NSLocalizedString("leaderboard_leave", comment: "Button to leave the leaderboard")
+    static let leaderboardLeaveConfirmTitle = NSLocalizedString("leaderboard_leave_confirm_title", comment: "Leave confirmation title")
+    static let leaderboardLeaveConfirmMessage = NSLocalizedString("leaderboard_leave_confirm_message", comment: "Leave confirmation message")
+    static let leaderboardLeaveFailed = NSLocalizedString("leaderboard_leave_failed", comment: "Leaving the leaderboard failed")
+    static let leaderboardLeftMessage = NSLocalizedString("leaderboard_left_message", comment: "Shown to a player who has left the leaderboard")
+    static let leaderboardJoinAgain = NSLocalizedString("leaderboard_join_again", comment: "Button to rejoin the leaderboard")
+    static let leaderboardNoticeTitle = NSLocalizedString("leaderboard_notice_title", comment: "One-time leaderboard notice title")
+    static func leaderboardNoticeBody(_ name: String) -> String {
+        String(format: NSLocalizedString("leaderboard_notice_body_format", comment: "One-time leaderboard notice, %@ = the player's leaderboard name"), name)
+    }
+    static let leaderboardNoticeAccept = NSLocalizedString("leaderboard_notice_accept", comment: "Accept the leaderboard notice")
+    static let leaderboardNoticeDecline = NSLocalizedString("leaderboard_notice_decline", comment: "Decline being included on the leaderboard")
     static let appName = NSLocalizedString("common_app_name", comment: "Application display name")
     static let easy = NSLocalizedString("difficulty_easy", comment: "Easy difficulty level")
     static let easySubtitle = NSLocalizedString("difficulty_easy_subtitle", comment: "Subtitle for easy difficulty")
