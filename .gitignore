@@ -37,3 +37,6 @@ assets/videos/*
 
 # Firebase CLI deploy cache
 firebase/.firebase/
+
+# Firebase emulator logs
+firebase/*-debug.log
