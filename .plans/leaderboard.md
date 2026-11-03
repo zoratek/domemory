@@ -21,9 +21,9 @@ The contract is in `android/DOMEMORY_ANDROID_SPEC.md` §22.
 
 | Phase | Scope | Needs | Status |
 |---|---|---|---|
-| L0 | Contract, fixtures and docs | None | In review |
-| L1 | Rules, emulator harness, config and admin script | L0 | In review, not deployed |
-| L2 | iOS service | L1 deployed | Not started |
+| L0 | Contract, fixtures and docs | None | Merged (#122) |
+| L1 | Rules, emulator harness, config and admin script | L0 | Merged (#122), not deployed |
+| L2 | iOS service | L1 deployed | Built and unit tested, not yet run against Firebase |
 | L3 | iOS screen, switched off by config | L2 | Not started |
 | L4 | Android service and screen | L1 deployed | Not started |
 | L5 | Cross-platform test. The v1 format is frozen when it passes | L3, L4 | Not started |
