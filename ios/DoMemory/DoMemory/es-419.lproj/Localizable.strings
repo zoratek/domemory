@@ -345,8 +345,8 @@
 "leaderboard_you" = "Tú";
 "leaderboard_rank_format" = "Estás en el puesto %d";
 "leaderboard_caption_stars" = "Estrellas totales de Niveles";
-"leaderboard_caption_streak" = "Racha más larga del Desafío diario";
+"leaderboard_caption_streak" = "Racha más larga del Reto diario";
 "leaderboard_zero_stars" = "Supera un nivel para ganar tu primera estrella.";
-"leaderboard_zero_streak" = "Gana un Desafío diario para empezar tu racha.";
+"leaderboard_zero_streak" = "Gana un Reto diario para empezar tu racha.";
 "leaderboard_pending" = "Tu puntuación aparecerá pronto en la clasificación.";
 "leaderboard_top_50" = "Top 50";

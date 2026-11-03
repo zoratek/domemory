@@ -345,8 +345,8 @@
 "leaderboard_you" = "Du";
 "leaderboard_rank_format" = "Du bist auf Platz %d";
 "leaderboard_caption_stars" = "Alle Sterne aus den Levels";
-"leaderboard_caption_streak" = "Längste Serie der Tages-Challenge";
+"leaderboard_caption_streak" = "Längste Serie der Täglichen Challenge";
 "leaderboard_zero_stars" = "Schaffe ein Level, um deinen ersten Stern zu verdienen.";
-"leaderboard_zero_streak" = "Gewinne eine Tages-Challenge, um deine Serie zu starten.";
+"leaderboard_zero_streak" = "Gewinne eine Tägliche Challenge, um deine Serie zu starten.";
 "leaderboard_pending" = "Dein Ergebnis erscheint bald auf der Bestenliste.";
 "leaderboard_top_50" = "Top 50";

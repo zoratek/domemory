@@ -354,9 +354,9 @@
     <string name="leaderboard_you">आप</string>
     <string name="leaderboard_rank_format">आप #%1$d पर हैं</string>
     <string name="leaderboard_caption_stars">लेवल से मिले कुल सितारे</string>
-    <string name="leaderboard_caption_streak">डेली चैलेंज की सबसे लंबी स्ट्रीक</string>
+    <string name="leaderboard_caption_streak">दैनिक चुनौती की सबसे लंबी स्ट्रीक</string>
     <string name="leaderboard_zero_stars">अपना पहला सितारा पाने के लिए एक लेवल पूरा करें।</string>
-    <string name="leaderboard_zero_streak">अपनी स्ट्रीक शुरू करने के लिए एक डेली चैलेंज जीतें।</string>
+    <string name="leaderboard_zero_streak">अपनी स्ट्रीक शुरू करने के लिए एक दैनिक चुनौती जीतें।</string>
     <string name="leaderboard_pending">आपका स्कोर जल्द ही लीडरबोर्ड पर दिखेगा।</string>
     <string name="leaderboard_top_50">टॉप 50</string>
 </resources>
