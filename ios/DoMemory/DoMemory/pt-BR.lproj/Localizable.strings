@@ -322,3 +322,32 @@
 "lose_offer_watch_ad" = "Ver anúncio";
 "lose_pay_stars_format" = "Pagar %d estrelas";
 "lose_life_at_stake" = "Continue esta partida e você não perde uma vida.";
+
+/* Leaderboard */
+"leaderboard_title" = "Classificação";
+"leaderboard_tab_stars" = "Estrelas";
+"leaderboard_tab_streak" = "Sequência";
+"leaderboard_you_format" = "Você: %@";
+"leaderboard_points_to_top_stars_format" = "Faltam %d estrelas para entrar no top 50";
+"leaderboard_points_to_top_streak_format" = "Faltam %d dias para entrar no top 50";
+"leaderboard_empty" = "Ainda não há pontuações. Termine uma partida para ser o primeiro.";
+"leaderboard_unavailable" = "A classificação não está disponível no momento.";
+"leaderboard_failed" = "Não foi possível carregar a classificação. Verifique sua conexão e tente novamente.";
+"leaderboard_retry" = "Tentar novamente";
+"leaderboard_options_accessibility" = "Opções da classificação";
+"leaderboard_change_name" = "Mudar nome";
+"leaderboard_name_title" = "Escolha seu nome";
+"leaderboard_name_adjective" = "Descrição";
+"leaderboard_name_animal" = "Animal";
+"leaderboard_name_save" = "Salvar";
+"leaderboard_name_failed" = "Não foi possível salvar seu nome. Aguarde um momento e tente novamente.";
+"leaderboard_leave" = "Sair da classificação";
+"leaderboard_leave_confirm_title" = "Sair da classificação?";
+"leaderboard_leave_confirm_message" = "Suas pontuações serão removidas. Você pode voltar a qualquer momento.";
+"leaderboard_leave_failed" = "Não foi possível sair da classificação. Verifique sua conexão e tente novamente.";
+"leaderboard_left_message" = "Você não está na classificação.";
+"leaderboard_join_again" = "Voltar";
+"leaderboard_notice_title" = "Você está na classificação";
+"leaderboard_notice_body_format" = "Você aparecerá como %@. Todos os jogadores podem ver suas estrelas e sua maior sequência. Se reinstalar o app ou trocar de celular, talvez precise começar de novo.";
+"leaderboard_notice_accept" = "Entendi";
+"leaderboard_notice_decline" = "Não me incluir";

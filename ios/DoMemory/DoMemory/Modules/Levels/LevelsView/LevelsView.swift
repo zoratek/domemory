@@ -18,6 +18,8 @@ struct LevelsView: View {
     @State private var livesEffect: LivesRowEffect?
     /// Sparkle over the star chip while a credit that just landed counts up.
     @State private var starsCredited = false
+    /// Nil once the player has answered the one-time notice.
+    @State private var leaderboardNoticeName: String?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
@@ -51,7 +53,16 @@ struct LevelsView: View {
             .fullScreenCover(isPresented: $showIntro) {
                 LevelsIntroView(source: "info_button") { showIntro = false }
             }
+            .task {
+                let service = LeaderboardService.shared
+                if await service.checkAvailability(), !service.hasAcknowledgedNotice,
+                   let words = await service.ownNameWords() {
+                    leaderboardNoticeName = LeaderboardNameFormatter.current.name(words)
+                }
+            }
             .onAppear {
+                // The notice may have been answered on the leaderboard tab.
+                refreshLeaderboardNotice()
                 viewModel.refresh()
                 viewModel.preloadLivesAd()
                 AnalyticsService.log(.screenView(name: "levels", screenClass: "LevelsView"))
@@ -76,7 +87,37 @@ struct LevelsView: View {
         }
     }
 
+    private func refreshLeaderboardNotice() {
+        if LeaderboardService.shared.hasAcknowledgedNotice {
+            leaderboardNoticeName = nil
+        }
+    }
+
     private var header: some View {
+        VStack(spacing: 12) {
+            statsHeader
+
+            if let leaderboardNoticeName {
+                LeaderboardNoticeCard(
+                    name: leaderboardNoticeName,
+                    onAccept: {
+                        AnalyticsService.log(.leaderboardNoticeAnswered(accepted: true))
+                        LeaderboardService.shared.acknowledgeNotice()
+                        self.leaderboardNoticeName = nil
+                        Task { await LeaderboardService.shared.sync() }
+                    },
+                    onDecline: {
+                        AnalyticsService.log(.leaderboardNoticeAnswered(accepted: false))
+                        LeaderboardService.shared.declineNotice()
+                        self.leaderboardNoticeName = nil
+                    }
+                )
+                .padding(.horizontal, 16)
+            }
+        }
+    }
+
+    private var statsHeader: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: 6) {

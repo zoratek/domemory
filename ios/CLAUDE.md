@@ -59,6 +59,7 @@ There are six product surfaces: the **curated board catalog** (Firebase `/data`)
 | `Multiplayer` | Two-player turn-based matches over Firebase RTDB: room create/join, 6-char codes, QR, presence, reconnect, invite links |
 | `Settings` | Difficulty, theme, haptics, reminders, purchases, Achievements, What's New, review link |
 | `AdFreeDay` | The ad-free day offer: the floating "No Ads" pill (`adFreeDayEntryPoint(source:)`) on the three menu tabs, the season map and the multiplayer lobby, and the two-ad sheet it opens (also reached from the Settings row). Never on gameplay or its modals |
+| `Leaderboard` | The board shared with Android, shown as a menu tab: tabs, own score, name picker, leaving and rejoining. `LeaderboardService` owns the rules, and the contract is `android/DOMEMORY_ANDROID_SPEC.md` §22. Nothing shows until `/config/leaderboard` allows it, and nothing is sent until the player answers the one-time notice |
 | `SharedModules` | `Difficulty`, `UserManageObject` (CoreData), `RemoteImage`, `LottieView`, `LivesRow`, `LoaderView`, intro carousel |
 
 A menu card that fills itself with artwork (`Season`, `Daily Challenge`) must mark that artwork

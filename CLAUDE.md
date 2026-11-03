@@ -25,6 +25,7 @@ ios/        SwiftUI app (live on the App Store), its changelog and plans
 android/    Jetpack Compose port (live on Google Play)
 firebase/   config, database rules, hosted season art, seed scripts, test fixtures — shared
 .plans/     cross-platform plans
+localization/ translations shared by both apps
 metadata/   App Store release copy, by version and locale
 assets/     shared media: brand/ (icon source Domemory.xcf), images/ (store screenshots,
             ads, campaigns), videos/, animations/ (Lottie), proposals/, archive/

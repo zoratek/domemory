@@ -322,3 +322,32 @@
 "lose_offer_watch_ad" = "विज्ञापन देखें";
 "lose_pay_stars_format" = "%d सितारे खर्च करें";
 "lose_life_at_stake" = "यह खेल जारी रखें, आपका जीवन नहीं जाएगा।";
+
+/* Leaderboard */
+"leaderboard_title" = "लीडरबोर्ड";
+"leaderboard_tab_stars" = "सितारे";
+"leaderboard_tab_streak" = "स्ट्रीक";
+"leaderboard_you_format" = "आप: %@";
+"leaderboard_points_to_top_stars_format" = "टॉप 50 में आने के लिए %d और सितारे चाहिए";
+"leaderboard_points_to_top_streak_format" = "टॉप 50 में आने के लिए %d और दिन चाहिए";
+"leaderboard_empty" = "अभी कोई स्कोर नहीं है। पहला बनने के लिए एक गेम पूरा करें।";
+"leaderboard_unavailable" = "लीडरबोर्ड अभी उपलब्ध नहीं है।";
+"leaderboard_failed" = "लीडरबोर्ड लोड नहीं हो सका। अपना कनेक्शन जाँचें और फिर कोशिश करें।";
+"leaderboard_retry" = "फिर कोशिश करें";
+"leaderboard_options_accessibility" = "लीडरबोर्ड विकल्प";
+"leaderboard_change_name" = "नाम बदलें";
+"leaderboard_name_title" = "अपना नाम चुनें";
+"leaderboard_name_adjective" = "विवरण";
+"leaderboard_name_animal" = "जानवर";
+"leaderboard_name_save" = "सहेजें";
+"leaderboard_name_failed" = "आपका नाम सहेजा नहीं जा सका। थोड़ी देर रुककर फिर कोशिश करें।";
+"leaderboard_leave" = "लीडरबोर्ड छोड़ें";
+"leaderboard_leave_confirm_title" = "लीडरबोर्ड छोड़ना है?";
+"leaderboard_leave_confirm_message" = "आपके स्कोर हटा दिए जाएँगे। आप कभी भी फिर जुड़ सकते हैं।";
+"leaderboard_leave_failed" = "लीडरबोर्ड छोड़ा नहीं जा सका। अपना कनेक्शन जाँचें और फिर कोशिश करें।";
+"leaderboard_left_message" = "आप लीडरबोर्ड पर नहीं हैं।";
+"leaderboard_join_again" = "फिर जुड़ें";
+"leaderboard_notice_title" = "आप लीडरबोर्ड पर हैं";
+"leaderboard_notice_body_format" = "आप %@ के रूप में दिखेंगे। सभी खिलाड़ी आपके सितारे और सबसे लंबी स्ट्रीक देख सकते हैं। ऐप दोबारा इंस्टॉल करने या फ़ोन बदलने पर आपको शायद फिर से शुरू करना पड़े।";
+"leaderboard_notice_accept" = "समझ गया";
+"leaderboard_notice_decline" = "मुझे शामिल न करें";

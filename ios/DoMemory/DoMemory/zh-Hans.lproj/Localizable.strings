@@ -322,3 +322,32 @@
 "lose_offer_watch_ad" = "观看广告";
 "lose_pay_stars_format" = "支付 %d 颗星星";
 "lose_life_at_stake" = "继续这局游戏，就不会失去生命。";
+
+/* Leaderboard */
+"leaderboard_title" = "排行榜";
+"leaderboard_tab_stars" = "星星";
+"leaderboard_tab_streak" = "连胜";
+"leaderboard_you_format" = "你：%@";
+"leaderboard_points_to_top_stars_format" = "还差 %d 颗星星进入前 50 名";
+"leaderboard_points_to_top_streak_format" = "还差 %d 天进入前 50 名";
+"leaderboard_empty" = "还没有分数。完成一局游戏，成为第一名。";
+"leaderboard_unavailable" = "排行榜暂时不可用。";
+"leaderboard_failed" = "无法加载排行榜。请检查网络连接后重试。";
+"leaderboard_retry" = "重试";
+"leaderboard_options_accessibility" = "排行榜选项";
+"leaderboard_change_name" = "更改名字";
+"leaderboard_name_title" = "选择你的名字";
+"leaderboard_name_adjective" = "描述";
+"leaderboard_name_animal" = "动物";
+"leaderboard_name_save" = "保存";
+"leaderboard_name_failed" = "无法保存名字。请稍等片刻后重试。";
+"leaderboard_leave" = "退出排行榜";
+"leaderboard_leave_confirm_title" = "要退出排行榜吗？";
+"leaderboard_leave_confirm_message" = "你的分数将被移除。你可以随时重新加入。";
+"leaderboard_leave_failed" = "无法退出排行榜。请检查网络连接后重试。";
+"leaderboard_left_message" = "你不在排行榜上。";
+"leaderboard_join_again" = "重新加入";
+"leaderboard_notice_title" = "你已在排行榜上";
+"leaderboard_notice_body_format" = "你将显示为 %@。所有玩家都能看到你的星星和最长连胜。如果重新安装应用或更换手机，可能需要从头开始。";
+"leaderboard_notice_accept" = "知道了";
+"leaderboard_notice_decline" = "不要包含我";
