@@ -15,56 +15,56 @@
     "Split View"
   ],
   "english_approved": true,
-  "english_approval_source": "User reply relayed verbatim by the release coordinator: \"go with only \\\"Bug fixes and performance improvements\\\" for all the languages\".",
+  "english_approval_source": "User reply relayed verbatim by the release coordinator: \"Bug fixes and improvements\" (replaces \"Bug fixes and performance improvements\").",
   "translation_review": "Non-English What's New is machine-written from the approved English source and has not been reviewed by native speakers. Promotional Text is 4.5.0's live localized text, kept unchanged.",
   "localizations": {
     "en-US": {
-      "whats_new": "Bug fixes and performance improvements",
+      "whats_new": "Bug fixes and improvements",
       "promotional_text": "This update brings bug fixes and improvements for a smoother DoMemory experience.",
       "status": "approved"
     },
     "es-MX": {
-      "whats_new": "Corrección de errores y mejoras de rendimiento",
+      "whats_new": "Corrección de errores y mejoras",
       "promotional_text": "Esta actualización trae corrección de errores y mejoras para una experiencia más fluida en DoMemory.",
       "status": "reviewed"
     },
     "pt-BR": {
-      "whats_new": "Correções de bugs e melhorias de desempenho",
+      "whats_new": "Correções de bugs e melhorias",
       "promotional_text": "Esta atualização traz correções de bugs e melhorias para uma experiência mais fluida no DoMemory.",
       "status": "reviewed"
     },
     "fr-FR": {
-      "whats_new": "Corrections de bugs et améliorations des performances",
+      "whats_new": "Corrections de bugs et améliorations",
       "promotional_text": "Cette mise à jour apporte des corrections de bugs et des améliorations pour une expérience DoMemory plus fluide.",
       "status": "reviewed"
     },
     "de-DE": {
-      "whats_new": "Fehlerbehebungen und Leistungsverbesserungen",
+      "whats_new": "Fehlerbehebungen und Verbesserungen",
       "promotional_text": "Dieses Update bringt Fehlerbehebungen und Verbesserungen für ein flüssigeres DoMemory-Erlebnis.",
       "status": "reviewed"
     },
     "it": {
-      "whats_new": "Correzioni di bug e miglioramenti delle prestazioni",
+      "whats_new": "Correzioni di bug e miglioramenti",
       "promotional_text": "Questo aggiornamento introduce correzioni di bug e miglioramenti per un'esperienza DoMemory più fluida.",
       "status": "reviewed"
     },
     "hi": {
-      "whats_new": "बग फ़िक्स और परफ़ॉर्मेंस में सुधार",
+      "whats_new": "बग फ़िक्स और सुधार",
       "promotional_text": "यह अपडेट DoMemory के अधिक सहज अनुभव के लिए बग फ़िक्स और सुधार लाता है।",
       "status": "reviewed"
     },
     "ko": {
-      "whats_new": "버그 수정 및 성능 개선",
+      "whats_new": "버그 수정 및 개선 사항",
       "promotional_text": "이번 업데이트에는 더 원활한 DoMemory 이용을 위한 버그 수정과 개선 사항이 포함되어 있습니다.",
       "status": "reviewed"
     },
     "ja": {
-      "whats_new": "不具合の修正とパフォーマンスの改善",
+      "whats_new": "不具合の修正と改善",
       "promotional_text": "このアップデートでは、DoMemoryをより快適にお楽しみいただけるよう、不具合の修正と改善を行いました。",
       "status": "reviewed"
     },
     "zh-Hans": {
-      "whats_new": "错误修复和性能改进",
+      "whats_new": "错误修复和改进",
       "promotional_text": "本次更新带来错误修复和改进，让 DoMemory 体验更加流畅。",
       "status": "reviewed"
     }
