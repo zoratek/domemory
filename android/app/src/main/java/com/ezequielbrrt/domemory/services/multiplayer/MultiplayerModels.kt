@@ -2,6 +2,7 @@ package com.ezequielbrrt.domemory.services.multiplayer
 
 import com.ezequielbrrt.domemory.core.model.Board
 import com.ezequielbrrt.domemory.core.model.Card
+import kotlin.random.Random
 
 /** Wire-compatible room values from spec 10.2 and iOS's MultiplayerModels.swift. */
 enum class MultiplayerRoomStatus { WAITING, READY, PLAYING, RECONNECTING, FINISHED, ABANDONED }
@@ -51,20 +52,31 @@ data class MultiplayerCard(
     companion object { fun from(card: Card) = MultiplayerCard(card.id, card.itemId, card.content, card.isFaceUp, card.isMatched) }
 }
 
-/** Stable card serialization shared by both native clients; do not shuffle this list. */
+/**
+ * Deals a room's cards, the counterpart of iOS's `makeCards`. Only the host calls this. It writes
+ * the shuffled list into the room once, and both players render that list, so they always see the
+ * same board. Clients must never reorder the cards they read from a room.
+ */
 object MultiplayerCards {
-    fun from(board: Board): List<MultiplayerCard> = if (board.isDoubleItem) {
-        board.items.flatMapIndexed { itemId, content ->
-            listOf(
-                MultiplayerCard(id = itemId * 2, itemId = itemId, content = content),
-                MultiplayerCard(id = itemId * 2 + 1, itemId = itemId, content = content),
-            )
+    fun from(board: Board, random: Random = Random.Default): List<MultiplayerCard> {
+        val cards = if (board.isDoubleItem) {
+            board.items.flatMapIndexed { itemId, content ->
+                listOf(
+                    MultiplayerCard(id = itemId * 2, itemId = itemId, content = content),
+                    MultiplayerCard(id = itemId * 2 + 1, itemId = itemId, content = content),
+                )
+            }
+        } else {
+            board.items.mapIndexed { index, content ->
+                MultiplayerCard(id = index, itemId = if (index % 2 == 0) index else index - 1, content = content)
+            }
         }
-    } else {
-        board.items.mapIndexed { index, content ->
-            MultiplayerCard(id = index, itemId = if (index % 2 == 0) index else index - 1, content = content)
-        }
+        return cards.shuffled(random)
     }
+
+    /** The same cards face down in a new order, for a rematch. */
+    fun redeal(cards: List<MultiplayerCard>, random: Random = Random.Default): List<MultiplayerCard> =
+        cards.map { it.copy(isFaceUp = false, isMatched = false) }.shuffled(random)
 }
 
 data class MultiplayerRoom(
