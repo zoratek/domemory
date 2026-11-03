@@ -3,8 +3,8 @@
 //  DoMemory
 //
 //  Sends the player's scores to the shared leaderboard and reads the top of each
-//  board. Nothing is sent until the player has seen the one-time notice
-//  (`acknowledgeNotice()`), and a failure here never affects the game.
+//  board. Every player with a score is included, and a failure here never
+//  affects the game.
 //
 
 import Foundation
@@ -33,7 +33,6 @@ final class LeaderboardService {
 
     private enum Key {
         static let noticeAcknowledged = "leaderboard.noticeAcknowledged"
-        static let hasLeft = "leaderboard.hasLeft"
         static let adjective = "leaderboard.adjective"
         static let animal = "leaderboard.animal"
         static func lastSent(_ board: LeaderboardBoard) -> String { "leaderboard.\(board.rawValue).lastSent" }
@@ -73,18 +72,9 @@ final class LeaderboardService {
     // MARK: - Participation
 
     var hasAcknowledgedNotice: Bool { defaults.bool(forKey: Key.noticeAcknowledged) }
-    var hasLeft: Bool { defaults.bool(forKey: Key.hasLeft) }
-    var isParticipating: Bool { hasAcknowledgedNotice && !hasLeft }
 
     func acknowledgeNotice() {
         defaults.set(true, forKey: Key.noticeAcknowledged)
-    }
-
-    /// The player said no at the notice, so nothing has been sent and there are no
-    /// rows to delete.
-    func declineNotice() {
-        defaults.set(true, forKey: Key.noticeAcknowledged)
-        defaults.set(true, forKey: Key.hasLeft)
     }
 
     /// Whether the leaderboard is switched on for this version. Checked once per
@@ -103,36 +93,17 @@ final class LeaderboardService {
         return LeaderboardNames.defaultWords(uid: uid)
     }
 
-    /// Deletes the player's rows and stops further writes until `rejoin()`.
-    func leave() async throws {
-        let uid = try await backend.currentUID()
-        try await backend.deleteRows(uid: uid)
-        defaults.set(true, forKey: Key.hasLeft)
-        for board in LeaderboardBoard.allCases {
-            defaults.removeObject(forKey: Key.lastSent(board))
-            defaults.removeObject(forKey: Key.lastAttempt(board))
-            defaults.removeObject(forKey: Key.reconciled(board))
-        }
-        cache.removeAll()
-    }
-
-    func rejoin() async {
-        acknowledgeNotice()
-        defaults.set(false, forKey: Key.hasLeft)
-        await sync()
-    }
-
     // MARK: - Sending scores
 
     /// Called after every finished game. Doesn't start any work unless a score is due.
     func syncAfterGame() {
-        guard isParticipating, LeaderboardBoard.allCases.contains(where: isWriteDue) else { return }
+        guard LeaderboardBoard.allCases.contains(where: isWriteDue) else { return }
         Task { await sync() }
     }
 
     /// Sends whichever scores are due. Failures are ignored, and a later game tries again.
     func sync() async {
-        guard isParticipating, !isSyncing else { return }
+        guard !isSyncing else { return }
         guard LeaderboardBoard.allCases.contains(where: isWriteDue) else { return }
         isSyncing = true
         defer { isSyncing = false }
@@ -160,7 +131,6 @@ final class LeaderboardService {
     /// Changes the player's name on any rows they have. Without one yet, the pick
     /// is sent with their first score.
     func pickName(adjective: Int, animal: Int) async throws {
-        guard isParticipating else { throw LeaderboardError.notParticipating }
         guard LeaderboardNames.isValid(adjective: adjective, animal: animal) else {
             throw LeaderboardError.invalidName
         }

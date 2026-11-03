@@ -19,8 +19,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.LocalFireDepartment
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -78,7 +78,6 @@ fun LeaderboardScreen(
     val palette = LocalPalette.current
     val scope = rememberCoroutineScope()
     var showNamePicker by remember { mutableStateOf(false) }
-    var showLeaveConfirmation by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         AnalyticsService.log(AnalyticsEvent.LeaderboardOpened)
@@ -101,8 +100,7 @@ fun LeaderboardScreen(
                     if (state.hasAcknowledgedNotice == false) {
                         LeaderboardNoticeCard(
                             name = state.ownName,
-                            onAccept = { scope.launch { viewModel.acceptNotice() } },
-                            onDecline = { scope.launch { viewModel.declineNotice() } },
+                            onDismiss = { scope.launch { viewModel.dismissNotice() } },
                         )
                     }
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -114,26 +112,22 @@ fun LeaderboardScreen(
                             },
                             modifier = Modifier.weight(1f),
                         )
-                        if (state.isParticipating) {
-                            OptionsMenu(
-                                enabled = !state.isWorking && state.isLoaded,
-                                onChangeName = { showNamePicker = true },
-                                onLeave = { showLeaveConfirmation = true },
-                            )
+                        val changeNameLabel = stringResource(R.string.leaderboard_change_name)
+                        IconButton(
+                            onClick = {
+                                HapticsService.fire(HapticIntent.TAP)
+                                showNamePicker = true
+                            },
+                            enabled = !state.isWorking && state.isLoaded,
+                            modifier = Modifier.semantics { contentDescription = changeNameLabel },
+                        ) {
+                            Icon(Icons.Filled.Edit, contentDescription = null, tint = palette.primary)
                         }
                     }
                     if (loaded == null) {
                         NotLoadedContent(state.content, onRetry = { scope.launch { viewModel.load() } })
-                    } else if (state.isParticipating) {
+                    } else {
                         OwnSummary(loaded, state.ownName)
-                    } else if (state.hasAcknowledgedNotice == true) {
-                        RejoinCard(
-                            enabled = !state.isWorking,
-                            onRejoin = {
-                                HapticsService.fire(HapticIntent.TAP)
-                                scope.launch { viewModel.rejoin() }
-                            },
-                        )
                     }
                     if (loaded != null && loaded.rows.isEmpty()) {
                         Message(stringResource(R.string.leaderboard_empty))
@@ -168,36 +162,10 @@ fun LeaderboardScreen(
         )
     }
 
-    if (showLeaveConfirmation) {
-        AlertDialog(
-            onDismissRequest = { showLeaveConfirmation = false },
-            title = { Text(stringResource(R.string.leaderboard_leave_confirm_title)) },
-            text = { Text(stringResource(R.string.leaderboard_leave_confirm_message)) },
-            confirmButton = {
-                TextButton(onClick = {
-                    showLeaveConfirmation = false
-                    scope.launch { viewModel.leave() }
-                }) { Text(stringResource(R.string.leaderboard_leave), color = palette.secondary) }
-            },
-            dismissButton = {
-                TextButton(onClick = { showLeaveConfirmation = false }) { Text(stringResource(R.string.common_cancel)) }
-            },
-        )
-    }
-
-    state.failure?.let { failure ->
+    if (state.nameFailed) {
         AlertDialog(
             onDismissRequest = viewModel::dismissFailure,
-            text = {
-                Text(
-                    stringResource(
-                        when (failure) {
-                            LeaderboardViewModel.Failure.NAME -> R.string.leaderboard_name_failed
-                            LeaderboardViewModel.Failure.LEAVE -> R.string.leaderboard_leave_failed
-                        },
-                    ),
-                )
-            },
+            text = { Text(stringResource(R.string.leaderboard_name_failed)) },
             confirmButton = {
                 TextButton(onClick = viewModel::dismissFailure) { Text(stringResource(R.string.common_ok)) }
             },
@@ -224,40 +192,6 @@ private fun NotLoadedContent(content: LeaderboardViewModel.Content, onRetry: () 
             Modifier.fillMaxWidth().padding(vertical = 48.dp),
             contentAlignment = Alignment.Center,
         ) { CircularProgressIndicator(color = palette.primary) }
-    }
-}
-
-@Composable
-private fun OptionsMenu(enabled: Boolean, onChangeName: () -> Unit, onLeave: () -> Unit) {
-    val palette = LocalPalette.current
-    val label = stringResource(R.string.leaderboard_options_accessibility)
-    var expanded by remember { mutableStateOf(false) }
-    Box {
-        IconButton(
-            onClick = { expanded = true },
-            enabled = enabled,
-            modifier = Modifier.semantics { contentDescription = label },
-        ) {
-            Icon(Icons.Filled.MoreVert, contentDescription = null, tint = palette.textPrimary)
-        }
-        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-            DropdownMenuItem(
-                text = { Text(stringResource(R.string.leaderboard_change_name)) },
-                onClick = {
-                    HapticsService.fire(HapticIntent.TAP)
-                    expanded = false
-                    onChangeName()
-                },
-            )
-            DropdownMenuItem(
-                text = { Text(stringResource(R.string.leaderboard_leave), color = palette.secondary) },
-                onClick = {
-                    HapticsService.fire(HapticIntent.TAP)
-                    expanded = false
-                    onLeave()
-                },
-            )
-        }
     }
 }
 
@@ -395,31 +329,9 @@ private fun Message(text: String) {
     )
 }
 
+/** The one-time notice telling a player they're on the public leaderboard. */
 @Composable
-private fun RejoinCard(enabled: Boolean, onRejoin: () -> Unit) {
-    val palette = LocalPalette.current
-    Column(
-        Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
-            .background(palette.surfacePrimary)
-            .border(BorderStroke(1.dp, palette.surfaceBorder), RoundedCornerShape(14.dp))
-            .padding(14.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        Text(stringResource(R.string.leaderboard_left_message), fontSize = 14.sp, color = palette.textSecondary, textAlign = TextAlign.Center)
-        Button(
-            onClick = onRejoin,
-            enabled = enabled,
-            colors = ButtonDefaults.buttonColors(containerColor = palette.primary),
-        ) { Text(stringResource(R.string.leaderboard_join_again)) }
-    }
-}
-
-/** The one-time notice shown before a player's first score is sent. */
-@Composable
-fun LeaderboardNoticeCard(name: String, onAccept: () -> Unit, onDecline: () -> Unit, modifier: Modifier = Modifier) {
+fun LeaderboardNoticeCard(name: String, onDismiss: () -> Unit, modifier: Modifier = Modifier) {
     val palette = LocalPalette.current
     Column(
         modifier
@@ -441,19 +353,13 @@ fun LeaderboardNoticeCard(name: String, onAccept: () -> Unit, onDecline: () -> U
             fontSize = 14.sp,
             color = palette.textSecondary,
         )
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Button(
-                onClick = {
-                    HapticsService.fire(HapticIntent.TAP)
-                    onAccept()
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = palette.primary),
-            ) { Text(stringResource(R.string.leaderboard_notice_accept)) }
-            TextButton(onClick = {
+        Button(
+            onClick = {
                 HapticsService.fire(HapticIntent.TAP)
-                onDecline()
-            }) { Text(stringResource(R.string.leaderboard_notice_decline), color = palette.textSecondary) }
-        }
+                onDismiss()
+            },
+            colors = ButtonDefaults.buttonColors(containerColor = palette.primary),
+        ) { Text(stringResource(R.string.leaderboard_notice_accept)) }
     }
 }
 

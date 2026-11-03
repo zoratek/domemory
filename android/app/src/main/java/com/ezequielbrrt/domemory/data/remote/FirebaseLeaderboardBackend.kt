@@ -61,10 +61,6 @@ class FirebaseLeaderboardBackend(
         update(values)
     }
 
-    override suspend fun deleteRows(uid: String) {
-        update(LeaderboardBoard.entries.associate { "${it.path}/$uid" to null })
-    }
-
     private suspend fun update(values: Map<String, Any?>) = withTimeout(TIMEOUT_MILLIS) {
         database.reference.updateChildren(values).await()
     }

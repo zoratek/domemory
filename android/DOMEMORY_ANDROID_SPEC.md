@@ -2159,12 +2159,11 @@ the form, falling back to the first. Fall back to English for any other locale.
 
 ### 22.5 Writing
 
-- Show a one-time notice before a player's first score is sent, on the Levels screen
-  and on the leaderboard itself, so players who never open the board still see it.
-  Nothing is sent until the player accepts, so a player who ignores the notice isn't
-  included. Declining sends nothing and works like leaving. Hide the notice and the fourth menu
-  tab until `/config/leaderboard` allows them, checking once per launch. The tab shows no
-  banner while it's selected.
+- Every player with a score is included. There is no way to decline or leave.
+- Show a one-time notice on the Levels screen and on the leaderboard saying the player's
+  name and scores are public. It's information only, and scores don't wait for it. Hide
+  the notice and the fourth menu tab until `/config/leaderboard` allows them, checking
+  once per launch. The tab shows no banner while it's selected.
 - Add an existing player on their first finished game or first board open after
   updating, never at launch.
 - Before the first write on an install, read the player's own rows once. A reinstall
@@ -2173,8 +2172,6 @@ the form, falling back to the first. Fall back to English for any other locale.
 - After that, write only when a score is above the last value sent, at most once
   every 10 minutes per board. A failed or skipped write is retried after the next
   finished game. Gameplay never waits for it.
-- Leaving deletes both rows and sets a local flag that stops further writes until the
-  player rejoins.
 - **Android:** `LevelProgressService.recordCompletion` returns before DataStore has
   saved the stars, so read the score after that write completes.
 

@@ -590,10 +590,6 @@ class UserPreferences(private val dataStore: DataStore<Preferences>) {
 
     suspend fun setLeaderboardNoticeAcknowledged(value: Boolean) = setBoolean(Keys.LEADERBOARD_NOTICE_ACKNOWLEDGED, value)
 
-    val leaderboardHasLeft: Flow<Boolean> = booleanFlow(Keys.LEADERBOARD_HAS_LEFT, default = false)
-
-    suspend fun setLeaderboardHasLeft(value: Boolean) = setBoolean(Keys.LEADERBOARD_HAS_LEFT, value)
-
     /** The player's picked adjective and animal numbers, or null while they use the default name. */
     val leaderboardPickedWords: Flow<Pair<Int, Int>?> = dataStore.data.map { prefs ->
         val adjective = prefs[Keys.LEADERBOARD_ADJECTIVE]
@@ -624,14 +620,6 @@ class UserPreferences(private val dataStore: DataStore<Preferences>) {
     fun leaderboardReconciled(board: String): Flow<Boolean> = booleanFlow(leaderboardReconciledKey(board), default = false)
 
     suspend fun setLeaderboardReconciled(board: String, value: Boolean) = setBoolean(leaderboardReconciledKey(board), value)
-
-    suspend fun clearLeaderboardBoard(board: String) {
-        dataStore.edit { prefs ->
-            prefs.remove(leaderboardLastSentKey(board))
-            prefs.remove(leaderboardLastAttemptKey(board))
-            prefs.remove(leaderboardReconciledKey(board))
-        }
-    }
 
     private fun leaderboardLastSentKey(board: String) = intPreferencesKey("leaderboard.$board.lastSent")
 
@@ -714,7 +702,6 @@ class UserPreferences(private val dataStore: DataStore<Preferences>) {
 /** All Preferences keys, static and dynamic, live here so no call site builds one by hand. */
 private object Keys {
     val LEADERBOARD_NOTICE_ACKNOWLEDGED = booleanPreferencesKey("leaderboard.noticeAcknowledged")
-    val LEADERBOARD_HAS_LEFT = booleanPreferencesKey("leaderboard.hasLeft")
     val LEADERBOARD_ADJECTIVE = intPreferencesKey("leaderboard.adjective")
     val LEADERBOARD_ANIMAL = intPreferencesKey("leaderboard.animal")
     val HAS_ONBOARDED = booleanPreferencesKey("hasOnboarded")

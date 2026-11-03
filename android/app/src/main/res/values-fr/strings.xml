@@ -343,21 +343,13 @@
     <string name="leaderboard_unavailable">Le classement n\'est pas disponible pour le moment.</string>
     <string name="leaderboard_failed">Impossible de charger le classement. Vérifiez votre connexion et réessayez.</string>
     <string name="leaderboard_retry">Réessayer</string>
-    <string name="leaderboard_options_accessibility">Options du classement</string>
     <string name="leaderboard_change_name">Changer de nom</string>
     <string name="leaderboard_name_title">Choisissez votre nom</string>
     <string name="leaderboard_name_adjective">Description</string>
     <string name="leaderboard_name_animal">Animal</string>
     <string name="leaderboard_name_save">Enregistrer</string>
     <string name="leaderboard_name_failed">Impossible d\'enregistrer votre nom. Patientez un instant et réessayez.</string>
-    <string name="leaderboard_leave">Quitter le classement</string>
-    <string name="leaderboard_leave_confirm_title">Quitter le classement ?</string>
-    <string name="leaderboard_leave_confirm_message">Vos scores seront supprimés. Vous pouvez revenir à tout moment.</string>
-    <string name="leaderboard_leave_failed">Impossible de quitter le classement. Vérifiez votre connexion et réessayez.</string>
-    <string name="leaderboard_left_message">Vous n\'êtes pas dans le classement.</string>
-    <string name="leaderboard_join_again">Revenir</string>
     <string name="leaderboard_notice_title">Vous êtes dans le classement</string>
     <string name="leaderboard_notice_body_format">Vous apparaîtrez sous le nom %1$s. Tous les joueurs peuvent voir vos étoiles et votre plus longue série. Si vous réinstallez l\'app ou changez de téléphone, vous pourriez repartir de zéro.</string>
     <string name="leaderboard_notice_accept">Compris</string>
-    <string name="leaderboard_notice_decline">Ne pas m\'inclure</string>
 </resources>

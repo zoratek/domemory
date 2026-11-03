@@ -9,7 +9,7 @@ The contract is in `android/DOMEMORY_ANDROID_SPEC.md` §22.
 
 | Question | Decision |
 |---|---|
-| Joining | Offered to everyone through a one-time notice. A player is included when they tap Got It, and can leave at any time. A player who ignores the notice isn't included |
+| Joining | Every player with a score is included automatically, with no way to decline or leave (changed 2026-11-03). A one-time notice tells them their name and scores are public. Removal requests go through the admin script |
 | Names | Generated, and changeable only by picking from the word lists |
 | Scores | Lifetime stars and longest Daily Challenge streak |
 | Board size | Top 50, cached for 15 minutes |

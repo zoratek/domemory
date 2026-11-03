@@ -64,10 +64,8 @@ enum AnalyticsEvent {
     case achievementsOpened(source: String)
     case leaderboardOpened
     case leaderboardBoardSelected(board: String)
-    case leaderboardNoticeAnswered(accepted: Bool)
+    case leaderboardNoticeDismissed
     case leaderboardNameChanged
-    case leaderboardLeft
-    case leaderboardRejoined
     /// Only logged when the pick differs from the current theme. Values are
     /// `AppTheme` raw values: `system`, `light`, `dark`.
     case themeChanged(theme: String, previousTheme: String)
@@ -162,10 +160,8 @@ enum AnalyticsEvent {
         case .achievementsOpened: return "achievements_opened"
         case .leaderboardOpened: return "leaderboard_opened"
         case .leaderboardBoardSelected: return "leaderboard_board_selected"
-        case .leaderboardNoticeAnswered: return "leaderboard_notice_answered"
+        case .leaderboardNoticeDismissed: return "leaderboard_notice_dismissed"
         case .leaderboardNameChanged: return "leaderboard_name_changed"
-        case .leaderboardLeft: return "leaderboard_left"
-        case .leaderboardRejoined: return "leaderboard_rejoined"
         case .themeChanged: return "theme_changed"
         case .levelStarted: return "level_started"
         case .levelFinished: return "level_finished"
@@ -331,12 +327,10 @@ enum AnalyticsEvent {
             return [:]
         case .achievementsOpened(let source):
             return ["source": source]
-        case .leaderboardOpened, .leaderboardNameChanged, .leaderboardLeft, .leaderboardRejoined:
+        case .leaderboardOpened, .leaderboardNameChanged, .leaderboardNoticeDismissed:
             return [:]
         case .leaderboardBoardSelected(let board):
             return ["board": board]
-        case .leaderboardNoticeAnswered(let accepted):
-            return ["accepted": accepted ? 1 : 0]
         case .themeChanged(let theme, let previousTheme):
             return [
                 "theme": theme,

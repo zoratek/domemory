@@ -10,7 +10,6 @@ data class LeaderboardWrite(val board: LeaderboardBoard, val score: Int, val wor
 
 sealed class LeaderboardException : Exception() {
     data object Unavailable : LeaderboardException() { private fun readResolve(): Any = Unavailable }
-    data object NotParticipating : LeaderboardException() { private fun readResolve(): Any = NotParticipating }
     data object InvalidName : LeaderboardException() { private fun readResolve(): Any = InvalidName }
 }
 
@@ -21,7 +20,6 @@ interface LeaderboardBackend {
     suspend fun readTop(board: LeaderboardBoard): Map<String, Any?>
     suspend fun readRow(board: LeaderboardBoard, uid: String): Any?
     suspend fun write(writes: List<LeaderboardWrite>, uid: String)
-    suspend fun deleteRows(uid: String)
 }
 
 data class LeaderboardSnapshot(
@@ -45,8 +43,8 @@ data class LeaderboardSnapshot(
 
 /**
  * Sends the player's scores to the shared leaderboard and reads the top of each board (spec
- * 22), the counterpart of iOS's `LeaderboardService`. Nothing is sent until the player has
- * answered the one-time notice, and a failure here never affects the game.
+ * 22), the counterpart of iOS's `LeaderboardService`. Every player with a score is included,
+ * and a failure here never affects the game.
  */
 class LeaderboardService(
     private val prefs: UserPreferences,
@@ -66,17 +64,7 @@ class LeaderboardService(
 
     suspend fun hasAcknowledgedNotice(): Boolean = prefs.leaderboardNoticeAcknowledged.first()
 
-    suspend fun hasLeft(): Boolean = prefs.leaderboardHasLeft.first()
-
-    suspend fun isParticipating(): Boolean = hasAcknowledgedNotice() && !hasLeft()
-
     suspend fun acknowledgeNotice() = prefs.setLeaderboardNoticeAcknowledged(true)
-
-    /** The player said no at the notice, so nothing has been sent and there are no rows to delete. */
-    suspend fun declineNotice() {
-        prefs.setLeaderboardNoticeAcknowledged(true)
-        prefs.setLeaderboardHasLeft(true)
-    }
 
     /** Whether the leaderboard is on for this version, checked once per launch. Any failure means no. */
     suspend fun checkAvailability(): Boolean {
@@ -90,25 +78,10 @@ class LeaderboardService(
     suspend fun ownNameWords(): LeaderboardNameWords? =
         pickedWords() ?: runCatching { LeaderboardNames.defaultWords(backend.currentUid()) }.getOrNull()
 
-    /** Deletes the player's rows and stops further writes until [rejoin]. */
-    suspend fun leave() {
-        backend.deleteRows(backend.currentUid())
-        prefs.setLeaderboardHasLeft(true)
-        LeaderboardBoard.entries.forEach { prefs.clearLeaderboardBoard(it.key) }
-        cache.clear()
-    }
-
-    suspend fun rejoin() {
-        acknowledgeNotice()
-        prefs.setLeaderboardHasLeft(false)
-        sync()
-    }
-
     // -- Sending scores ------------------------------------------------------------------
 
     /** Sends whichever scores are due. Failures are ignored, and a later game tries again. */
     suspend fun sync() {
-        if (!isParticipating()) return
         syncLock.withLock {
             if (LeaderboardBoard.entries.none { isWriteDue(it) }) return
             runCatching {
@@ -130,7 +103,6 @@ class LeaderboardService(
 
     /** Changes the player's name on any rows they have. Without one yet, the pick is sent with their first score. */
     suspend fun pickName(adjective: Int, animal: Int) {
-        if (!isParticipating()) throw LeaderboardException.NotParticipating
         if (!LeaderboardNames.isValid(adjective, animal)) throw LeaderboardException.InvalidName
         if (!isAvailable()) throw LeaderboardException.Unavailable
 

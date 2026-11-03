@@ -19,7 +19,6 @@ final class LeaderboardViewModel {
     private(set) var board: LeaderboardBoard = .stars
     private(set) var content: Content = .loading
     private(set) var hasAcknowledgedNotice: Bool
-    private(set) var hasLeft: Bool
     private(set) var ownName = ""
     private(set) var isWorking = false
     var errorMessage: String?
@@ -32,10 +31,7 @@ final class LeaderboardViewModel {
         self.service = service
         self.formatter = formatter
         hasAcknowledgedNotice = service.hasAcknowledgedNotice
-        hasLeft = service.hasLeft
     }
-
-    var isParticipating: Bool { hasAcknowledgedNotice && !hasLeft }
 
     var isLoaded: Bool {
         if case .loaded = content { return true }
@@ -49,7 +45,6 @@ final class LeaderboardViewModel {
     func open() async {
         // The notice may have been answered on the Levels tab since this last appeared.
         hasAcknowledgedNotice = service.hasAcknowledgedNotice
-        hasLeft = service.hasLeft
         await refreshName()
         await service.sync()
         await load()
@@ -60,6 +55,12 @@ final class LeaderboardViewModel {
         self.board = board
         AnalyticsService.log(.leaderboardBoardSelected(board: board.rawValue))
         await load()
+    }
+
+    func dismissNotice() {
+        service.acknowledgeNotice()
+        hasAcknowledgedNotice = true
+        AnalyticsService.log(.leaderboardNoticeDismissed)
     }
 
     func load() async {
@@ -76,45 +77,6 @@ final class LeaderboardViewModel {
             guard requested == board else { return }
             content = .failed
         }
-    }
-
-    func acceptNotice() async {
-        service.acknowledgeNotice()
-        hasAcknowledgedNotice = true
-        AnalyticsService.log(.leaderboardNoticeAnswered(accepted: true))
-        await service.sync()
-        await load()
-    }
-
-    func declineNotice() {
-        service.declineNotice()
-        hasAcknowledgedNotice = true
-        hasLeft = true
-        AnalyticsService.log(.leaderboardNoticeAnswered(accepted: false))
-    }
-
-    func leave() async {
-        isWorking = true
-        defer { isWorking = false }
-        do {
-            try await service.leave()
-            hasLeft = true
-            AnalyticsService.log(.leaderboardLeft)
-            await load()
-        } catch {
-            errorMessage = Strings.leaderboardLeaveFailed
-        }
-    }
-
-    func rejoin() async {
-        isWorking = true
-        defer { isWorking = false }
-        await service.rejoin()
-        hasAcknowledgedNotice = true
-        hasLeft = false
-        AnalyticsService.log(.leaderboardRejoined)
-        await refreshName()
-        await load()
     }
 
     /// Returns true when the name was saved.
