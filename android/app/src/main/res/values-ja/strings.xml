@@ -343,21 +343,13 @@
     <string name="leaderboard_unavailable">ランキングは現在利用できません。</string>
     <string name="leaderboard_failed">ランキングを読み込めませんでした。接続を確認して、もう一度お試しください。</string>
     <string name="leaderboard_retry">もう一度試す</string>
-    <string name="leaderboard_options_accessibility">ランキングのオプション</string>
     <string name="leaderboard_change_name">名前を変更</string>
     <string name="leaderboard_name_title">名前を選択</string>
     <string name="leaderboard_name_adjective">説明</string>
     <string name="leaderboard_name_animal">動物</string>
     <string name="leaderboard_name_save">保存</string>
     <string name="leaderboard_name_failed">名前を保存できませんでした。少し待ってから、もう一度お試しください。</string>
-    <string name="leaderboard_leave">ランキングから退出</string>
-    <string name="leaderboard_leave_confirm_title">ランキングから退出しますか？</string>
-    <string name="leaderboard_leave_confirm_message">スコアは削除されます。いつでも再び参加できます。</string>
-    <string name="leaderboard_leave_failed">ランキングから退出できませんでした。接続を確認して、もう一度お試しください。</string>
-    <string name="leaderboard_left_message">ランキングに参加していません。</string>
-    <string name="leaderboard_join_again">再び参加</string>
     <string name="leaderboard_notice_title">ランキングに参加しています</string>
     <string name="leaderboard_notice_body_format">%1$sとして表示されます。スターと最長連続記録はすべてのプレイヤーに公開されます。再インストールやスマートフォンの変更を行うと、最初からになる場合があります。</string>
     <string name="leaderboard_notice_accept">OK</string>
-    <string name="leaderboard_notice_decline">参加しない</string>
 </resources>

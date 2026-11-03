@@ -84,21 +84,11 @@ class LevelsViewModel(
         }
     }
 
-    fun acceptLeaderboardNotice() {
+    fun dismissLeaderboardNotice() {
         val service = leaderboard ?: return
         _uiState.update { it.copy(leaderboardNoticeName = null) }
-        onAnalytics?.invoke(AnalyticsEvent.LeaderboardNoticeAnswered(accepted = true))
-        workScope.launch {
-            service.acknowledgeNotice()
-            service.sync()
-        }
-    }
-
-    fun declineLeaderboardNotice() {
-        val service = leaderboard ?: return
-        _uiState.update { it.copy(leaderboardNoticeName = null) }
-        onAnalytics?.invoke(AnalyticsEvent.LeaderboardNoticeAnswered(accepted = false))
-        workScope.launch { service.declineNotice() }
+        onAnalytics?.invoke(AnalyticsEvent.LeaderboardNoticeDismissed)
+        workScope.launch { service.acknowledgeNotice() }
     }
 
     /** Clears a played heart effect so it does not replay on the next recomposition. */

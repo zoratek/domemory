@@ -99,7 +99,7 @@ class AppContainer(
     val multiplayer = MultiplayerService()
     val whatsNew = WhatsNewManager(prefs, BuildConfig.VERSION_NAME)
 
-    /** The board shared with iOS (spec 22). Stays inactive until the player answers its notice. */
+    /** The board shared with iOS (spec 22). Includes every player with a score. */
     val leaderboard = LeaderboardService(
         prefs = prefs,
         backend = leaderboardBackend,

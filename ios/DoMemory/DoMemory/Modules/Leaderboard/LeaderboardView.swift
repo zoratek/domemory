@@ -8,7 +8,6 @@ import SwiftUI
 struct LeaderboardView: View {
     @State private var viewModel = LeaderboardViewModel()
     @State private var showNamePicker = false
-    @State private var showLeaveConfirmation = false
 
     var body: some View {
         ZStack {
@@ -19,8 +18,7 @@ struct LeaderboardView: View {
                     if !viewModel.hasAcknowledgedNotice {
                         LeaderboardNoticeCard(
                             name: viewModel.ownName,
-                            onAccept: { Task { await viewModel.acceptNotice() } },
-                            onDecline: { viewModel.declineNotice() }
+                            onDismiss: { viewModel.dismissNotice() }
                         )
                     }
 
@@ -31,10 +29,19 @@ struct LeaderboardView: View {
                         }
                         .pickerStyle(.segmented)
 
-                        // The menu hides its navigation bar, so a toolbar item wouldn't show in a tab.
-                        if viewModel.isParticipating {
-                            optionsMenu
+                        Button {
+                            HapticsService.shared.fire(.tap)
+                            showNamePicker = true
+                        } label: {
+                            Image(systemName: "pencil.circle")
+                                .font(.system(size: 22, weight: .regular))
+                                .foregroundStyle(Color.primaryColor)
+                                .frame(minWidth: 44, minHeight: 44)
+                                .contentShape(Rectangle())
                         }
+                        .buttonStyle(.plain)
+                        .disabled(viewModel.isWorking || !viewModel.isLoaded)
+                        .accessibilityLabel(Strings.leaderboardChangeName)
                     }
 
                     content
@@ -53,18 +60,6 @@ struct LeaderboardView: View {
                 await viewModel.pickName(adjective: adjective, animal: animal)
             }
         }
-        .confirmationDialog(
-            Strings.leaderboardLeaveConfirmTitle,
-            isPresented: $showLeaveConfirmation,
-            titleVisibility: .visible
-        ) {
-            Button(Strings.leaderboardLeave, role: .destructive) {
-                Task { await viewModel.leave() }
-            }
-            Button(Strings.cancel, role: .cancel) {}
-        } message: {
-            Text(Strings.leaderboardLeaveConfirmMessage)
-        }
         .alert(
             viewModel.errorMessage ?? "",
             isPresented: Binding(
@@ -74,27 +69,6 @@ struct LeaderboardView: View {
         ) {
             Button(Strings.ok, role: .cancel) {}
         }
-    }
-
-    private var optionsMenu: some View {
-        Menu {
-            Button(Strings.leaderboardChangeName, systemImage: "pencil") {
-                HapticsService.shared.fire(.tap)
-                showNamePicker = true
-            }
-            Button(Strings.leaderboardLeave, systemImage: "person.fill.xmark", role: .destructive) {
-                HapticsService.shared.fire(.tap)
-                showLeaveConfirmation = true
-            }
-        } label: {
-            Image(systemName: "ellipsis.circle")
-                .font(.system(size: 22, weight: .regular))
-                .foregroundStyle(Color.primaryColor)
-                .frame(minWidth: 44, minHeight: 44)
-                .contentShape(Rectangle())
-                .accessibilityLabel(Strings.leaderboardOptionsAccessibility)
-        }
-        .disabled(viewModel.isWorking || !viewModel.isLoaded)
     }
 
     private var boardSelection: Binding<LeaderboardBoard> {
@@ -141,11 +115,7 @@ struct LeaderboardView: View {
 
     private func loaded(_ snapshot: LeaderboardSnapshot) -> some View {
         VStack(spacing: 16) {
-            if viewModel.isParticipating {
-                ownSummary(snapshot)
-            } else if viewModel.hasAcknowledgedNotice {
-                rejoinCard
-            }
+            ownSummary(snapshot)
 
             if snapshot.rows.isEmpty {
                 message(Strings.leaderboardEmpty)
@@ -194,29 +164,6 @@ struct LeaderboardView: View {
         )
     }
 
-    private var rejoinCard: some View {
-        VStack(spacing: 8) {
-            Text(Strings.leaderboardLeftMessage)
-                .font(.system(size: 14, weight: .medium, design: .rounded))
-                .foregroundStyle(Color.textMuted)
-                .multilineTextAlignment(.center)
-            Button(Strings.leaderboardJoinAgain) {
-                HapticsService.shared.fire(.tap)
-                Task { await viewModel.rejoin() }
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(Color.primaryColor)
-            .font(.system(size: 14, weight: .semibold, design: .rounded))
-            .disabled(viewModel.isWorking)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(14)
-        .background(
-            RoundedRectangle(cornerRadius: 14)
-                .fill(Color.surfacePrimary)
-                .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.surfaceBorder, lineWidth: 1))
-        )
-    }
 }
 
 private struct LeaderboardRowView: View {
@@ -264,11 +211,10 @@ private struct LeaderboardScore: View {
     }
 }
 
-/// The one-time notice shown before a player's first score is sent.
+/// The one-time notice telling a player they're on the public leaderboard.
 struct LeaderboardNoticeCard: View {
     let name: String
-    let onAccept: () -> Void
-    let onDecline: () -> Void
+    let onDismiss: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -279,20 +225,12 @@ struct LeaderboardNoticeCard: View {
                 .font(.system(size: 14, weight: .medium, design: .rounded))
                 .foregroundStyle(Color.textMuted)
                 .fixedSize(horizontal: false, vertical: true)
-            HStack(spacing: 12) {
-                Button(Strings.leaderboardNoticeAccept) {
-                    HapticsService.shared.fire(.tap)
-                    onAccept()
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(Color.primaryColor)
-
-                Button(Strings.leaderboardNoticeDecline) {
-                    HapticsService.shared.fire(.tap)
-                    onDecline()
-                }
-                .foregroundStyle(Color.textMuted)
+            Button(Strings.leaderboardNoticeAccept) {
+                HapticsService.shared.fire(.tap)
+                onDismiss()
             }
+            .buttonStyle(.borderedProminent)
+            .tint(Color.primaryColor)
             .font(.system(size: 14, weight: .semibold, design: .rounded))
         }
         .frame(maxWidth: .infinity, alignment: .leading)

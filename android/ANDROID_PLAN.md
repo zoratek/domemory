@@ -1707,8 +1707,8 @@ clients need no change. `MultiplayerCardsTest` previously pinned the bug as "iOS
 guards against it. Verified with unit tests only; a live match hosted on Android is still to do.
 
 **Leaderboard, 2026-11-03 (L4 of `.plans/leaderboard.md`).** Adds the board shared with iOS (spec 22)
-as a fourth menu tab, the one-time notice on the Levels screen and the tab, the name picker, leaving
-and rejoining, and six `leaderboard_*` analytics events. All of it stays hidden until
+as a fourth menu tab, a one-time information notice on the Levels screen and the tab, the name picker,
+and four `leaderboard_*` analytics events. Every player with a score is included, with no way to leave. All of it stays hidden until
 `/config/leaderboard` enables Android. `Stars.award` now rounds remaining time up to match iOS's
 whole-second clock, so a win within a second of a threshold can rate one star higher than before.
 Verification: `assembleDebug testDebugUnitTest` 529/0, including `LeaderboardContractTest`, which

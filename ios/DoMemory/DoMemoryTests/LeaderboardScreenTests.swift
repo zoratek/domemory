@@ -65,8 +65,6 @@ private final class ScreenBackend: LeaderboardBackend {
     var rows: [String: Any] = [:]
     var configReads = 0
     var writes = 0
-    var deletes = 0
-    var failDeletes = false
     var failWrites = false
     var failTopReads = false
 
@@ -83,10 +81,6 @@ private final class ScreenBackend: LeaderboardBackend {
     func write(_ writes: [LeaderboardWrite], uid: String) async throws {
         if failWrites { throw LeaderboardError.timedOut }
         self.writes += 1
-    }
-    func deleteRows(uid: String) async throws {
-        if failDeletes { throw LeaderboardError.timedOut }
-        deletes += 1
     }
 }
 
@@ -115,31 +109,21 @@ final class LeaderboardViewModelTests: XCTestCase {
         defaults.removePersistentDomain(forName: suiteName)
     }
 
-    func testOpeningBeforeTheNoticeLoadsTheBoardButSendsNothing() async {
+    func testOpeningSendsTheScoreAndLoadsTheBoard() async {
         backend.rows = ["a": ["s": 5, "t": 1]]
         await viewModel.open()
-        XCTAssertFalse(viewModel.hasAcknowledgedNotice)
-        XCTAssertEqual(backend.writes, 0)
+        XCTAssertEqual(backend.writes, 1)
         guard case .loaded(let snapshot) = viewModel.content else {
             return XCTFail("Expected a loaded board")
         }
         XCTAssertEqual(snapshot.rows.map(\.uid), ["a"])
     }
 
-    func testAcceptingTheNoticeSendsTheScore() async {
-        await viewModel.acceptNotice()
-        XCTAssertTrue(viewModel.isParticipating)
-        XCTAssertEqual(backend.writes, 1)
-    }
-
-    func testDecliningTheNoticeSendsNothingAndUsesNoNetwork() async {
-        viewModel.declineNotice()
-        XCTAssertFalse(viewModel.isParticipating)
-        XCTAssertTrue(viewModel.hasLeft)
-        await service.sync()
-        XCTAssertEqual(backend.writes, 0)
-        XCTAssertEqual(backend.deletes, 0)
-        XCTAssertEqual(backend.configReads, 0)
+    func testDismissingTheNoticeRemembersIt() async {
+        XCTAssertFalse(viewModel.hasAcknowledgedNotice)
+        viewModel.dismissNotice()
+        XCTAssertTrue(viewModel.hasAcknowledgedNotice)
+        XCTAssertTrue(service.hasAcknowledgedNotice)
     }
 
     func testTheKillSwitchShowsTheUnavailableState() async {
@@ -158,34 +142,13 @@ final class LeaderboardViewModelTests: XCTestCase {
         guard case .loaded = viewModel.content else { return XCTFail("Expected a loaded board") }
     }
 
-    func testAFailedLeaveKeepsThePlayerOnTheBoardAndExplains() async {
-        await viewModel.acceptNotice()
-        backend.failDeletes = true
-        await viewModel.leave()
-        XCTAssertTrue(viewModel.isParticipating)
-        XCTAssertEqual(viewModel.errorMessage, Strings.leaderboardLeaveFailed)
-    }
-
-    func testLeavingThenRejoining() async {
-        await viewModel.acceptNotice()
-        await viewModel.leave()
-        XCTAssertFalse(viewModel.isParticipating)
-        XCTAssertEqual(backend.deletes, 1)
-
-        await viewModel.rejoin()
-        XCTAssertTrue(viewModel.isParticipating)
-        XCTAssertEqual(backend.writes, 2)
-    }
-
     func testPickingANameRefreshesTheName() async {
-        await viewModel.acceptNotice()
         let saved = await viewModel.pickName(adjective: 0, animal: 0)
         XCTAssertTrue(saved)
         XCTAssertEqual(viewModel.ownName, "Swift Otter")
     }
 
     func testAFailedPickReportsIt() async {
-        await viewModel.acceptNotice()
         backend.failWrites = true
         let saved = await viewModel.pickName(adjective: 0, animal: 0)
         XCTAssertFalse(saved)

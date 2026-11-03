@@ -16,7 +16,6 @@ struct LeaderboardWrite: Equatable {
 
 enum LeaderboardError: Error, Equatable {
     case unavailable
-    case notParticipating
     case invalidName
     case timedOut
 }
@@ -30,7 +29,6 @@ protocol LeaderboardBackend {
     func readTop(_ board: LeaderboardBoard) async throws -> [String: Any]
     func readRow(_ board: LeaderboardBoard, uid: String) async throws -> Any?
     func write(_ writes: [LeaderboardWrite], uid: String) async throws
-    func deleteRows(uid: String) async throws
 }
 
 @MainActor
@@ -79,14 +77,6 @@ struct FirebaseLeaderboardBackend: LeaderboardBackend {
                 row["b"] = words.animal
             }
             values["\(write.board.path)/\(uid)"] = row
-        }
-        try await update(values)
-    }
-
-    func deleteRows(uid: String) async throws {
-        var values: [String: Any] = [:]
-        for board in LeaderboardBoard.allCases {
-            values["\(board.path)/\(uid)"] = NSNull()
         }
         try await update(values)
     }

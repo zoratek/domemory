@@ -141,7 +141,6 @@ private final class FakeLeaderboardBackend: LeaderboardBackend {
     var configReads = 0
     var topReads = 0
     var rowReads = 0
-    var deletes = 0
 
     func currentUID() async throws -> String { "me" }
 
@@ -168,9 +167,6 @@ private final class FakeLeaderboardBackend: LeaderboardBackend {
         self.writes.append(writes)
     }
 
-    func deleteRows(uid: String) async throws {
-        deletes += 1
-    }
 }
 
 @MainActor
@@ -207,20 +203,28 @@ final class LeaderboardServiceTests: XCTestCase {
 
     private var sentScores: [Int] { backend.writes.flatMap { $0 }.map(\.score) }
 
-    func testNothingIsSentBeforeTheNotice() async {
+    func testAScoreIsSentWithoutAnsweringTheNotice() async {
+        XCTAssertFalse(service.hasAcknowledgedNotice)
         await service.sync()
+        XCTAssertEqual(sentScores, [10])
+    }
+
+    func testAnInvalidPickIsRefused() async {
+        do {
+            try await service.pickName(adjective: 32, animal: 0)
+            XCTFail("Expected invalidName")
+        } catch {
+            XCTAssertEqual(error as? LeaderboardError, .invalidName)
+        }
         XCTAssertTrue(backend.writes.isEmpty)
-        XCTAssertEqual(backend.configReads, 0)
     }
 
     func testAZeroScoreCreatesNoRow() async {
-        service.acknowledgeNotice()
         await service.sync()
         XCTAssertEqual(backend.writes.flatMap { $0 }.map(\.board), [.stars])
     }
 
     func testAScoreIsSentOnceThenOnlyWhenItRisesAfterTheGap() async {
-        service.acknowledgeNotice()
         await service.sync()
         XCTAssertEqual(sentScores, [10])
 
@@ -239,7 +243,6 @@ final class LeaderboardServiceTests: XCTestCase {
     }
 
     func testAFailedWriteIsRetriedAfterTheGap() async {
-        service.acknowledgeNotice()
         backend.failNextWrite = true
         await service.sync()
         XCTAssertTrue(backend.writes.isEmpty)
@@ -253,14 +256,12 @@ final class LeaderboardServiceTests: XCTestCase {
     }
 
     func testNoNetworkIsUsedWhenNothingIsDue() async {
-        service.acknowledgeNotice()
         scores[.stars] = 0
         await service.sync()
         XCTAssertEqual(backend.configReads, 0)
     }
 
     func testTheKillSwitchStopsWritesAndReads() async {
-        service.acknowledgeNotice()
         backend.config = nil
         await service.sync()
         XCTAssertTrue(backend.writes.isEmpty)
@@ -277,14 +278,12 @@ final class LeaderboardServiceTests: XCTestCase {
     func testAnOlderAppVersionStaysOff() async {
         backend.config = ["ios": ["enabled": true, "minVersion": "4.6.0"]]
         service = makeService(appVersion: "4.5.1")
-        service.acknowledgeNotice()
         await service.sync()
         XCTAssertTrue(backend.writes.isEmpty)
     }
 
     func testAReinstallStartsFromTheExistingRow() async throws {
         backend.rows[.stars] = ["me": ["s": 500, "t": 1, "a": 3, "b": 4]]
-        service.acknowledgeNotice()
 
         await service.sync()
         XCTAssertTrue(backend.writes.isEmpty, "A lower score would be rejected")
@@ -308,7 +307,6 @@ final class LeaderboardServiceTests: XCTestCase {
     }
 
     func testTheOwnRowIsReadOncePerBoard() async {
-        service.acknowledgeNotice()
         await service.sync()
         scores[.stars] = 11
         date.addTimeInterval(LeaderboardLimits.minimumWriteGap)
@@ -318,7 +316,6 @@ final class LeaderboardServiceTests: XCTestCase {
 
     func testPickingANameUpdatesRowsThatHaveAScore() async throws {
         scores[.streak] = 2
-        service.acknowledgeNotice()
         try await service.pickName(adjective: 1, animal: 2)
         let words = LeaderboardNameWords(adjective: 1, animal: 2)
         XCTAssertEqual(backend.writes, [[
@@ -331,44 +328,12 @@ final class LeaderboardServiceTests: XCTestCase {
 
     func testAPickWithoutAScoreIsSentWithTheFirstScore() async throws {
         scores[.stars] = 0
-        service.acknowledgeNotice()
         try await service.pickName(adjective: 1, animal: 2)
         XCTAssertTrue(backend.writes.isEmpty)
 
         scores[.stars] = 3
         await service.sync()
         XCTAssertEqual(backend.writes.last?.first?.words, LeaderboardNameWords(adjective: 1, animal: 2))
-    }
-
-    func testAnInvalidPickIsRefused() async {
-        service.acknowledgeNotice()
-        do {
-            try await service.pickName(adjective: 32, animal: 0)
-            XCTFail("Expected invalidName")
-        } catch {
-            XCTAssertEqual(error as? LeaderboardError, .invalidName)
-        }
-        XCTAssertTrue(backend.writes.isEmpty)
-    }
-
-    func testLeavingDeletesRowsAndStopsWrites() async throws {
-        service.acknowledgeNotice()
-        await service.sync()
-        try await service.leave()
-        XCTAssertEqual(backend.deletes, 1)
-
-        scores[.stars] = 20
-        date.addTimeInterval(LeaderboardLimits.minimumWriteGap)
-        await service.sync()
-        XCTAssertEqual(sentScores, [10])
-    }
-
-    func testRejoiningSendsTheCurrentScore() async throws {
-        service.acknowledgeNotice()
-        await service.sync()
-        try await service.leave()
-        await service.rejoin()
-        XCTAssertEqual(sentScores, [10, 10])
     }
 
     func testABoardIsCachedFor15Minutes() async throws {

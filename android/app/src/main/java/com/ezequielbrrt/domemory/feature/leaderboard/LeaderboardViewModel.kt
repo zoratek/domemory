@@ -21,8 +21,6 @@ class LeaderboardViewModel(
     private val onAnalytics: ((AnalyticsEvent) -> Unit)? = null,
 ) : ViewModel() {
 
-    enum class Failure { NAME, LEAVE }
-
     sealed interface Content {
         data object Loading : Content
         data class Loaded(val snapshot: LeaderboardSnapshot) : Content
@@ -35,12 +33,10 @@ class LeaderboardViewModel(
         val content: Content = Content.Loading,
         /** Null until the stored answer has been read, so the notice can't flash on screen. */
         val hasAcknowledgedNotice: Boolean? = null,
-        val hasLeft: Boolean = false,
         val ownName: String = "",
         val isWorking: Boolean = false,
-        val failure: Failure? = null,
+        val nameFailed: Boolean = false,
     ) {
-        val isParticipating: Boolean get() = hasAcknowledgedNotice == true && !hasLeft
         val isLoaded: Boolean get() = content is Content.Loaded
         val currentWords: LeaderboardNameWords
             get() = (content as? Content.Loaded)?.snapshot?.ownWords ?: LeaderboardNameWords(0, 0)
@@ -65,6 +61,12 @@ class LeaderboardViewModel(
         load()
     }
 
+    suspend fun dismissNotice() {
+        service.acknowledgeNotice()
+        _state.update { it.copy(hasAcknowledgedNotice = true) }
+        onAnalytics?.invoke(AnalyticsEvent.LeaderboardNoticeDismissed)
+    }
+
     suspend fun load() {
         val requested = _state.value.board
         _state.update { it.copy(content = Content.Loading) }
@@ -81,41 +83,6 @@ class LeaderboardViewModel(
         if (_state.value.board == requested) _state.update { it.copy(content = content) }
     }
 
-    suspend fun acceptNotice() {
-        service.acknowledgeNotice()
-        _state.update { it.copy(hasAcknowledgedNotice = true) }
-        onAnalytics?.invoke(AnalyticsEvent.LeaderboardNoticeAnswered(accepted = true))
-        service.sync()
-        load()
-    }
-
-    suspend fun declineNotice() {
-        service.declineNotice()
-        _state.update { it.copy(hasAcknowledgedNotice = true, hasLeft = true) }
-        onAnalytics?.invoke(AnalyticsEvent.LeaderboardNoticeAnswered(accepted = false))
-    }
-
-    suspend fun leave() = working {
-        try {
-            service.leave()
-            _state.update { it.copy(hasLeft = true) }
-            onAnalytics?.invoke(AnalyticsEvent.LeaderboardLeft)
-            load()
-        } catch (error: CancellationException) {
-            throw error
-        } catch (_: Exception) {
-            _state.update { it.copy(failure = Failure.LEAVE) }
-        }
-    }
-
-    suspend fun rejoin() = working {
-        service.rejoin()
-        _state.update { it.copy(hasAcknowledgedNotice = true, hasLeft = false) }
-        onAnalytics?.invoke(AnalyticsEvent.LeaderboardRejoined)
-        refreshName()
-        load()
-    }
-
     /** Returns true when the name was saved. */
     suspend fun pickName(adjective: Int, animal: Int): Boolean = working {
         try {
@@ -127,17 +94,16 @@ class LeaderboardViewModel(
         } catch (error: CancellationException) {
             throw error
         } catch (_: Exception) {
-            _state.update { it.copy(failure = Failure.NAME) }
+            _state.update { it.copy(nameFailed = true) }
             false
         }
     }
 
-    fun dismissFailure() = _state.update { it.copy(failure = null) }
+    fun dismissFailure() = _state.update { it.copy(nameFailed = false) }
 
     private suspend fun refreshParticipation() {
         val acknowledged = service.hasAcknowledgedNotice()
-        val left = service.hasLeft()
-        _state.update { it.copy(hasAcknowledgedNotice = acknowledged, hasLeft = left) }
+        _state.update { it.copy(hasAcknowledgedNotice = acknowledged) }
     }
 
     private suspend fun refreshName() {

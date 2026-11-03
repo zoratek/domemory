@@ -123,8 +123,7 @@ fun LevelsScreen(viewModel: LevelsViewModel, onLevelSelected: (Int) -> Unit) {
             uiState.leaderboardNoticeName?.let { name ->
                 LeaderboardNoticeCard(
                     name = name,
-                    onAccept = viewModel::acceptLeaderboardNotice,
-                    onDecline = viewModel::declineLeaderboardNotice,
+                    onDismiss = viewModel::dismissLeaderboardNotice,
                     modifier = Modifier.padding(horizontal = 20.dp),
                 )
             }

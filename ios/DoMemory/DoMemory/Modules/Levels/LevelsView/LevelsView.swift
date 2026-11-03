@@ -100,15 +100,9 @@ struct LevelsView: View {
             if let leaderboardNoticeName {
                 LeaderboardNoticeCard(
                     name: leaderboardNoticeName,
-                    onAccept: {
-                        AnalyticsService.log(.leaderboardNoticeAnswered(accepted: true))
+                    onDismiss: {
+                        AnalyticsService.log(.leaderboardNoticeDismissed)
                         LeaderboardService.shared.acknowledgeNotice()
-                        self.leaderboardNoticeName = nil
-                        Task { await LeaderboardService.shared.sync() }
-                    },
-                    onDecline: {
-                        AnalyticsService.log(.leaderboardNoticeAnswered(accepted: false))
-                        LeaderboardService.shared.declineNotice()
                         self.leaderboardNoticeName = nil
                     }
                 )

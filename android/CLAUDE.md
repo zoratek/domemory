@@ -82,7 +82,7 @@ graph in the same change.
 | `core/model` | `Card`, `Board`, `MemoryGame`, `Difficulty`, `GameMode` — pure, no coroutines, no clock |
 | `core/rng` | `SeededGenerator` (SplitMix64 + FNV-1a), `EmojiPool` — the parity-critical pair, see the root CLAUDE.md |
 | `core/time` | `DayKey` — the one place the app decides what day it is |
-| `services/leaderboard`, `feature/leaderboard` | The board shared with iOS (spec 22), shown as a fourth menu tab. `LeaderboardService` owns the rules, `data/remote/FirebaseLeaderboardBackend` the network. Nothing shows until `/config/leaderboard` allows it, and nothing is sent until the player answers the one-time notice. Names come from `localization/leaderboard-names.json`, shared with iOS. `AppContainer` watches the saved scores to trigger sends, because `GameViewModel.onGameFinished` fires before a game's result is saved |
+| `services/leaderboard`, `feature/leaderboard` | The board shared with iOS (spec 22), shown as a fourth menu tab. `LeaderboardService` owns the rules, `data/remote/FirebaseLeaderboardBackend` the network. Every player with a score is included, with no way to leave. Nothing shows or sends until `/config/leaderboard` allows it. Names come from `localization/leaderboard-names.json`, shared with iOS. `AppContainer` watches the saved scores to trigger sends, because `GameViewModel.onGameFinished` fires before a game's result is saved |
 | `data/remote` | `FirebaseBoardCatalogSource`, `BoardDecoder` — reads `/data`, falls back to a bundled set on failure |
 | `data/repository` | `BoardCatalogRepository` — holds the catalog for the session, filters by difficulty |
 | `feature/game` | `GameScreen`/`GameViewModel` — serves every mode (free play, Levels, Seasons, Daily Challenge) |

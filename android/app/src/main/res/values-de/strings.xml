@@ -343,21 +343,13 @@
     <string name="leaderboard_unavailable">Die Bestenliste ist gerade nicht verfügbar.</string>
     <string name="leaderboard_failed">Die Bestenliste konnte nicht geladen werden. Prüfe deine Verbindung und versuche es erneut.</string>
     <string name="leaderboard_retry">Erneut versuchen</string>
-    <string name="leaderboard_options_accessibility">Optionen der Bestenliste</string>
     <string name="leaderboard_change_name">Namen ändern</string>
     <string name="leaderboard_name_title">Wähle deinen Namen</string>
     <string name="leaderboard_name_adjective">Beschreibung</string>
     <string name="leaderboard_name_animal">Tier</string>
     <string name="leaderboard_name_save">Sichern</string>
     <string name="leaderboard_name_failed">Dein Name konnte nicht gesichert werden. Warte einen Moment und versuche es erneut.</string>
-    <string name="leaderboard_leave">Bestenliste verlassen</string>
-    <string name="leaderboard_leave_confirm_title">Bestenliste verlassen?</string>
-    <string name="leaderboard_leave_confirm_message">Deine Ergebnisse werden entfernt. Du kannst jederzeit wieder beitreten.</string>
-    <string name="leaderboard_leave_failed">Die Bestenliste konnte nicht verlassen werden. Prüfe deine Verbindung und versuche es erneut.</string>
-    <string name="leaderboard_left_message">Du bist nicht auf der Bestenliste.</string>
-    <string name="leaderboard_join_again">Wieder beitreten</string>
     <string name="leaderboard_notice_title">Du bist auf der Bestenliste</string>
     <string name="leaderboard_notice_body_format">Du erscheinst als %1$s. Alle Spieler sehen deine Sterne und deine längste Serie. Wenn du die App neu installierst oder dein Handy wechselst, fängst du eventuell von vorn an.</string>
     <string name="leaderboard_notice_accept">Verstanden</string>
-    <string name="leaderboard_notice_decline">Nicht aufnehmen</string>
 </resources>

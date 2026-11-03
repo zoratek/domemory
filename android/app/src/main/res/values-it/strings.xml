@@ -343,21 +343,13 @@
     <string name="leaderboard_unavailable">La classifica non è disponibile al momento.</string>
     <string name="leaderboard_failed">Impossibile caricare la classifica. Controlla la connessione e riprova.</string>
     <string name="leaderboard_retry">Riprova</string>
-    <string name="leaderboard_options_accessibility">Opzioni della classifica</string>
     <string name="leaderboard_change_name">Cambia nome</string>
     <string name="leaderboard_name_title">Scegli il tuo nome</string>
     <string name="leaderboard_name_adjective">Descrizione</string>
     <string name="leaderboard_name_animal">Animale</string>
     <string name="leaderboard_name_save">Salva</string>
     <string name="leaderboard_name_failed">Impossibile salvare il nome. Attendi un momento e riprova.</string>
-    <string name="leaderboard_leave">Lascia la classifica</string>
-    <string name="leaderboard_leave_confirm_title">Lasciare la classifica?</string>
-    <string name="leaderboard_leave_confirm_message">I tuoi punteggi verranno rimossi. Puoi rientrare in qualsiasi momento.</string>
-    <string name="leaderboard_leave_failed">Impossibile lasciare la classifica. Controlla la connessione e riprova.</string>
-    <string name="leaderboard_left_message">Non sei in classifica.</string>
-    <string name="leaderboard_join_again">Rientra</string>
     <string name="leaderboard_notice_title">Sei in classifica</string>
     <string name="leaderboard_notice_body_format">Apparirai come %1$s. Tutti i giocatori possono vedere le tue stelle e la tua serie più lunga. Se reinstalli l\'app o cambi telefono, potresti ricominciare da zero.</string>
     <string name="leaderboard_notice_accept">Ho capito</string>
-    <string name="leaderboard_notice_decline">Non includermi</string>
 </resources>
