@@ -325,7 +325,6 @@
 
 /* Leaderboard */
 "leaderboard_title" = "排行榜";
-"leaderboard_open_accessibility" = "打开排行榜";
 "leaderboard_tab_stars" = "星星";
 "leaderboard_tab_streak" = "连胜";
 "leaderboard_you_format" = "你：%@";

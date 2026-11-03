@@ -325,7 +325,6 @@
 
 /* Leaderboard */
 "leaderboard_title" = "리더보드";
-"leaderboard_open_accessibility" = "리더보드 열기";
 "leaderboard_tab_stars" = "별";
 "leaderboard_tab_streak" = "연속 기록";
 "leaderboard_you_format" = "나: %@";

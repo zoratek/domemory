@@ -325,7 +325,6 @@
 
 /* Leaderboard */
 "leaderboard_title" = "लीडरबोर्ड";
-"leaderboard_open_accessibility" = "लीडरबोर्ड खोलें";
 "leaderboard_tab_stars" = "सितारे";
 "leaderboard_tab_streak" = "स्ट्रीक";
 "leaderboard_you_format" = "आप: %@";

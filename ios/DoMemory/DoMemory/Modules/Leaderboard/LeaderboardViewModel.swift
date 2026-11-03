@@ -47,6 +47,9 @@ final class LeaderboardViewModel {
     }
 
     func open() async {
+        // The notice may have been answered on the Levels tab since this last appeared.
+        hasAcknowledgedNotice = service.hasAcknowledgedNotice
+        hasLeft = service.hasLeft
         await refreshName()
         await service.sync()
         await load()

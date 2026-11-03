@@ -18,9 +18,6 @@ struct LevelsView: View {
     @State private var livesEffect: LivesRowEffect?
     /// Sparkle over the star chip while a credit that just landed counts up.
     @State private var starsCredited = false
-    /// Stays false until the kill switch says the leaderboard is on for this version.
-    @State private var isLeaderboardAvailable = false
-    @State private var showLeaderboard = false
     /// Nil once the player has answered the one-time notice.
     @State private var leaderboardNoticeName: String?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -53,22 +50,19 @@ struct LevelsView: View {
                     viewModel.refresh()
                 }
             }
-            .navigationDestination(isPresented: $showLeaderboard) {
-                LeaderboardView()
-                    .onDisappear { refreshLeaderboardNotice() }
-            }
             .fullScreenCover(isPresented: $showIntro) {
                 LevelsIntroView(source: "info_button") { showIntro = false }
             }
             .task {
                 let service = LeaderboardService.shared
-                isLeaderboardAvailable = await service.checkAvailability()
-                if isLeaderboardAvailable, !service.hasAcknowledgedNotice,
+                if await service.checkAvailability(), !service.hasAcknowledgedNotice,
                    let words = await service.ownNameWords() {
                     leaderboardNoticeName = LeaderboardNameFormatter.current.name(words)
                 }
             }
             .onAppear {
+                // The notice may have been answered on the leaderboard tab.
+                refreshLeaderboardNotice()
                 viewModel.refresh()
                 viewModel.preloadLivesAd()
                 AnalyticsService.log(.screenView(name: "levels", screenClass: "LevelsView"))
@@ -141,22 +135,6 @@ struct LevelsView: View {
                     }
                     .buttonStyle(.plain)
                     .accessibilityLabel(Strings.levelsIntroInfoAccessibility)
-
-                    if isLeaderboardAvailable {
-                        Button {
-                            HapticsService.shared.fire(.tap)
-                            showLeaderboard = true
-                        } label: {
-                            Image(systemName: "trophy.fill")
-                                .font(.system(size: 15, weight: .semibold))
-                                .foregroundStyle(Color.hardAmber)
-                                .frame(minWidth: 44, minHeight: 44)
-                                .contentShape(Rectangle())
-                        }
-                        .buttonStyle(.plain)
-                        .padding(.vertical, -12)
-                        .accessibilityLabel(Strings.leaderboardOpenAccessibility)
-                    }
                 }
                 Text(Strings.levelsCurrentLevelFormat(viewModel.currentLevel))
                     .font(.system(size: 13, weight: .semibold, design: .rounded))

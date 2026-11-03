@@ -9,7 +9,6 @@ import Foundation
 
 enum Strings {
     static let leaderboardTitle = NSLocalizedString("leaderboard_title", comment: "Leaderboard screen title")
-    static let leaderboardOpenAccessibility = NSLocalizedString("leaderboard_open_accessibility", comment: "Accessibility label for the Levels header leaderboard button")
     static let leaderboardTabStars = NSLocalizedString("leaderboard_tab_stars", comment: "Leaderboard tab for lifetime stars")
     static let leaderboardTabStreak = NSLocalizedString("leaderboard_tab_streak", comment: "Leaderboard tab for the longest Daily Challenge streak")
     static func leaderboardYou(_ name: String) -> String {

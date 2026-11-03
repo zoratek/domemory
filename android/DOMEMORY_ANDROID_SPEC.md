@@ -2162,8 +2162,9 @@ the form, falling back to the first. Fall back to English for any other locale.
 - Show a one-time notice before a player's first score is sent, on the Levels screen
   and on the leaderboard itself, so players who never open the board still see it.
   Nothing is sent until the player accepts, so a player who ignores the notice isn't
-  included. Declining sends nothing and works like leaving. Hide the notice and the entry point
-  until `/config/leaderboard` allows them, checking once per launch.
+  included. Declining sends nothing and works like leaving. Hide the notice and the fourth menu
+  tab until `/config/leaderboard` allows them, checking once per launch. The tab shows no
+  banner while it's selected.
 - Add an existing player on their first finished game or first board open after
   updating, never at launch.
 - Before the first write on an install, read the player's own rows once. A reinstall

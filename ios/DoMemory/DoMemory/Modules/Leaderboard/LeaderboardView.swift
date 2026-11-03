@@ -24,40 +24,23 @@ struct LeaderboardView: View {
                         )
                     }
 
-                    Picker(Strings.leaderboardTitle, selection: boardSelection) {
-                        Text(Strings.leaderboardTabStars).tag(LeaderboardBoard.stars)
-                        Text(Strings.leaderboardTabStreak).tag(LeaderboardBoard.streak)
+                    HStack(spacing: 8) {
+                        Picker(Strings.leaderboardTitle, selection: boardSelection) {
+                            Text(Strings.leaderboardTabStars).tag(LeaderboardBoard.stars)
+                            Text(Strings.leaderboardTabStreak).tag(LeaderboardBoard.streak)
+                        }
+                        .pickerStyle(.segmented)
+
+                        // The menu hides its navigation bar, so a toolbar item wouldn't show in a tab.
+                        if viewModel.isParticipating {
+                            optionsMenu
+                        }
                     }
-                    .pickerStyle(.segmented)
 
                     content
                 }
                 .padding(16)
                 .readableWidth()
-            }
-        }
-        .navigationTitle(Strings.leaderboardTitle)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color.appBackground, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbar {
-            if viewModel.isParticipating {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Menu {
-                        Button(Strings.leaderboardChangeName, systemImage: "pencil") {
-                            HapticsService.shared.fire(.tap)
-                            showNamePicker = true
-                        }
-                        Button(Strings.leaderboardLeave, systemImage: "person.fill.xmark", role: .destructive) {
-                            HapticsService.shared.fire(.tap)
-                            showLeaveConfirmation = true
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis.circle")
-                            .accessibilityLabel(Strings.leaderboardOptionsAccessibility)
-                    }
-                    .disabled(viewModel.isWorking || !viewModel.isLoaded)
-                }
             }
         }
         .task {
@@ -91,6 +74,27 @@ struct LeaderboardView: View {
         ) {
             Button(Strings.ok, role: .cancel) {}
         }
+    }
+
+    private var optionsMenu: some View {
+        Menu {
+            Button(Strings.leaderboardChangeName, systemImage: "pencil") {
+                HapticsService.shared.fire(.tap)
+                showNamePicker = true
+            }
+            Button(Strings.leaderboardLeave, systemImage: "person.fill.xmark", role: .destructive) {
+                HapticsService.shared.fire(.tap)
+                showLeaveConfirmation = true
+            }
+        } label: {
+            Image(systemName: "ellipsis.circle")
+                .font(.system(size: 22, weight: .regular))
+                .foregroundStyle(Color.primaryColor)
+                .frame(minWidth: 44, minHeight: 44)
+                .contentShape(Rectangle())
+                .accessibilityLabel(Strings.leaderboardOptionsAccessibility)
+        }
+        .disabled(viewModel.isWorking || !viewModel.isLoaded)
     }
 
     private var boardSelection: Binding<LeaderboardBoard> {

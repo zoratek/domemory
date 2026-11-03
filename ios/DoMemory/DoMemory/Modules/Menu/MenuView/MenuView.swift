@@ -11,7 +11,7 @@ import AppTrackingTransparency
 import UserNotifications
 
 /// The raw value is the `tab` parameter of `menu_tab_selected`.
-private enum GameTab: String { case all, mine, levels }
+private enum GameTab: String { case all, mine, levels, leaderboard }
 
 struct MenuView: View {
     @State private var viewModel = MenuViewModel()
@@ -21,6 +21,8 @@ struct MenuView: View {
     @State private var showJoinMultiplayerSheet = false
     @State private var isHostingMultiplayerRoom = false
     @State private var selectedTab: GameTab = .levels
+    /// Stays false until the kill switch says the leaderboard is on for this version.
+    @State private var isLeaderboardAvailable = false
     /// Set when the app, not the player, moves the tab, so that switch is not
     /// logged as `menu_tab_selected`.
     @State private var isProgrammaticTabChange = false
@@ -39,7 +41,7 @@ struct MenuView: View {
         switch selectedTab {
         case .all:    return allGames
         case .mine:   return myGames
-        case .levels: return []
+        case .levels, .leaderboard: return []
         }
     }
 
@@ -226,7 +228,9 @@ struct MenuView: View {
                                 .padding(.bottom, 12)
                             }
 
-                            if !purchaseService.hasRemovedAds,
+                            // The leaderboard is ad-free by decision.
+                            if selectedTab != .leaderboard,
+                               !purchaseService.hasRemovedAds,
                                AdsService.shared.isBannerConfigured(for: .homeBanner) {
                                 AdMobBannerView(placement: .homeBanner)
                                     .frame(height: 50)
@@ -255,6 +259,17 @@ struct MenuView: View {
                                         Label(Strings.tabAll, systemImage: "square.grid.2x2.fill")
                                     }
                                     .tag(GameTab.all)
+
+                                if isLeaderboardAvailable {
+                                    LeaderboardView()
+                                        .tabItem {
+                                            Label(Strings.leaderboardTitle, systemImage: "medal.fill")
+                                        }
+                                        .tag(GameTab.leaderboard)
+                                }
+                            }
+                            .task {
+                                isLeaderboardAvailable = await LeaderboardService.shared.checkAvailability()
                             }
                         }
                     }
@@ -463,7 +478,7 @@ struct MenuView: View {
 
     private var selectedVisibleTab: MenuViewModel.VisibleTab {
         switch selectedTab {
-        case .all, .levels:
+        case .all, .levels, .leaderboard:
             return .all
         case .mine:
             return .mine

@@ -14,7 +14,7 @@ The contract is in `android/DOMEMORY_ANDROID_SPEC.md` §22.
 | Scores | Lifetime stars and longest Daily Challenge streak |
 | Board size | Top 50, cached for 15 minutes |
 | Firebase plan | Spark |
-| Entry point | A button in the Levels header on both platforms |
+| Entry point | A fourth menu tab on both platforms, with no banner while it's showing. It replaced a Levels header button that was hard to find and tap |
 | Fake scores | The owner removes them with an admin script. No report button |
 
 ## Phases
@@ -22,10 +22,10 @@ The contract is in `android/DOMEMORY_ANDROID_SPEC.md` §22.
 | Phase | Scope | Needs | Status |
 |---|---|---|---|
 | L0 | Contract, fixtures and docs | None | Merged (#122) |
-| L1 | Rules, emulator harness, config and admin script | L0 | Merged (#122), not deployed |
-| L2 | iOS service | L1 deployed | Built and unit tested, not yet run against Firebase |
-| L3 | iOS screen, switched off by config | L2 | Built and tested with demo data, translations need review |
-| L4 | Android service and screen | L1 deployed | Not started |
+| L1 | Rules, emulator harness, config and admin script | L0 | Merged (#122), rules deployed 2026-11-03 |
+| L2 | iOS service | L1 deployed | PR #123, in owner testing against real Firebase |
+| L3 | iOS screen, switched off by config | L2 | PR #124, in owner testing, translations need review |
+| L4 | Android service and screen | L1 deployed | Built and unit tested, never run on a device |
 | L5 | Cross-platform test. The v1 format is frozen when it passes | L3, L4 | Not started |
 | L6 | Release iOS 4.6.0 and Android 1.3.0 | L5 | Not started |
 | L7 | Review downloads, connections, leavers and cheating after two weeks | L6 | Not started |

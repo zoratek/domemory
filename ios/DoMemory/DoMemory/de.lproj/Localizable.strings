@@ -325,7 +325,6 @@
 
 /* Leaderboard */
 "leaderboard_title" = "Bestenliste";
-"leaderboard_open_accessibility" = "Bestenliste öffnen";
 "leaderboard_tab_stars" = "Sterne";
 "leaderboard_tab_streak" = "Serie";
 "leaderboard_you_format" = "Du: %@";

@@ -325,7 +325,6 @@
 
 /* Leaderboard */
 "leaderboard_title" = "Classifica";
-"leaderboard_open_accessibility" = "Apri la classifica";
 "leaderboard_tab_stars" = "Stelle";
 "leaderboard_tab_streak" = "Serie";
 "leaderboard_you_format" = "Tu: %@";

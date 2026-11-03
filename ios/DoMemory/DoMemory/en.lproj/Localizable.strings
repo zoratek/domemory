@@ -325,7 +325,6 @@
 
 /* Leaderboard */
 "leaderboard_title" = "Leaderboard";
-"leaderboard_open_accessibility" = "Open leaderboard";
 "leaderboard_tab_stars" = "Stars";
 "leaderboard_tab_streak" = "Streak";
 "leaderboard_you_format" = "You: %@";
