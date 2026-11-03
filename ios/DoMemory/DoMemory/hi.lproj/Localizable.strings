@@ -345,8 +345,8 @@
 "leaderboard_you" = "आप";
 "leaderboard_rank_format" = "आप #%d पर हैं";
 "leaderboard_caption_stars" = "लेवल से मिले कुल सितारे";
-"leaderboard_caption_streak" = "डेली चैलेंज की सबसे लंबी स्ट्रीक";
+"leaderboard_caption_streak" = "दैनिक चुनौती की सबसे लंबी स्ट्रीक";
 "leaderboard_zero_stars" = "अपना पहला सितारा पाने के लिए एक लेवल पूरा करें।";
-"leaderboard_zero_streak" = "अपनी स्ट्रीक शुरू करने के लिए एक डेली चैलेंज जीतें।";
+"leaderboard_zero_streak" = "अपनी स्ट्रीक शुरू करने के लिए एक दैनिक चुनौती जीतें।";
 "leaderboard_pending" = "आपका स्कोर जल्द ही लीडरबोर्ड पर दिखेगा।";
 "leaderboard_top_50" = "टॉप 50";

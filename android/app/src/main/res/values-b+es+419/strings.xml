@@ -354,9 +354,9 @@
     <string name="leaderboard_you">Tú</string>
     <string name="leaderboard_rank_format">Estás en el puesto %1$d</string>
     <string name="leaderboard_caption_stars">Estrellas totales de Niveles</string>
-    <string name="leaderboard_caption_streak">Racha más larga del Desafío diario</string>
+    <string name="leaderboard_caption_streak">Racha más larga del Reto diario</string>
     <string name="leaderboard_zero_stars">Supera un nivel para ganar tu primera estrella.</string>
-    <string name="leaderboard_zero_streak">Gana un Desafío diario para empezar tu racha.</string>
+    <string name="leaderboard_zero_streak">Gana un Reto diario para empezar tu racha.</string>
     <string name="leaderboard_pending">Tu puntuación aparecerá pronto en la clasificación.</string>
     <string name="leaderboard_top_50">Top 50</string>
 </resources>
