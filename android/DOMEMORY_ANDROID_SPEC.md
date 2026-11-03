@@ -2160,6 +2160,9 @@ adjective forms where a language requires them, reviewed by locale.
 - Show a one-time notice before a player's first score is sent.
 - Add an existing player on their first finished game or first board open after
   updating, never at launch.
+- Before the first write on an install, read the player's own rows once. A reinstall
+  can keep the uid while local stats restart at zero, and rules reject a lower score,
+  so treat a row's score as the last value sent and show the higher of the two.
 - After that, write only when a score is above the last value sent, at most once
   every 10 minutes per board. A failed or skipped write is retried after the next
   finished game. Gameplay never waits for it.
