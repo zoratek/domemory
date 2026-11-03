@@ -1,5 +1,10 @@
 # Quick Match — online multiplayer against other players
 
+> **Parked on 2026-11-03** because of multiplayer costs. `.plans/leaderboard.md` is
+> the current work. A 2 November review also found this plan can't be built as
+> written: quick rooms can't use `joinRoom`, and the ticket lifecycle can strand
+> players. Review it again before reopening.
+
 Play a live match against a random online opponent, with no friend, room code or
 invite needed. This sits beside the existing friend rooms (create, share code,
 join) and does not replace them.

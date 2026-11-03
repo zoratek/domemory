@@ -19,6 +19,68 @@
         ".read": "auth != null",
         ".write": "auth != null"
       }
+    },
+    "config": {
+      "leaderboard": {
+        ".read": "auth != null",
+        ".write": false
+      }
+    },
+    "leaderboard": {
+      "v1": {
+        "stars": {
+          ".read": "auth != null && query.orderByChild === 's' && query.limitToLast <= 50",
+          ".indexOn": ["s"],
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid && (!newData.exists() || !root.child('leaderboard/v1/blocked/' + $uid).exists())",
+            ".validate": "newData.hasChildren(['s', 't']) && (newData.hasChildren(['a', 'b']) || (!newData.hasChild('a') && !newData.hasChild('b'))) && (!data.exists() || now - data.child('t').val() >= 30000)",
+            "s": {
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 30000 && (!data.exists() || newData.val() >= data.val())"
+            },
+            "t": {
+              ".validate": "newData.val() === now"
+            },
+            "a": {
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 31"
+            },
+            "b": {
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 31"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "streak": {
+          ".read": "auth != null && query.orderByChild === 's' && query.limitToLast <= 50",
+          ".indexOn": ["s"],
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid && (!newData.exists() || !root.child('leaderboard/v1/blocked/' + $uid).exists())",
+            ".validate": "newData.hasChildren(['s', 't']) && (newData.hasChildren(['a', 'b']) || (!newData.hasChild('a') && !newData.hasChild('b'))) && (!data.exists() || now - data.child('t').val() >= 30000)",
+            "s": {
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 3650 && (!data.exists() || newData.val() >= data.val())"
+            },
+            "t": {
+              ".validate": "newData.val() === now"
+            },
+            "a": {
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 31"
+            },
+            "b": {
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 31"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "blocked": {
+          ".read": false,
+          ".write": false
+        }
+      }
     }
   }
 }

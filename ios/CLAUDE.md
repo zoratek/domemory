@@ -96,7 +96,7 @@ Also: `DoMemory/DoMemoryWidget/` — a home-screen widget showing the Daily Chal
 - **`StarWalletService`** – Spendable balance. Deliberately separate from `levels.lifetimeStars`, which is a monotonic mastery score that spending must never walk backwards. Season play credits the wallet but **not** lifetime stars.
 - **`LevelLivesService`** – 4 lives/day, spent only on a loss, shared across endless Levels *and* every season. Resets lazily on the first read of a new local day, using the Daily Challenge's day-seed helper so both roll over together.
 - **`LevelPowerUp`** – All power-up and rescue costs live here and nowhere else, so the economy is retunable in one place.
-- **`SeededGenerator`** / **`EmojiPool`** – SplitMix64 seeded by an FNV-1a hash of a seed string; a fixed 48-emoji pool whose **order is part of the contract** (only ever append).
+- **`SeededGenerator`** / **`EmojiPool`** – SplitMix64 seeded by an FNV-1a hash of a seed string; a fixed 48-emoji pool whose **order is part of the contract** (only ever append). The FNV offset basis is one digit short of the standard value Android uses, so the two platforms' streams differ. Live boards depend on it, so don't change it without a deliberate decision.
 
 **Seasons**
 - **`SeasonCatalogService`** – One-shot read of `/seasons` plus a UserDefaults cache read **synchronously** at init, so the season card renders on cold launch and offline; the network read only corrects it. Picks the active season by highest `priority`, ties broken on smallest id (priority alone is not a total order and the winner would otherwise flicker). Prefetches artwork only when the active season actually changes.
