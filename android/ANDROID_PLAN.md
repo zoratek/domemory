@@ -1699,6 +1699,13 @@ taken over by another app mid-run. `GameFinishedInterstitialTriggerTest` now cov
 active grant never requests and leaves the cadence counter untouched. Still not exercised: the
 multiplayer-finished native while ads are off, and any physical device.
 
+**Multiplayer deal fix, 2026-11-03.** Android hosts dealt every pair side by side, because
+`MultiplayerCards.from` never shuffled, on the mistaken belief that a shuffle would give each client
+a different board. The owner saw this in a live match. The host now shuffles when dealing and on
+rematch, as iOS's `makeCards` does, and both players keep rendering the list in the room, so older
+clients need no change. `MultiplayerCardsTest` previously pinned the bug as "iOS wire order" and now
+guards against it. Verified with unit tests only; a live match hosted on Android is still to do.
+
 ## 8. Immediate next steps
 
 1. Decide **O1**: register `domemory.app`, deploy Android App Links and iOS Universal Links
