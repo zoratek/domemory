@@ -350,3 +350,11 @@
 "leaderboard_zero_streak" = "Gagnez un défi quotidien pour lancer votre série.";
 "leaderboard_pending" = "Votre score apparaîtra bientôt au classement.";
 "leaderboard_top_50" = "Top 50";
+
+/* What's New v4.6.0 */
+"whats_new_leaderboard_title" = "Classement";
+"whats_new_leaderboard_description" = "Comparez vos étoiles et votre série du Défi quotidien à celles des joueurs du monde entier.";
+"whats_new_your_score_title" = "Votre score";
+"whats_new_your_score_description" = "Voyez votre rang en un coup d'œil, ou ce qu'il vous manque pour entrer dans le top 50.";
+"whats_new_pick_name_title" = "Choisissez votre nom";
+"whats_new_pick_name_description" = "Chaque joueur reçoit un drôle de nom d'animal, et vous pouvez choisir le vôtre.";

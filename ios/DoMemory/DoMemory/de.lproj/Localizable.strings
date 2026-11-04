@@ -350,3 +350,11 @@
 "leaderboard_zero_streak" = "Gewinne eine Tägliche Challenge, um deine Serie zu starten.";
 "leaderboard_pending" = "Dein Ergebnis erscheint bald auf der Bestenliste.";
 "leaderboard_top_50" = "Top 50";
+
+/* What's New v4.6.0 */
+"whats_new_leaderboard_title" = "Bestenliste";
+"whats_new_leaderboard_description" = "Vergleiche deine Sterne und deine Serie der Täglichen Challenge mit Spielern überall.";
+"whats_new_your_score_title" = "Dein Ergebnis";
+"whats_new_your_score_description" = "Sieh deinen Rang auf einen Blick oder wie viel dir zu den Top 50 fehlt.";
+"whats_new_pick_name_title" = "Wähle deinen Namen";
+"whats_new_pick_name_description" = "Jeder Spieler bekommt einen lustigen Tiernamen, und du kannst deinen eigenen wählen.";

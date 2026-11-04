@@ -1,0 +1,5 @@
+New in DoMemory 4.6:
+
+• Leaderboard: See how your lifetime stars and longest Daily Challenge streak rank against players on iPhone, iPad and Android.
+• Your score: Check your rank at a glance, or how far you are from the top 50.
+• Your name: Every player gets a fun animal name, and you can pick your own.

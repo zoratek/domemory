@@ -359,4 +359,14 @@
     <string name="leaderboard_zero_streak">Vinci una sfida giornaliera per iniziare la tua serie.</string>
     <string name="leaderboard_pending">Il tuo punteggio apparirà presto in classifica.</string>
     <string name="leaderboard_top_50">Top 50</string>
+
+    <!-- What's New v2.0.0 -->
+    <string name="whats_new_leaderboard_title">Classifica</string>
+    <string name="whats_new_leaderboard_description">Scopri come si piazzano le tue stelle e la tua serie della Sfida giornaliera tra i giocatori di tutto il mondo.</string>
+    <string name="whats_new_your_score_title">Il tuo punteggio</string>
+    <string name="whats_new_your_score_description">Controlla la tua posizione a colpo d\'occhio, o quanto ti manca per entrare nella top 50.</string>
+    <string name="whats_new_pick_name_title">Scegli il tuo nome</string>
+    <string name="whats_new_pick_name_description">Ogni giocatore riceve un divertente nome di animale, e puoi scegliere il tuo.</string>
+    <string name="whats_new_multiplayer_shuffle_title">Multigiocatore migliorato</string>
+    <string name="whats_new_multiplayer_shuffle_description">I tabelloni creati su Android ora vengono mescolati correttamente.</string>
 </resources>

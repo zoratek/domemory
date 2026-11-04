@@ -1,0 +1,5 @@
+Nouveautés de DoMemory 4.6 :
+
+• Classement : Comparez vos étoiles gagnées et votre plus longue série du Défi quotidien à celles des joueurs sur iPhone, iPad et Android.
+• Votre score : Voyez votre rang en un coup d'œil, ou ce qu'il vous manque pour entrer dans le top 50.
+• Votre nom : Chaque joueur reçoit un drôle de nom d'animal, et vous pouvez choisir le vôtre.

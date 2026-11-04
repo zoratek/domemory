@@ -359,4 +359,14 @@
     <string name="leaderboard_zero_streak">Gagnez un défi quotidien pour lancer votre série.</string>
     <string name="leaderboard_pending">Votre score apparaîtra bientôt au classement.</string>
     <string name="leaderboard_top_50">Top 50</string>
+
+    <!-- What's New v2.0.0 -->
+    <string name="whats_new_leaderboard_title">Classement</string>
+    <string name="whats_new_leaderboard_description">Comparez vos étoiles et votre série du Défi quotidien à celles des joueurs du monde entier.</string>
+    <string name="whats_new_your_score_title">Votre score</string>
+    <string name="whats_new_your_score_description">Voyez votre rang en un coup d\'œil, ou ce qu\'il vous manque pour entrer dans le top 50.</string>
+    <string name="whats_new_pick_name_title">Choisissez votre nom</string>
+    <string name="whats_new_pick_name_description">Chaque joueur reçoit un drôle de nom d\'animal, et vous pouvez choisir le vôtre.</string>
+    <string name="whats_new_multiplayer_shuffle_title">Multijoueur amélioré</string>
+    <string name="whats_new_multiplayer_shuffle_description">Les plateaux créés sur Android sont désormais bien mélangés.</string>
 </resources>

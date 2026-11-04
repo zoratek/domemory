@@ -359,4 +359,14 @@
     <string name="leaderboard_zero_streak">デイリーチャレンジに勝って連続記録を始めましょう。</string>
     <string name="leaderboard_pending">スコアはまもなくランキングに表示されます。</string>
     <string name="leaderboard_top_50">トップ50</string>
+
+    <!-- What's New v2.0.0 -->
+    <string name="whats_new_leaderboard_title">ランキング</string>
+    <string name="whats_new_leaderboard_description">スターとデイリーチャレンジの連続記録を、世界中のプレイヤーと比べられます。</string>
+    <string name="whats_new_your_score_title">あなたのスコア</string>
+    <string name="whats_new_your_score_description">順位やトップ50までの差がひと目でわかります。</string>
+    <string name="whats_new_pick_name_title">名前を選ぼう</string>
+    <string name="whats_new_pick_name_description">プレイヤーには楽しい動物の名前が付き、好きな名前を選ぶこともできます。</string>
+    <string name="whats_new_multiplayer_shuffle_title">マルチプレイを改善</string>
+    <string name="whats_new_multiplayer_shuffle_description">Android で作成したボードが正しくシャッフルされるようになりました。</string>
 </resources>

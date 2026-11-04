@@ -18,7 +18,7 @@ final class WhatsNewManager: ObservableObject {
     /// already read these notes are not shown them again under a new number. **Raise it
     /// in the same change that rewrites the sheet's items**, or the new notes reach no one
     /// who has seen the old ones.
-    nonisolated static let releaseNotesVersion = "4.4.1"
+    nonisolated static let releaseNotesVersion = "4.6.0"
 
     @Published var shouldShow: Bool = false
 

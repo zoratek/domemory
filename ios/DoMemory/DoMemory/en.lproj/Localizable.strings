@@ -350,3 +350,11 @@
 "leaderboard_zero_streak" = "Win a Daily Challenge to start your streak.";
 "leaderboard_pending" = "Your score will appear on the board soon.";
 "leaderboard_top_50" = "Top 50";
+
+/* What's New v4.6.0 */
+"whats_new_leaderboard_title" = "Leaderboard";
+"whats_new_leaderboard_description" = "See how your stars and Daily Challenge streak rank against players everywhere.";
+"whats_new_your_score_title" = "Your Score";
+"whats_new_your_score_description" = "Check your rank at a glance, or how far you are from the top 50.";
+"whats_new_pick_name_title" = "Pick Your Name";
+"whats_new_pick_name_description" = "Every player gets a fun animal name, and you can choose your own.";
