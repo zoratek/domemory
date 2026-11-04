@@ -359,4 +359,14 @@
     <string name="leaderboard_zero_streak">일일 챌린지에서 이겨 연속 기록을 시작하세요.</string>
     <string name="leaderboard_pending">점수가 곧 리더보드에 표시됩니다.</string>
     <string name="leaderboard_top_50">상위 50위</string>
+
+    <!-- What's New v2.0.0 -->
+    <string name="whats_new_leaderboard_title">리더보드</string>
+    <string name="whats_new_leaderboard_description">별과 일일 챌린지 연속 기록이 전 세계 플레이어 사이에서 몇 위인지 확인하세요.</string>
+    <string name="whats_new_your_score_title">내 점수</string>
+    <string name="whats_new_your_score_description">내 순위나 상위 50위까지 남은 점수를 한눈에 확인하세요.</string>
+    <string name="whats_new_pick_name_title">이름 고르기</string>
+    <string name="whats_new_pick_name_description">모든 플레이어에게 재미있는 동물 이름이 주어지며, 직접 고를 수도 있습니다.</string>
+    <string name="whats_new_multiplayer_shuffle_title">멀티플레이 개선</string>
+    <string name="whats_new_multiplayer_shuffle_description">Android에서 만든 보드가 이제 제대로 섞입니다.</string>
 </resources>

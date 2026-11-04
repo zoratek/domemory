@@ -344,9 +344,17 @@
 "leaderboard_notice_accept" = "समझ गया";
 "leaderboard_you" = "आप";
 "leaderboard_rank_format" = "आप #%d पर हैं";
-"leaderboard_caption_stars" = "लेवल से मिले कुल सितारे";
+"leaderboard_caption_stars" = "स्तर से मिले कुल सितारे";
 "leaderboard_caption_streak" = "दैनिक चुनौती की सबसे लंबी स्ट्रीक";
-"leaderboard_zero_stars" = "अपना पहला सितारा पाने के लिए एक लेवल पूरा करें।";
+"leaderboard_zero_stars" = "अपना पहला सितारा पाने के लिए एक स्तर पूरा करें।";
 "leaderboard_zero_streak" = "अपनी स्ट्रीक शुरू करने के लिए एक दैनिक चुनौती जीतें।";
 "leaderboard_pending" = "आपका स्कोर जल्द ही लीडरबोर्ड पर दिखेगा।";
 "leaderboard_top_50" = "टॉप 50";
+
+/* What's New v4.6.0 */
+"whats_new_leaderboard_title" = "लीडरबोर्ड";
+"whats_new_leaderboard_description" = "देखें कि आपके सितारे और दैनिक चुनौती की स्ट्रीक दुनिया भर के खिलाड़ियों के मुकाबले कहाँ हैं।";
+"whats_new_your_score_title" = "आपका स्कोर";
+"whats_new_your_score_description" = "एक नज़र में अपनी रैंक देखें, या जानें कि टॉप 50 में आने के लिए कितना बाकी है।";
+"whats_new_pick_name_title" = "अपना नाम चुनें";
+"whats_new_pick_name_description" = "हर खिलाड़ी को जानवर का एक मज़ेदार नाम मिलता है, और आप अपना नाम चुन सकते हैं।";

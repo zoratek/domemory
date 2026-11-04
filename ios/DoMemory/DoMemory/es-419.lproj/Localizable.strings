@@ -350,3 +350,11 @@
 "leaderboard_zero_streak" = "Gana un Reto diario para empezar tu racha.";
 "leaderboard_pending" = "Tu puntuación aparecerá pronto en la clasificación.";
 "leaderboard_top_50" = "Top 50";
+
+/* What's New v4.6.0 */
+"whats_new_leaderboard_title" = "Clasificación";
+"whats_new_leaderboard_description" = "Mira cómo se comparan tus estrellas y tu racha del Reto diario con jugadores de todas partes.";
+"whats_new_your_score_title" = "Tu puntuación";
+"whats_new_your_score_description" = "Consulta tu posición de un vistazo, o cuánto te falta para entrar al top 50.";
+"whats_new_pick_name_title" = "Elige tu nombre";
+"whats_new_pick_name_description" = "Cada jugador recibe un divertido nombre de animal, y puedes elegir el tuyo.";

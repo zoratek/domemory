@@ -1,10 +1,10 @@
 package com.ezequielbrrt.domemory.feature.whatsnew
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CardGiftcard
-import androidx.compose.material.icons.filled.Palette
-import androidx.compose.material.icons.filled.Timeline
-import androidx.compose.material.icons.filled.TouchApp
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material.icons.filled.Shuffle
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
@@ -50,10 +50,10 @@ private fun rememberCurrentWhatsNew(): WhatsNew {
     val title = stringResource(R.string.whats_new_title)
     val button = stringResource(R.string.whats_new_button)
     val items = listOf(
-        Triple(stringResource(R.string.whats_new_seasons_title), stringResource(R.string.whats_new_seasons_description), Icons.Filled.CardGiftcard),
-        Triple(stringResource(R.string.whats_new_season_artwork_title), stringResource(R.string.whats_new_season_artwork_description), Icons.Filled.Palette),
-        Triple(stringResource(R.string.whats_new_tap_to_play_title), stringResource(R.string.whats_new_tap_to_play_description), Icons.Filled.TouchApp),
-        Triple(stringResource(R.string.whats_new_season_progress_title), stringResource(R.string.whats_new_season_progress_description), Icons.Filled.Timeline),
+        Triple(stringResource(R.string.whats_new_leaderboard_title), stringResource(R.string.whats_new_leaderboard_description), Icons.Filled.EmojiEvents),
+        Triple(stringResource(R.string.whats_new_your_score_title), stringResource(R.string.whats_new_your_score_description), Icons.Filled.Star),
+        Triple(stringResource(R.string.whats_new_pick_name_title), stringResource(R.string.whats_new_pick_name_description), Icons.Filled.Edit),
+        Triple(stringResource(R.string.whats_new_multiplayer_shuffle_title), stringResource(R.string.whats_new_multiplayer_shuffle_description), Icons.Filled.Shuffle),
     )
     return remember(title, button, items) {
         WhatsNew(

@@ -359,4 +359,14 @@
     <string name="leaderboard_zero_streak">Win a Daily Challenge to start your streak.</string>
     <string name="leaderboard_pending">Your score will appear on the board soon.</string>
     <string name="leaderboard_top_50">Top 50</string>
+
+    <!-- What's New v2.0.0 -->
+    <string name="whats_new_leaderboard_title">Leaderboard</string>
+    <string name="whats_new_leaderboard_description">See how your stars and Daily Challenge streak rank against players everywhere.</string>
+    <string name="whats_new_your_score_title">Your Score</string>
+    <string name="whats_new_your_score_description">Check your rank at a glance, or how far you are from the top 50.</string>
+    <string name="whats_new_pick_name_title">Pick Your Name</string>
+    <string name="whats_new_pick_name_description">Every player gets a fun animal name, and you can choose your own.</string>
+    <string name="whats_new_multiplayer_shuffle_title">Better Multiplayer</string>
+    <string name="whats_new_multiplayer_shuffle_description">Boards hosted on Android are now properly shuffled.</string>
 </resources>

@@ -4,10 +4,20 @@ All notable changes to this project will be documented in this file.
 
 [Unreleased]
 
+[4.6.0] 03-11-2026
+
 ### Added
 - Added the backend for a planned leaderboard shared with Android: database rules for `/leaderboard/v1` and `/config/leaderboard`, emulator tests (`npm run test:rules` in `firebase/`) and `firebase/scripts/leaderboard_admin.py`. No app uses it yet, and the rules still need `firebase deploy --only database`. The contract is `android/DOMEMORY_ANDROID_SPEC.md` §22.
 - Added `LeaderboardService`, which sends stars and the longest streak after finished games and reads the top 50 of each board. It stays inactive until the leaderboard screen and its one-time notice exist, so players see no change yet.
 - Added the leaderboard screen as a fourth menu tab, with no banner while it's showing: Stars and Streak tabs, a score ticket with the player's score, rank or distance to the top 50 and a name picker, and medal colours for the top 3. Every player with a score is included, with no way to leave. A one-time notice on the Levels screen says their name and scores are public. Everything stays hidden until `/config/leaderboard` turns it on. Player names are translated in `localization/leaderboard-names.json`, shared with Android, and four new `leaderboard_*` analytics events cover the funnel.
+
+### Changed
+- Rewrote the What's New sheet for the leaderboard and raised `releaseNotesVersion` to 4.6.0.
+- Bumped the version to 4.6.0.
+
+[4.5.1] 20-10-2026
+
+### Added
 - Added Google's consent form for ads (UMP SDK 3.1.0, already bundled with Google Mobile Ads), shown only to players in the EEA, the UK and Switzerland. Only AdMob's "European regulations" message is published, so the SDK decides by region: everywhere else the check returns with nothing on screen and ads behave as before. `ConsentService` (`AdsService.swift`) refreshes the status on every launch and shows the form when one is required and no valid choice is stored. No ad is requested until `canRequestAds` is true: banner, native, interstitial, rewarded and app-open loads all check it, and Mobile Ads starts only then (`AdsService.startIfAllowed()`). On a first launch the menu's banner and the rewarded buttons therefore appear once consent arrives instead of at once. An app-open ad is never presented over the form. Settings gains a "Privacy options" row, visible only where regulation requires a way to change the choice, with two new `settings_privacy_options_*` strings in all ten locales. Debug builds take `-UMPDebugGeography EEA|Other` and `-UMPTestDeviceID <id>` launch arguments to test either region; a stored choice survives a region change, so test each on a fresh install.
 
 ### Changed

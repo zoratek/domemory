@@ -26,7 +26,7 @@ android/    Jetpack Compose port (live on Google Play)
 firebase/   config, database rules, hosted season art, seed scripts, test fixtures — shared
 .plans/     cross-platform plans
 localization/ translations shared by both apps
-metadata/   App Store release copy, by version and locale
+metadata/   store release copy: ios/ by version and locale, android/ Play notes by version
 assets/     shared media: brand/ (icon source Domemory.xcf), images/ (store screenshots,
             ads, campaigns), videos/, animations/ (Lottie), proposals/, archive/
 scripts/    tooling: animations/, playable/, store-art/, leaderboard/ (test fixture)

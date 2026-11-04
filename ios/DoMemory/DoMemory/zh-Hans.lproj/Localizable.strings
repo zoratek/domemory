@@ -350,3 +350,11 @@
 "leaderboard_zero_streak" = "赢得一次每日挑战，开始你的连胜。";
 "leaderboard_pending" = "你的分数很快会显示在排行榜上。";
 "leaderboard_top_50" = "前 50 名";
+
+/* What's New v4.6.0 */
+"whats_new_leaderboard_title" = "排行榜";
+"whats_new_leaderboard_description" = "看看你的星星和每日挑战连胜在各地玩家中排第几。";
+"whats_new_your_score_title" = "你的分数";
+"whats_new_your_score_description" = "一眼看到你的排名,或距离前 50 名还差多少。";
+"whats_new_pick_name_title" = "选择你的名字";
+"whats_new_pick_name_description" = "每位玩家都有一个有趣的动物名字,你也可以自己挑选。";

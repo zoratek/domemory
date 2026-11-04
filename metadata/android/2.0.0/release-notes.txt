@@ -1,0 +1,60 @@
+<en-US>
+• New leaderboard: See how your lifetime stars and longest Daily Challenge streak rank against players on Android and iOS.
+• Your score: Check your rank at a glance, or how far you are from the top 50.
+• Your name: Every player gets a fun animal name, and you can pick your own.
+• Fixed: Multiplayer boards hosted on Android are now properly shuffled.
+</en-US>
+<es-419>
+• Nueva clasificación: Mira cómo se comparan tus estrellas totales y tu racha más larga del Reto diario con las de jugadores en Android e iOS.
+• Tu puntuación: Consulta tu posición de un vistazo, o cuánto te falta para entrar al top 50.
+• Tu nombre: Cada jugador recibe un divertido nombre de animal, y puedes elegir el tuyo.
+• Corregido: Los tableros multijugador creados en Android ahora se mezclan correctamente.
+</es-419>
+<pt-BR>
+• Nova classificação: Veja como suas estrelas totais e sua maior sequência do Desafio diário se comparam às de jogadores no Android e iOS.
+• Sua pontuação: Confira sua posição num relance ou quanto falta para entrar no top 50.
+• Seu nome: Cada jogador recebe um nome divertido de animal, e você pode escolher o seu.
+• Corrigido: Os tabuleiros multijogador criados no Android agora são embaralhados corretamente.
+</pt-BR>
+<fr-FR>
+• Nouveau classement : Comparez vos étoiles gagnées et votre plus longue série du Défi quotidien à celles des joueurs sur Android et iOS.
+• Votre score : Voyez votre rang en un coup d'œil, ou ce qu'il vous manque pour entrer dans le top 50.
+• Votre nom : Chaque joueur reçoit un drôle de nom d'animal, et vous pouvez choisir le vôtre.
+• Corrigé : Les plateaux multijoueur créés sur Android sont désormais bien mélangés.
+</fr-FR>
+<de-DE>
+• Neue Bestenliste: Vergleiche deine Sterne insgesamt und deine längste Serie der Täglichen Challenge mit Spielern auf Android und iOS.
+• Dein Ergebnis: Sieh deinen Rang auf einen Blick oder wie viel dir zu den Top 50 fehlt.
+• Dein Name: Jeder Spieler bekommt einen lustigen Tiernamen, und du kannst deinen eigenen wählen.
+• Behoben: Auf Android erstellte Mehrspieler-Spielfelder werden jetzt richtig gemischt.
+</de-DE>
+<it-IT>
+• Nuova classifica: Scopri come si piazzano le tue stelle totali e la tua serie più lunga della Sfida giornaliera rispetto ai giocatori su Android e iOS.
+• Il tuo punteggio: Controlla la tua posizione a colpo d'occhio, o quanto ti manca per entrare nella top 50.
+• Il tuo nome: Ogni giocatore riceve un divertente nome di animale, e puoi scegliere il tuo.
+• Corretto: I tabelloni multigiocatore creati su Android ora vengono mescolati correttamente.
+</it-IT>
+<hi-IN>
+• नया लीडरबोर्ड: देखें कि आपके कुल सितारे और दैनिक चुनौती की सबसे लंबी स्ट्रीक Android और iOS के खिलाड़ियों के मुकाबले कहाँ हैं।
+• आपका स्कोर: एक नज़र में अपनी रैंक देखें, या जानें कि टॉप 50 में आने के लिए कितना बाकी है।
+• आपका नाम: हर खिलाड़ी को जानवर का एक मज़ेदार नाम मिलता है, और आप अपना नाम चुन सकते हैं।
+• ठीक किया गया: Android पर बनाए गए मल्टीप्लेयर बोर्ड अब सही तरह से मिलाए जाते हैं।
+</hi-IN>
+<ja-JP>
+• 新しいランキング:累計スターとデイリーチャレンジの最長連続記録を、Android と iOS のプレイヤーと比べられます。
+• あなたのスコア:順位やトップ50までの差がひと目でわかります。
+• あなたの名前:プレイヤーには楽しい動物の名前が付き、好きな名前を選ぶこともできます。
+• 修正:Android で作成したマルチプレイのボードが正しくシャッフルされるようになりました。
+</ja-JP>
+<ko-KR>
+• 새로운 리더보드: 누적 별과 일일 챌린지 최장 연속 기록이 Android와 iOS 플레이어 사이에서 몇 위인지 확인하세요.
+• 내 점수: 내 순위나 상위 50위까지 남은 점수를 한눈에 확인하세요.
+• 내 이름: 모든 플레이어에게 재미있는 동물 이름이 주어지며, 직접 고를 수도 있습니다.
+• 수정됨: Android에서 만든 멀티플레이 보드가 이제 제대로 섞입니다.
+</ko-KR>
+<zh-CN>
+• 全新排行榜:看看你的累计星星和每日挑战最长连胜,在 Android 和 iOS 玩家中排第几。
+• 你的分数:一眼看到你的排名,或距离前 50 名还差多少。
+• 你的名字:每位玩家都有一个有趣的动物名字,你也可以自己挑选。
+• 已修复:在 Android 上创建的多人游戏棋盘现在会正确洗牌。
+</zh-CN>

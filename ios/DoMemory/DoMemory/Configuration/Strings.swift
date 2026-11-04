@@ -354,6 +354,12 @@ enum Strings {
     static let settingsPrivacyOptionsDescription = NSLocalizedString("settings_privacy_options_description", comment: "Privacy options setting description")
 
     // What's New sheet (v3.0.0)
+    static let whatsNewLeaderboardTitle = NSLocalizedString("whats_new_leaderboard_title", comment: "What's New 4.6.0 leaderboard title")
+    static let whatsNewLeaderboardDescription = NSLocalizedString("whats_new_leaderboard_description", comment: "What's New 4.6.0 leaderboard description")
+    static let whatsNewYourScoreTitle = NSLocalizedString("whats_new_your_score_title", comment: "What's New 4.6.0 score title")
+    static let whatsNewYourScoreDescription = NSLocalizedString("whats_new_your_score_description", comment: "What's New 4.6.0 score description")
+    static let whatsNewPickNameTitle = NSLocalizedString("whats_new_pick_name_title", comment: "What's New 4.6.0 name title")
+    static let whatsNewPickNameDescription = NSLocalizedString("whats_new_pick_name_description", comment: "What's New 4.6.0 name description")
     static let whatsNewTitle = NSLocalizedString("whats_new_title", comment: "What's New sheet headline")
     static let whatsNewButton = NSLocalizedString("whats_new_button", comment: "What's New dismiss button")
     static let whatsNewMultiplayerTitle = NSLocalizedString("whats_new_multiplayer_title", comment: "Multiplayer feature title in What's New")

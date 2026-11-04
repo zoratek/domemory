@@ -359,4 +359,14 @@
     <string name="leaderboard_zero_streak">Gana un Reto diario para empezar tu racha.</string>
     <string name="leaderboard_pending">Tu puntuación aparecerá pronto en la clasificación.</string>
     <string name="leaderboard_top_50">Top 50</string>
+
+    <!-- What's New v2.0.0 -->
+    <string name="whats_new_leaderboard_title">Clasificación</string>
+    <string name="whats_new_leaderboard_description">Mira cómo se comparan tus estrellas y tu racha del Reto diario con jugadores de todas partes.</string>
+    <string name="whats_new_your_score_title">Tu puntuación</string>
+    <string name="whats_new_your_score_description">Consulta tu posición de un vistazo, o cuánto te falta para entrar al top 50.</string>
+    <string name="whats_new_pick_name_title">Elige tu nombre</string>
+    <string name="whats_new_pick_name_description">Cada jugador recibe un divertido nombre de animal, y puedes elegir el tuyo.</string>
+    <string name="whats_new_multiplayer_shuffle_title">Mejor multijugador</string>
+    <string name="whats_new_multiplayer_shuffle_description">Los tableros creados en Android ahora se mezclan correctamente.</string>
 </resources>

@@ -43,19 +43,19 @@ extension WhatsNew {
             version: WhatsNewManager.releaseNotesVersion,
             items: [
                 .init(
-                    symbol: "person.2.fill",
-                    title: Strings.whatsNewMultiplayerHostTitle,
-                    description: Strings.whatsNewMultiplayerHostDescription
+                    symbol: "medal.fill",
+                    title: Strings.whatsNewLeaderboardTitle,
+                    description: Strings.whatsNewLeaderboardDescription
                 ),
                 .init(
-                    symbol: "checkmark.circle.fill",
-                    title: Strings.whatsNewMultiplayerReadyTitle,
-                    description: Strings.whatsNewMultiplayerReadyDescription
+                    symbol: "star.circle.fill",
+                    title: Strings.whatsNewYourScoreTitle,
+                    description: Strings.whatsNewYourScoreDescription
                 ),
                 .init(
-                    symbol: "gift.fill",
-                    title: Strings.whatsNewSeasonsTitle,
-                    description: Strings.whatsNewSeasonsDescription
+                    symbol: "pencil.circle.fill",
+                    title: Strings.whatsNewPickNameTitle,
+                    description: Strings.whatsNewPickNameDescription
                 ),
             ],
             primaryButtonTitle: Strings.whatsNewButton

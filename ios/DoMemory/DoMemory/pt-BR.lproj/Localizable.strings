@@ -350,3 +350,11 @@
 "leaderboard_zero_streak" = "Vença um desafio diário para começar sua sequência.";
 "leaderboard_pending" = "Sua pontuação aparecerá em breve na classificação.";
 "leaderboard_top_50" = "Top 50";
+
+/* What's New v4.6.0 */
+"whats_new_leaderboard_title" = "Classificação";
+"whats_new_leaderboard_description" = "Veja como suas estrelas e sua sequência do Desafio diário se comparam às de jogadores do mundo todo.";
+"whats_new_your_score_title" = "Sua pontuação";
+"whats_new_your_score_description" = "Confira sua posição num relance ou quanto falta para entrar no top 50.";
+"whats_new_pick_name_title" = "Escolha seu nome";
+"whats_new_pick_name_description" = "Cada jogador recebe um nome divertido de animal, e você pode escolher o seu.";
